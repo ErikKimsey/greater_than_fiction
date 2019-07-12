@@ -20,7 +20,7 @@ export default class TextEditor extends Component {
 			<View>
 				<Text>Text Editor</Text>
 				<TextInput
-					style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+					style={{ height: 300, borderColor: 'gray', borderWidth: 1 }}
 					onChangeText={(text) => this.setState({ text })}
 					value={this.state.text}
 				/>
