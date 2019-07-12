@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Font } from 'expo';
+import * as Font from 'expo-font';
+import color from './assets/globals/colors.js';
+
+console.log(color);
 
 export default class App extends React.Component {
 	state = {
@@ -10,7 +13,7 @@ export default class App extends React.Component {
 	async componentDidMount() {
 		await Font.loadAsync({
 			'lemon-milk': require('./assets/fonts/LemonMilk.otf'),
-			timeless: require('./assets/fonts/Timeless.ttf')
+			dayrom: require('./assets/fonts/DAYROM.ttf')
 		});
 		this.setState({ fontLoaded: true });
 	}
@@ -19,7 +22,7 @@ export default class App extends React.Component {
 		return (
 			<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 				{this.state.fontLoaded ? (
-					<Text style={{ fontFamily: 'lemon-milk', fontSize: 56 }}>Hello, world!</Text>
+					<Text style={{ fontFamily: 'dayrom', fontSize: 56 }}>Hello, world!</Text>
 				) : null}
 			</View>
 		);
