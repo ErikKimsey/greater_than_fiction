@@ -28,7 +28,11 @@ export default (Tab = createBottomTabNavigator(
 			// // //' - Style object for the tab label.'
 			labelStyle: { fontWeight: 'bold' },
 			// // //' - Style object for the tab.'
-			tabStyle: { paddingBottom: 16 }
+			tabStyle: { paddingBottom: 10 },
+			pressColor: '#e91e63',
+			labelStyle: {
+				fontSize: 20
+			}
 			// // //' - Whether to show label for tab, default is true.'
 			// showLabel: false,
 			// // //' - Whether to show icon for tab, default is true.'
