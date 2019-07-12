@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import color from '../assets/globals/colors';
-import bkgrd from '../assets/handwriting.jpg';
 
-export default class Landing extends Component {
+export default class About extends Component {
 	state = {
 		fontLoaded: false
 	};
@@ -20,9 +19,7 @@ export default class Landing extends Component {
 	render() {
 		return (
 			<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-				{this.state.fontLoaded ? (
-					<Text style={{ fontFamily: 'lemon-milk', fontSize: 56 }}>Odd Treatment</Text>
-				) : null}
+				{this.state.fontLoaded ? <Text style={{ fontFamily: 'lemon-milk', fontSize: 56 }}>About</Text> : null}
 			</View>
 		);
 	}

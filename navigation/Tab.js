@@ -2,6 +2,8 @@ import { createBottomTabNavigator } from 'react-navigation';
 import color from '../assets/globals/colors';
 import Landing from '../screens/Landing';
 import TextEditor from '../screens/TextEditor';
+import About from '../screens/About';
+
 console.log(color);
 
 // import screen ...
@@ -11,8 +13,8 @@ console.log(color);
 export default (Tab = createBottomTabNavigator(
 	{
 		Landing,
-		TextEditor
-		// Third
+		TextEditor,
+		About
 	},
 	{
 		// initialRouteName: 'Second',
