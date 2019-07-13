@@ -4,14 +4,14 @@ import * as FileSystem from 'expo-file-system';
 import * as fs from 'expo-file-system';
 import color from '../assets/globals/colors';
 import { saveText, getFile } from '../utilities/saveText';
-import { wordCount, breakString } from '../utilities/wordCount';
+import { wordCount } from '../utilities/wordCount';
 
 export default class TextEditor extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			text: '',
-			wordCount: 0
+			wordCount: 100
 		};
 	}
 
@@ -26,12 +26,17 @@ export default class TextEditor extends Component {
 
 	handleInputChange = (text) => {
 		this.setState({ text });
-		wordCount(this.state.text);
+		let count = wordCount(this.state.text);
+		this.setState({ wordCount: count });
 	};
 
 	render() {
 		return (
 			<View style={styles.container}>
+				{/* <Text>{this.state.prompt}</Text> */}
+
+				<Text>Word</Text>
+				<Text>{this.state.wordCount}</Text>
 				<TextInput
 					style={styles.paragraph}
 					onChangeText={(text) => {

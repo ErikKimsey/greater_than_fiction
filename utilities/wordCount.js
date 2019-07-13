@@ -1,12 +1,13 @@
 const wordCount = (input) => {
 	console.log('receiving input >>>>>> ', input);
 
-	breakString(input);
-};
-
-const breakString = (str) => {
-	let count = str.split(' ').length;
+	let count = input.split(' ').length;
 	console.log('word coount >>>>>> ', count);
+	return wordsRemaining(count);
 };
 
-export { wordCount, breakString };
+const wordsRemaining = (count) => {
+	return 100 - count;
+};
+
+export { wordCount };
