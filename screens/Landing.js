@@ -13,16 +13,11 @@ export default class Landing extends Component {
 		await Font.loadAsync({
 			'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
 			dayrom: require('../assets/fonts/DAYROM.ttf'),
-			timeless: require('../assets/fonts/Timeless.ttf'),
 			painterz: require('../assets/fonts/Painterz.ttf'),
-			rockness: require('../assets/fonts/Rockness.ttf'),
-			lipstick: require('../assets/fonts/lipstick.ttf'),
 			cubesity: require('../assets/fonts/cubesity.ttf'),
 			fatC: require('../assets/fonts/FatC.ttf'),
 			fatCat: require('../assets/fonts/FatCat.ttf'),
-			slukoni: require('../assets/fonts/Slukoni.otf'),
-			blowing: require('../assets/fonts/BlowingBubble.ttf'),
-			drip: require('../assets/fonts/adrip.ttf')
+			slukoni: require('../assets/fonts/Slukoni.otf')
 		});
 		this.setState({ fontLoaded: true });
 	}
