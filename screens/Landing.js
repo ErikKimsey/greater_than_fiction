@@ -12,7 +12,11 @@ export default class Landing extends Component {
 	async componentDidMount() {
 		await Font.loadAsync({
 			'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
-			dayrom: require('../assets/fonts/DAYROM.ttf')
+			dayrom: require('../assets/fonts/DAYROM.ttf'),
+			timeless: require('../assets/fonts/Timeless.ttf'),
+			painterz: require('../assets/fonts/Painterz.ttf'),
+			rockness: require('../assets/fonts/Rockness.ttf'),
+			lipstick: require('../assets/fonts/lipstick.ttf')
 		});
 		this.setState({ fontLoaded: true });
 	}
@@ -22,7 +26,7 @@ export default class Landing extends Component {
 			<View style={styles.container}>
 				{this.state.fontLoaded ? (
 					<View>
-						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.header ]}>
+						<Text style={[ { fontFamily: 'painterz', color: color.softRed }, styles.header ]}>
 							100 Words
 						</Text>
 						<Text style={[ styles.subHeader, { fontFamily: 'lemon-milk' } ]}>
@@ -45,7 +49,7 @@ const styles = StyleSheet.create({
 	},
 	header: {
 		textAlign: 'center',
-		fontSize: 76
+		fontSize: 116
 	},
 	subHeader: {
 		textAlign: 'center',

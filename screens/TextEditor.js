@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import * as fs from 'expo-file-system';
+import color from '../assets/globals/colors';
 
 export default class TextEditor extends Component {
 	constructor(props) {
@@ -30,15 +31,10 @@ export default class TextEditor extends Component {
 				<Button
 					onPress={this.onPressPreview}
 					title="Preview"
-					color="#841584"
+					color={color.softRed}
 					accessibilityLabel="Learn more about this purple button"
 				/>
-				<Button
-					onPress={this.onPressPublish}
-					title="Publish"
-					color="#841584"
-					accessibilityLabel="Learn more about this purple button"
-				/>
+				<Button onPress={this.onPressPublish} title="Publish" color="#841584" accessibilityLabel="Publish" />
 			</View>
 		);
 	}
@@ -47,13 +43,8 @@ export default class TextEditor extends Component {
 const styles = StyleSheet.create({
 	container: {
 		marginTop: 50
-		// flex: 1,
-		// justifyContent: 'center',
-		// alignItems: 'center'
 	},
 	paragraph: {
-		// width: 300,
-		// margin: 1,
 		textAlignVertical: 'top',
 		fontSize: 18,
 		fontWeight: 'bold',
