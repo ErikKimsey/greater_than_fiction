@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import * as FileSystem from 'expo-file-system';
 import * as fs from 'expo-file-system';
 import color from '../assets/globals/colors';
+import saveText from '../utilities/saveText';
 
 export default class TextEditor extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { text: '' };
+		this.state = { text: 'GLOOP' };
 	}
 
 	onPressPreview = () => {
 		console.log('previewing');
-		this.setState({ text: 'PReviewing' });
 	};
 	onPressPublish = () => {
 		console.log('publishing');
-		this.setState({ text: 'Publishing' });
+		saveText('lovely', this.state.text);
 	};
 	render() {
+		console.log(FileSystem.documentDirectory);
+
 		return (
 			<View style={styles.container}>
 				<TextInput

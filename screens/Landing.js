@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import * as Font from 'expo-font';
+
 import color from '../assets/globals/colors';
 import bkgrd from '../assets/abstract.png';
 
