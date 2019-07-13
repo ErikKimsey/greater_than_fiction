@@ -35,8 +35,8 @@ export default class TextEditor extends Component {
 			<View style={styles.container}>
 				{/* <Text>{this.state.prompt}</Text> */}
 
-				<Text>Word</Text>
-				<Text>{this.state.wordCount}</Text>
+				<Text style={styles.count}>Words remaining: </Text>
+				<Text style={styles.count}>{this.state.wordCount}</Text>
 				<TextInput
 					style={styles.paragraph}
 					onChangeText={(text) => {
@@ -73,5 +73,9 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		padding: 10,
 		paddingTop: 10
+	},
+	count: {
+		fontWeight: '900',
+		fontSize: 20
 	}
 });
