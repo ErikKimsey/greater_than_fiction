@@ -3,7 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import * as fs from 'expo-file-system';
 import color from '../assets/globals/colors';
-import saveText from '../utilities/saveText';
+import { saveText, getFile } from '../utilities/saveText';
 
 export default class TextEditor extends Component {
 	constructor(props) {
@@ -17,6 +17,7 @@ export default class TextEditor extends Component {
 	onPressPublish = () => {
 		console.log('publishing');
 		saveText('lovely', this.state.text);
+		getFile('lovely');
 	};
 	render() {
 		console.log(FileSystem.documentDirectory);

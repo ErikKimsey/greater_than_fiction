@@ -7,7 +7,7 @@ const saveText = async (name, content) => {
 
 	FileSystem.writeAsStringAsync(fileURI, content)
 		.then((res) => {
-			console.log('>>>>>> WRINTING <<<<<<');
+			console.log('>>>>>> WRITING <<<<<<');
 			console.log(res);
 		})
 		.catch((err) => {
@@ -17,11 +17,17 @@ const saveText = async (name, content) => {
 	FileSystem.readDirectoryAsync(FileSystem.documentDirectory).then((res) => {
 		console.log('>>>>>> READING <<<<<<<<');
 		console.log(res);
-  });
+	});
 };
 
 function getFile(name) {
-	console.log(FileSystem.readAsStringAsync(name));
+	const fileURI = FileSystem.documentDirectory + `${name}.txt`;
+
+	FileSystem.readAsStringAsync(fileURI).then((res) => {
+		console.log('>>>>> FOUND? <<<<<<<');
+
+		console.log(res);
+	});
 }
 
-export default saveText;
+export { saveText, getFile };
