@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import * as Font from 'expo-font';
 import color from '../assets/globals/colors';
-import bkgrd from '../assets/handwriting.jpg';
+import bkgrd from '../assets/abstract.png';
 
 export default class Landing extends Component {
 	state = {
@@ -29,20 +29,21 @@ export default class Landing extends Component {
 
 	render() {
 		return (
+			// <ImageBackground source={bkgrd} style={styles.image}>
 			<View style={styles.container}>
-				{/* <ImageBackground source={bkgrd} style={styles.container}> */}
-					{this.state.fontLoaded ? (
-						<View>
-							<Text style={[ { fontFamily: 'drip', color: color.softRed }, styles.header ]}>
-								100 Words
-							</Text>
-							<Text style={[ styles.subHeader, { fontFamily: 'lemon-milk' } ]}>
-								Tell a story in 100 words.
-							</Text>
-						</View>
-					) : null}
-				{/* </ImageBackground> */}
+				{this.state.fontLoaded ? (
+					<View>
+						<Text style={[ { fontFamily: 'slukoni', color: color.softRed }, styles.header100 ]}>100</Text>
+						<Text style={[ { fontFamily: 'slukoni', color: color.softRed }, styles.headerWords ]}>
+							Words
+						</Text>
+						<Text style={[ styles.subHeader, { fontFamily: 'lemon-milk' } ]}>
+							Tell a story in 100 words.
+						</Text>
+					</View>
+				) : null}
 			</View>
+			// </ImageBackground>
 		);
 	}
 }
@@ -55,9 +56,21 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		color: color.softRed
 	},
-	header: {
+	image: {
+		zIndex: -1,
+		backgroundColor: color.gray
+	},
+	header100: {
 		textAlign: 'center',
-		fontSize: 116
+		fontSize: 186
+		// marginBottom: -10,
+		// paddingBottom: -10
+	},
+	headerWords: {
+		paddingTop: 0,
+		marginTop: 0,
+		textAlign: 'center',
+		fontSize: 96
 	},
 	subHeader: {
 		textAlign: 'center',
