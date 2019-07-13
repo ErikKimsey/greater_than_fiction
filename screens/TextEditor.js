@@ -18,17 +18,25 @@ export default class TextEditor extends Component {
 	onPressPreview = () => {
 		wordCount(this.state.text);
 	};
+
 	onPressPublish = () => {
-		console.log('publishing');
 		saveText('lovely', this.state.text);
 		getFile('lovely');
 	};
+
+	handleInputChange = (text) => {
+		this.setState({ text });
+		wordCount(this.state.text);
+	};
+
 	render() {
 		return (
 			<View style={styles.container}>
 				<TextInput
 					style={styles.paragraph}
-					onChangeText={(text) => this.setState({ text })}
+					onChangeText={(text) => {
+						this.handleInputChange(text);
+					}}
 					value={this.state.text}
 					editable={true}
 					multiline={true}
