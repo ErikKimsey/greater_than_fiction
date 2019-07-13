@@ -12,12 +12,12 @@ console.log(color);
 
 export default (Tab = createBottomTabNavigator(
 	{
-		Landing,
 		TextEditor,
+		Landing,
 		About
 	},
 	{
-		// initialRouteName: 'Second',
+		initialRouteName: 'Landing',
 		tabBarOptions: {
 			activeTintColor: color.gray,
 			activeBackgroundColor: color.softRed,

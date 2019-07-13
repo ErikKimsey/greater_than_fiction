@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import * as fs from 'expo-file-system';
 
 export default class TextEditor extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { text: 'Useless Placeholder' };
+		this.state = { text: '' };
 	}
 
 	onPressPreview = () => {
@@ -17,12 +18,14 @@ export default class TextEditor extends Component {
 	};
 	render() {
 		return (
-			<View>
-				<Text>Text Editor</Text>
+			<View style={styles.container}>
 				<TextInput
-					style={{ height: 300, borderColor: 'gray', borderWidth: 1 }}
+					style={styles.paragraph}
 					onChangeText={(text) => this.setState({ text })}
 					value={this.state.text}
+					editable={true}
+					multiline={true}
+					placeholder="100 words. Go..."
 				/>
 				<Button
 					onPress={this.onPressPreview}
@@ -40,3 +43,25 @@ export default class TextEditor extends Component {
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+	container: {
+		marginTop: 50
+		// flex: 1,
+		// justifyContent: 'center',
+		// alignItems: 'center'
+	},
+	paragraph: {
+		// width: 300,
+		// margin: 1,
+		textAlignVertical: 'top',
+		fontSize: 18,
+		fontWeight: 'bold',
+		height: 300,
+		paddingTop: 0,
+		borderColor: 'gray',
+		borderWidth: 1,
+		padding: 10,
+		paddingTop: 10
+	}
+});
