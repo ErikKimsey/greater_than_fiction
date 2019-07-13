@@ -4,15 +4,19 @@ import * as FileSystem from 'expo-file-system';
 import * as fs from 'expo-file-system';
 import color from '../assets/globals/colors';
 import { saveText, getFile } from '../utilities/saveText';
+import { wordCount, breakString } from '../utilities/wordCount';
 
 export default class TextEditor extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { text: 'GLOOP' };
+		this.state = {
+			text: '',
+			wordCount: 0
+		};
 	}
 
 	onPressPreview = () => {
-		console.log('previewing');
+		wordCount(this.state.text);
 	};
 	onPressPublish = () => {
 		console.log('publishing');
@@ -20,8 +24,6 @@ export default class TextEditor extends Component {
 		getFile('lovely');
 	};
 	render() {
-		console.log(FileSystem.documentDirectory);
-
 		return (
 			<View style={styles.container}>
 				<TextInput
