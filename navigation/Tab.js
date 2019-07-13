@@ -17,7 +17,7 @@ export default (Tab = createBottomTabNavigator(
 		About
 	},
 	{
-		initialRouteName: 'Landing',
+		// initialRouteName: 'Landing',
 		tabBarOptions: {
 			activeTintColor: color.gray,
 			activeBackgroundColor: color.softRed,

@@ -19,9 +19,16 @@ export default class Landing extends Component {
 
 	render() {
 		return (
-			<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+			<View style={styles.container}>
 				{this.state.fontLoaded ? (
-					<Text style={{ fontFamily: 'lemon-milk', fontSize: 56 }}>Odd Treatment</Text>
+					<View>
+						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.header ]}>
+							100 Words
+						</Text>
+						<Text style={[ styles.subHeader, { fontFamily: 'lemon-milk' } ]}>
+							Tell a story in 100 words.
+						</Text>
+					</View>
 				) : null}
 			</View>
 		);
@@ -31,8 +38,17 @@ export default class Landing extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+		backgroundColor: color.gray,
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		color: color.softRed
+	},
+	header: {
+		textAlign: 'center',
+		fontSize: 76
+	},
+	subHeader: {
+		textAlign: 'center',
+		fontSize: 20
 	}
 });
