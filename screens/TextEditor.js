@@ -34,7 +34,6 @@ export default class TextEditor extends Component {
 		return (
 			<View style={styles.container}>
 				{/* <Text>{this.state.prompt}</Text> */}
-
 				<Text style={styles.count}>Words remaining: </Text>
 				<Text style={styles.count}>{this.state.wordCount}</Text>
 				<TextInput
