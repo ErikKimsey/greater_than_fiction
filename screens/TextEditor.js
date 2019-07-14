@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import * as FileSystem from 'expo-file-system';
-import * as fs from 'expo-file-system';
+import { View, Text, TextInput, Button, StyleSheet, Image, CameraRoll } from 'react-native';
+import { Camera, Permissions } from 'expo';
 import color from '../assets/globals/colors';
-import { saveText, getFile } from '../utilities/saveText';
 import { wordCount } from '../utilities/wordCount';
 import ViewShot from 'react-native-view-shot';
 
@@ -13,7 +11,9 @@ export default class TextEditor extends Component {
 		this.state = {
 			text: '',
 			wordCount: 100,
-			isPublished: false
+			isPublished: false,
+			imgURI: '',
+			previewImg: false
 		};
 	}
 
@@ -22,8 +22,6 @@ export default class TextEditor extends Component {
 	};
 
 	onPressPublish = () => {
-		saveText('lovely', this.state.text);
-		getFile('lovely');
 		this.setState({ isPublished: true });
 	};
 
@@ -44,18 +42,38 @@ export default class TextEditor extends Component {
 	closeFinal = () => {
 		this.handleClearInput();
 		this.handleResetWordCount();
-		this.setState({ isPublished: false });
+		this.setIsPublished();
+		this.saveToCameraRoll();
+	};
+
+	closeSnapShot = () => {
+		this.setState({ imgURI: '' });
+	};
+
+	setPreviewImg = () => {
+		this.setState({ previewImg: true });
 	};
 
 	takeSnapShot = () => {
 		this.refs.viewShot.capture().then((uri) => {
-			console.log('do something with ', uri);
+			this.setState({ imgURI: uri });
+		});
+	};
+
+	setIsPublished = () => {
+		this.setState({ isPublished: !this.state.isPublished });
+	};
+
+	saveToCameraRoll = () => {
+		CameraRoll.saveToCameraRoll(this.state.imgURI).then((res) => {
+			console.log('saved to roll');
+			console.log(res);
 		});
 	};
 
 	render() {
 		{
-			if (!this.state.isPublished) {
+			if (!this.state.isPublished && this.state.previewImg === false) {
 				return (
 					<View style={styles.container}>
 						{/* <Text>{this.state.prompt}</Text> */}
@@ -90,10 +108,12 @@ export default class TextEditor extends Component {
 					<ViewShot
 						ref="viewShot"
 						style={styles.container}
-						onLoad={this.takeSnapShot}
-						options={{ format: 'jpg', quality: 0.9 }}
+						captureMode="mount"
+						onCapture={this.takeSnapShot}
+						options={{ format: 'png', quality: 0.8 }}
 					>
 						<Text style={styles.final}>{this.state.text}</Text>
+						<Image source={{ uri: this.state.imgURI }} />
 						<Button
 							onPress={this.closeFinal}
 							title="Publish"
