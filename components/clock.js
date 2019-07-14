@@ -30,13 +30,15 @@ const setClock = () => {
 
 const clockRunning = (deadline, now) => {
 	let _now = now;
+	let clock;
 	if (_now < deadline) {
-		let clock = setInterval(() => {
+		clock = setInterval(() => {
 			_now = new Date().getTime();
 			getRemainingTime(_now, deadline);
 		}, 1000);
 	} else {
 		console.log('Times up!!!!!!!');
+		stopClock(clock);
 	}
 };
 
@@ -49,9 +51,9 @@ const getRemainingTime = (now, deadline) => {
 	let remainingMin = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 	let remainingSec = Math.floor((difference % (1000 * 60)) / 1000);
 	// remaining = `${remainingMin} : ${remainingSec}`;
-	console.log(`${remainingMin} : ${remainingSec}`);
+	// console.log(`${remainingMin} : ${remainingSec}`);
 
-	// return `${remainingMin} : ${remainingSec}`;
+	return `${remainingMin} : ${remainingSec}`;
 };
 
 const stopClock = (clock) => {

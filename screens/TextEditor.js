@@ -14,7 +14,8 @@ export default class TextEditor extends Component {
 			wordCount: 100,
 			isPublished: false,
 			imgURI: '',
-			previewImg: false
+			previewImg: false,
+			remainingTime: getRemainingTime()
 		};
 	}
 
@@ -76,6 +77,11 @@ export default class TextEditor extends Component {
 		}).then((uri) => console.log('Image saved to', uri), (error) => console.error('Oops, snapshot failed', error));
 	};
 
+	componentDidUpdate() {
+		let remains = getRemainingTime();
+		console.log(remains);
+	}
+
 	componentWillUnmount() {}
 
 	render() {
@@ -85,7 +91,7 @@ export default class TextEditor extends Component {
 					<View style={styles.container}>
 						{/* <Text>{this.state.prompt}</Text> */}
 						<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
-						<Text style={styles.count}>Time</Text>
+						<Text style={styles.count}>Time {getRemainingTime} </Text>
 						<TextInput
 							style={styles.paragraph}
 							onChangeText={(text) => {
