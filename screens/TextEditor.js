@@ -3,7 +3,8 @@ import { View, Text, TextInput, Button, StyleSheet, Image, CameraRoll } from 're
 import { Camera, Permissions } from 'expo';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
-import ViewShot from 'react-native-view-shot';
+import { captureScreen } from 'react-native-view-shot';
+import Clock from '../components/clock';
 
 export default class TextEditor extends Component {
 	constructor(props) {
@@ -17,12 +18,21 @@ export default class TextEditor extends Component {
 		};
 	}
 
+	componentDidMount() {
+		this.startClock();
+	}
+
+	handleStartClock = () => {
+		return startClock();
+	};
+
 	onPressPreview = () => {
 		wordCount(this.state.text);
 	};
 
 	onPressPublish = () => {
 		this.setState({ isPublished: true });
+		this.saveToCameraRoll();
 	};
 
 	handleInputChange = (text) => {
@@ -43,7 +53,6 @@ export default class TextEditor extends Component {
 		this.handleClearInput();
 		this.handleResetWordCount();
 		this.setIsPublished();
-		this.saveToCameraRoll();
 	};
 
 	closeSnapShot = () => {
@@ -65,10 +74,10 @@ export default class TextEditor extends Component {
 	};
 
 	saveToCameraRoll = () => {
-		CameraRoll.saveToCameraRoll(this.state.imgURI).then((res) => {
-			console.log('saved to roll');
-			console.log(res);
-		});
+		captureScreen({
+			format: 'jpg',
+			quality: 0.8
+		}).then((uri) => console.log('Image saved to', uri), (error) => console.error('Oops, snapshot failed', error));
 	};
 
 	render() {
@@ -77,8 +86,8 @@ export default class TextEditor extends Component {
 				return (
 					<View style={styles.container}>
 						{/* <Text>{this.state.prompt}</Text> */}
-						<Text style={styles.count}>Words remaining: </Text>
-						<Text style={styles.count}>{this.state.wordCount}</Text>
+						<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
+						<Clock onLoad={this.handleStartClock} />
 						<TextInput
 							style={styles.paragraph}
 							onChangeText={(text) => {
