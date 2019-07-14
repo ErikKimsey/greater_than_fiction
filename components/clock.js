@@ -3,39 +3,61 @@
  * Count down from 5minutes
  */
 
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+/**
+   * get now
+   * set 5 min from now
+   * 
+   * -OR-
+   * set NOW
+   * set 1000 * 60 * 5
+   *  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+   *  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+   */
 
-export default class Clock extends Component {
-	state = {
-		remainingTime: 5000,
-		clockDisplay: '',
-		now: Nw
-	};
+const remaining = '';
 
-	componentDidMount() {}
+const startClock = () => {
+	let minutes = parseInt(timer / 60, 10);
+};
 
-	startClock = () => {
-		let minutes = parseInt(timer / 60, 10);
-	};
+const setClock = () => {
+	var now = new Date().getTime();
+	let fiveMin = 60 * 5 * 1000;
+	let deadline = now + fiveMin;
+	console.log(deadline);
+	clockRunning(deadline, now);
+};
 
-	setClock = () => {
-    var now = new Date().getTime();
-    
-		console.log(now);
-	};
-
-	outOfTime = () => {};
-
-	componentWillUnmount() {
-		this.setState({ remainingTime: 5 });
+const clockRunning = (deadline, now) => {
+	let _now = now;
+	if (_now < deadline) {
+		let clock = setInterval(() => {
+			_now = new Date().getTime();
+			getRemainingTime(_now, deadline);
+		}, 1000);
+	} else {
+		console.log('Times up!!!!!!!');
 	}
+};
 
-	render() {
-		return (
-			<View>
-				<Text>{this.state.remainingTime}</Text>
-			</View>
-		);
-	}
-}
+const getRemainingTime = (now, deadline) => {
+	// console.log(now);
+	// console.log(deadline);
+	// console.log(now);
+
+	let difference = deadline - now;
+	let remainingMin = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+	let remainingSec = Math.floor((difference % (1000 * 60)) / 1000);
+	// remaining = `${remainingMin} : ${remainingSec}`;
+	console.log(`${remainingMin} : ${remainingSec}`);
+
+	// return `${remainingMin} : ${remainingSec}`;
+};
+
+const stopClock = (clock) => {
+	clearInterval(clock);
+};
+
+const outOfTime = () => {};
+
+export { setClock, getRemainingTime };

@@ -4,7 +4,7 @@ import { Camera, Permissions } from 'expo';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
 import { captureScreen } from 'react-native-view-shot';
-import Clock from '../components/clock';
+import { setClock, getRemainingTime } from '../components/clock';
 
 export default class TextEditor extends Component {
 	constructor(props) {
@@ -19,12 +19,8 @@ export default class TextEditor extends Component {
 	}
 
 	componentDidMount() {
-		this.startClock();
+		setClock();
 	}
-
-	handleStartClock = () => {
-		return startClock();
-	};
 
 	onPressPreview = () => {
 		wordCount(this.state.text);
@@ -80,6 +76,8 @@ export default class TextEditor extends Component {
 		}).then((uri) => console.log('Image saved to', uri), (error) => console.error('Oops, snapshot failed', error));
 	};
 
+	componentWillUnmount() {}
+
 	render() {
 		{
 			if (!this.state.isPublished && this.state.previewImg === false) {
@@ -87,7 +85,7 @@ export default class TextEditor extends Component {
 					<View style={styles.container}>
 						{/* <Text>{this.state.prompt}</Text> */}
 						<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
-						<Clock onLoad={this.handleStartClock} />
+						<Text style={styles.count}>Time</Text>
 						<TextInput
 							style={styles.paragraph}
 							onChangeText={(text) => {
