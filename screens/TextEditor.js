@@ -5,6 +5,7 @@ import * as fs from 'expo-file-system';
 import color from '../assets/globals/colors';
 import { saveText, getFile } from '../utilities/saveText';
 import { wordCount } from '../utilities/wordCount';
+import ViewShot from 'react-native-view-shot';
 
 export default class TextEditor extends Component {
 	constructor(props) {
@@ -36,9 +37,20 @@ export default class TextEditor extends Component {
 		this.setState({ text: '' });
 	};
 
+	handleResetWordCount = () => {
+		this.setState({ wordCount: 100 });
+	};
+
 	closeFinal = () => {
 		this.handleClearInput();
+		this.handleResetWordCount();
 		this.setState({ isPublished: false });
+	};
+
+	takeSnapShot = () => {
+		this.refs.viewShot.capture().then((uri) => {
+			console.log('do something with ', uri);
+		});
 	};
 
 	render() {
@@ -75,7 +87,12 @@ export default class TextEditor extends Component {
 				);
 			} else if (this.state.isPublished) {
 				return (
-					<View style={styles.container}>
+					<ViewShot
+						ref="viewShot"
+						style={styles.container}
+						onLoad={this.takeSnapShot}
+						options={{ format: 'jpg', quality: 0.9 }}
+					>
 						<Text style={styles.final}>{this.state.text}</Text>
 						<Button
 							onPress={this.closeFinal}
@@ -83,7 +100,7 @@ export default class TextEditor extends Component {
 							color="#000000"
 							accessibilityLabel="Publish"
 						/>
-					</View>
+					</ViewShot>
 				);
 			}
 		}

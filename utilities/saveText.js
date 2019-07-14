@@ -22,10 +22,8 @@ const saveText = async (name, content) => {
 
 function getFile(name) {
 	const fileURI = FileSystem.documentDirectory + `${name}.txt`;
-
 	FileSystem.readAsStringAsync(fileURI).then((res) => {
 		console.log('>>>>> FOUND? <<<<<<<');
-
 		console.log(res);
 	});
 }
