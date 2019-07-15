@@ -83,9 +83,7 @@ export default class TextEditor extends Component {
 						</View>
 						<TextInput
 							style={styles.paragraph}
-							onChangeText={(text) => {
-								this.setState({ text });
-							}}
+							onChangeText={(text) => this.handleInputChange(text)}
 							value={this.state.text}
 							editable={true}
 							multiline={true}
@@ -182,6 +180,7 @@ const styles = StyleSheet.create({
 		backgroundColor: color.gray,
 		borderWidth: 1,
 		paddingTop: 5,
-		paddingLeft: 10
+		paddingLeft: 10,
+		color: color.softRed
 	}
 });
