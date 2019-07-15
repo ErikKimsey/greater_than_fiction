@@ -7,11 +7,11 @@ export default function Published(props) {
 
 	return (
 		<View style={styles.publishedContainer}>
-			<View>
-				<Text style={styles.text}>{props.title}</Text>
-				<Text style={styles.text}>{props.author}</Text>
-			</View>
 			<Text style={styles.text}>{props.preview}</Text>
+			<View style={styles.titleAuthorContainer}>
+				<Text style={styles.titleAuthorContainer}>"Slammed" {props.title}</Text>
+				<Text style={styles.titleAuthorContainer}>by Erik Kimsey{props.author}</Text>
+			</View>
 		</View>
 	);
 }
@@ -27,6 +27,13 @@ const styles = StyleSheet.create({
 		borderStyle: 'solid',
 		borderColor: '#000000',
 		fontSize: 20,
-		color: '#ffffff'
+		color: '#ffffff',
+		paddingBottom: 20
+	},
+	titleAuthorContainer: {
+		paddingTop: 10
+	},
+	titleAuthor: {
+		paddingTop: 10
 	}
 });
