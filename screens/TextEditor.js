@@ -40,7 +40,7 @@ export default class TextEditor extends Component {
 	};
 
 	handleClearInput = () => {
-		this.setState({ text: '' });
+		this.setState({ text: '', author: '', title: '' });
 	};
 
 	handleResetWordCount = () => {
@@ -66,11 +66,15 @@ export default class TextEditor extends Component {
 		}).then((uri) => console.log('Image saved to', uri), (error) => console.error('Oops, snapshot failed', error));
 	};
 
-	handleAuthor = (text) => {
+	handleAuthor = (e) => {
+		e.preventDefault();
 		this.setState({ author: text });
 	};
+
 	handleTitle = (text) => {
-		this.setState({ title: text });
+		console.log(text);
+
+		this.setState({ title: this.state.title + text });
 	};
 
 	componentDidUpdate() {}
@@ -82,7 +86,6 @@ export default class TextEditor extends Component {
 			if (!this.state.isPublished && this.state.previewImg === false) {
 				return (
 					<KeyboardAvoidingView style={styles.container} behavior="padding">
-						{/* <View style={styles.container}> */}
 						<View style={styles.textContainer}>
 							<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
 							<Clock remaining={this.getRemainingTime} />
@@ -90,7 +93,7 @@ export default class TextEditor extends Component {
 						<TextInput
 							style={styles.paragraph}
 							onChangeText={(text) => {
-								this.handleInputChange(text);
+								this.setState({ text });
 							}}
 							value={this.state.text}
 							editable={true}
@@ -100,21 +103,19 @@ export default class TextEditor extends Component {
 						<TextInput
 							style={styles.titleAuthor}
 							onChangeText={(text) => {
-								this.handleAuthor(text);
+								this.setState({ title: text });
 							}}
 							value={this.state.title}
 							editable={true}
-							multiline={true}
 							placeholder="Title..."
 						/>
 						<TextInput
 							style={styles.titleAuthor}
 							onChangeText={(text) => {
-								this.handleTitle(text);
+								this.setState({ author: text });
 							}}
 							value={this.state.author}
-							editable={true}
-							multiline={true}
+							// editable={true}
 							placeholder="Author name..."
 						/>
 						<View style={styles.buttonContainer}>
@@ -133,7 +134,6 @@ export default class TextEditor extends Component {
 								accessibilityLabel="Publish"
 							/>
 						</View>
-						{/* </View> */}
 					</KeyboardAvoidingView>
 				);
 			} else if (this.state.isPublished) {

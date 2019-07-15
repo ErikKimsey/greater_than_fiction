@@ -9,8 +9,8 @@ export default function Published(props) {
 		<View style={styles.publishedContainer}>
 			<Text style={styles.text}>{props.preview}</Text>
 			<View style={styles.titleAuthorContainer}>
-				<Text style={styles.titleAuthorContainer}>"Slammed" {props.title}</Text>
-				<Text style={styles.titleAuthorContainer}>by Erik Kimsey{props.author}</Text>
+				<Text style={styles.titleAuthorContainer}>"{props.title}"</Text>
+				<Text style={styles.titleAuthorContainer}>by: {props.author}</Text>
 			</View>
 		</View>
 	);
