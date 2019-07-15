@@ -92,9 +92,11 @@ export default class TextEditor extends Component {
 								onPress={this.onPressPreview}
 								title="Preview"
 								color={color.softRed}
+								style={styles.button}
 								accessibilityLabel="Learn more about this purple button"
 							/>
 							<Button
+								style={styles.button}
 								onPress={this.onPressPublish}
 								title="Publish"
 								color="#841584"
@@ -118,10 +120,13 @@ const styles = StyleSheet.create({
 		backgroundColor: color.gray
 	},
 	paragraph: {
+		flex: 1,
 		textAlignVertical: 'top',
+		flexDirection: 'column',
+		alignItems: 'stretch',
 		fontSize: 18,
 		fontWeight: 'bold',
-		height: 300,
+		// height: 300,
 		paddingTop: 0,
 		borderColor: 'gray',
 		backgroundColor: '#ffffff',
@@ -144,9 +149,13 @@ const styles = StyleSheet.create({
 		fontSize: 20
 	},
 	buttonContainer: {
-		flex: 1,
 		flexDirection: 'row',
-		height: 20
+		justifyContent: 'space-around',
+		padding: 20
+	},
+	button: {
+		flex: 2,
+		padding: 100
 	}
 	// button
 });
