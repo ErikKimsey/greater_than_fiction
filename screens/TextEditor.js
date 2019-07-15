@@ -155,7 +155,6 @@ const styles = StyleSheet.create({
 		alignItems: 'stretch',
 		fontSize: 18,
 		fontWeight: 'bold',
-		// height: 300,
 		paddingTop: 0,
 		borderColor: 'gray',
 		backgroundColor: '#ffffff',
@@ -165,7 +164,6 @@ const styles = StyleSheet.create({
 		margin: 5
 	},
 	textContainer: {
-		// flex: 1,
 		flexDirection: 'column'
 	},
 	count: {
@@ -188,21 +186,17 @@ const styles = StyleSheet.create({
 		padding: 100
 	},
 	titleAuthor: {
-		// flex: 1,
 		margin: 5,
 		width: 300,
 		textAlignVertical: 'top',
 		flexDirection: 'column',
-		alignItems: 'stretch',
+		alignSelf: 'flex-end',
 		fontSize: 18,
 		fontWeight: 'bold',
-		// height: 100,
-		paddingTop: 0,
 		borderColor: color.softRed,
 		backgroundColor: color.gray,
 		borderWidth: 1,
-		padding: 10,
-		paddingTop: 10
+		paddingTop: 5,
+		paddingLeft: 10
 	}
-	// button
 });
