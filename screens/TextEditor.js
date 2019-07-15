@@ -58,9 +58,7 @@ export default class TextEditor extends Component {
 	};
 
 	getRemainingTime = (cb) => {
-		console.log(cb);
-
-		let remaining = cb;
+		this.setState({ isPublished: cb });
 	};
 
 	saveToCameraRoll = () => {
@@ -69,6 +67,10 @@ export default class TextEditor extends Component {
 			quality: 0.8
 		}).then((uri) => console.log('Image saved to', uri), (error) => console.error('Oops, snapshot failed', error));
 	};
+
+	componentWillUnmount() {
+		this.handleClearInput();
+	}
 
 	render() {
 		{
@@ -109,13 +111,6 @@ export default class TextEditor extends Component {
 						/>
 						<View style={styles.buttonContainer}>
 							<Button
-								onPress={this.onPressPreview}
-								title="Preview"
-								color={color.softRed}
-								style={styles.button}
-								accessibilityLabel="Learn more about this purple button"
-							/>
-							<Button
 								style={styles.button}
 								onPress={this.onPressPublish}
 								title="Publish"
@@ -136,11 +131,11 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column',
-		marginTop: 50,
+		paddingTop: 50,
 		backgroundColor: color.gray
 	},
 	paragraph: {
-		flex: 1,
+		flex: 4,
 		textAlignVertical: 'top',
 		flexDirection: 'column',
 		alignItems: 'stretch',
@@ -168,13 +163,12 @@ const styles = StyleSheet.create({
 		fontSize: 20
 	},
 	buttonContainer: {
-		flexDirection: 'row',
-		justifyContent: 'space-around',
+		flexDirection: 'column',
 		padding: 20
 	},
 	button: {
-		flex: 2,
-		padding: 100
+		paddingTop: 100,
+		paddingBottom: 100
 	},
 	titleAuthor: {
 		margin: 5,

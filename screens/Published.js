@@ -7,8 +7,8 @@ export default function Published(props) {
 		<View style={styles.publishedContainer}>
 			<Text style={styles.text}>{props.preview}</Text>
 			<View style={styles.titleAuthorContainer}>
-				<Text style={styles.titleAuthorContainer}>"{props.title}"</Text>
-				<Text style={styles.titleAuthorContainer}>by: {props.author}</Text>
+				<Text style={styles.titleAuthor}>"{props.title}"</Text>
+				<Text style={styles.titleAuthor}>by {props.author}</Text>
 			</View>
 		</View>
 	);
@@ -30,9 +30,12 @@ const styles = StyleSheet.create({
 		paddingBottom: 20
 	},
 	titleAuthorContainer: {
+		alignItems: 'flex-end',
+		justifyContent: 'flex-end',
 		paddingTop: 10
 	},
 	titleAuthor: {
-		paddingTop: 10
+		color: color.softRed,
+		fontSize: 18
 	}
 });

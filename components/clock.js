@@ -33,17 +33,18 @@ export default class clock extends Component {
 			clock = setInterval(() => {
 				_now = new Date().getTime();
 				this.calcRemainingTime(_now, deadline);
+				this.getTimesUp();
 			}, 1000);
 		} else {
-      this.getTimesUp();
+			this.getTimesUp();
 			this.stopClock(clock);
 		}
 		this.setState({ clock });
-  };
-  
-  getTimesUp = () => {
-    return this.props.remaining(this.state.timesUp);
-  }
+	};
+
+	getTimesUp = () => {
+		return this.props.remaining(this.state.timesUp);
+	};
 
 	calcRemainingTime = (now, deadline) => {
 		let difference = deadline - now;
