@@ -6,6 +6,7 @@ import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
 import { captureScreen } from 'react-native-view-shot';
 import Clock from '../components/clock';
+import Published from './Published';
 
 export default class TextEditor extends Component {
 	constructor(props) {
@@ -68,6 +69,8 @@ export default class TextEditor extends Component {
 		this.setState({ isPublished: !this.state.isPublished });
 	};
 
+	getRemainingTime = () => {};
+
 	saveToCameraRoll = () => {
 		captureScreen({
 			format: 'jpg',
@@ -75,10 +78,7 @@ export default class TextEditor extends Component {
 		}).then((uri) => console.log('Image saved to', uri), (error) => console.error('Oops, snapshot failed', error));
 	};
 
-	componentDidUpdate() {
-		let remains = getRemainingTime();
-		console.log(remains);
-	}
+	componentDidUpdate() {}
 
 	componentWillUnmount() {}
 
@@ -89,7 +89,7 @@ export default class TextEditor extends Component {
 					<View style={styles.container}>
 						<View style={styles.textContainer}>
 							<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
-							<Clock />
+							<Clock remaining={this.getRemainingTime} />
 						</View>
 						<TextInput
 							style={styles.paragraph}
@@ -118,24 +118,7 @@ export default class TextEditor extends Component {
 					</View>
 				);
 			} else if (this.state.isPublished) {
-				return (
-					<ViewShot
-						ref="viewShot"
-						style={styles.container}
-						captureMode="mount"
-						onCapture={this.takeSnapShot}
-						options={{ format: 'png', quality: 0.8 }}
-					>
-						<Text style={styles.final}>{this.state.text}</Text>
-						<Image source={{ uri: this.state.imgURI }} />
-						<Button
-							onPress={this.closeFinal}
-							title="Publish"
-							color="#000000"
-							accessibilityLabel="Publish"
-						/>
-					</ViewShot>
-				);
+				return <Published preview={this.state.text} />;
 			}
 		}
 	}

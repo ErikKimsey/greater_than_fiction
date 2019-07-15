@@ -28,6 +28,7 @@ export default class clock extends Component {
 	};
 
 	componentDidMount() {
+		console.log(this.props);
 		this.setClock();
 	}
 
@@ -69,7 +70,7 @@ export default class clock extends Component {
 	};
 
 	stopClock = () => {
-		clearInterval(this.state.clocl);
+		clearInterval(this.state.clock);
 		this.setState({ timesUp: true });
 	};
 
@@ -97,7 +98,7 @@ export default class clock extends Component {
 const styles = StyleSheet.create({
 	container: {},
 	countdown: {
-		color: color.gray,
+		color: color.softRed,
 		fontWeight: '900',
 		fontSize: 20,
 		paddingLeft: 10,
