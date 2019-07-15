@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, CameraRoll } from 'react-native';
+import { takeSnapshotAsync } from 'expo';
 import { Camera, Permissions } from 'expo';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
@@ -100,18 +101,20 @@ export default class TextEditor extends Component {
 							multiline={true}
 							placeholder="100 words. Go..."
 						/>
-						<Button
-							onPress={this.onPressPreview}
-							title="Preview"
-							color={color.softRed}
-							accessibilityLabel="Learn more about this purple button"
-						/>
-						<Button
-							onPress={this.onPressPublish}
-							title="Publish"
-							color="#841584"
-							accessibilityLabel="Publish"
-						/>
+						<View style={styles.buttonContainer}>
+							<Button
+								onPress={this.onPressPreview}
+								title="Preview"
+								color={color.softRed}
+								accessibilityLabel="Learn more about this purple button"
+							/>
+							<Button
+								onPress={this.onPressPublish}
+								title="Publish"
+								color="#841584"
+								accessibilityLabel="Publish"
+							/>
+						</View>
 					</View>
 				);
 			} else if (this.state.isPublished) {
@@ -140,7 +143,10 @@ export default class TextEditor extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 50
+		flex: 1,
+		flexDirection: 'column',
+		marginTop: 50,
+		backgroundColor: color.gray
 	},
 	paragraph: {
 		textAlignVertical: 'top',
@@ -149,6 +155,7 @@ const styles = StyleSheet.create({
 		height: 300,
 		paddingTop: 0,
 		borderColor: 'gray',
+		backgroundColor: '#ffffff',
 		borderWidth: 1,
 		padding: 10,
 		paddingTop: 10
@@ -158,6 +165,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'column'
 	},
 	count: {
+		color: color.softRed,
 		fontWeight: '900',
 		fontSize: 20,
 		paddingLeft: 10
@@ -165,5 +173,11 @@ const styles = StyleSheet.create({
 	final: {
 		fontWeight: '900',
 		fontSize: 20
+	},
+	buttonContainer: {
+		flex: 1,
+		flexDirection: 'row',
+		height: 20
 	}
+	// button
 });

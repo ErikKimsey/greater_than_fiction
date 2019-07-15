@@ -97,8 +97,10 @@ export default class clock extends Component {
 const styles = StyleSheet.create({
 	container: {},
 	countdown: {
+		color: color.gray,
 		fontWeight: '900',
 		fontSize: 20,
-		paddingLeft: 10
+		paddingLeft: 10,
+		paddingBottom: 10
 	}
 });
