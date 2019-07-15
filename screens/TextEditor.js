@@ -16,7 +16,9 @@ export default class TextEditor extends Component {
 			wordCount: 100,
 			isPublished: false,
 			imgURI: '',
-			previewImg: false
+			previewImg: false,
+			author: '',
+			title: ''
 		};
 	}
 
@@ -64,6 +66,13 @@ export default class TextEditor extends Component {
 		}).then((uri) => console.log('Image saved to', uri), (error) => console.error('Oops, snapshot failed', error));
 	};
 
+	handleAuthor = (text) => {
+		this.setState({ author: text });
+	};
+	handleTitle = (text) => {
+		this.setState({ title: text });
+	};
+
 	componentDidUpdate() {}
 
 	componentWillUnmount() {}
@@ -87,6 +96,26 @@ export default class TextEditor extends Component {
 							multiline={true}
 							placeholder="100 words. Go..."
 						/>
+						<TextInput
+							style={styles.titleAuthor}
+							onChangeText={(text) => {
+								this.handleAuthor(text);
+							}}
+							value={this.state.title}
+							editable={true}
+							multiline={true}
+							placeholder="Title..."
+						/>
+						<TextInput
+							style={styles.titleAuthor}
+							onChangeText={(text) => {
+								this.handleTitle(text);
+							}}
+							value={this.state.author}
+							editable={true}
+							multiline={true}
+							placeholder="Author name..."
+						/>
 						<View style={styles.buttonContainer}>
 							<Button
 								onPress={this.onPressPreview}
@@ -106,7 +135,7 @@ export default class TextEditor extends Component {
 					</View>
 				);
 			} else if (this.state.isPublished) {
-				return <Published preview={this.state.text} />;
+				return <Published preview={this.state.text} title={this.state.title} author={this.state.author} />;
 			}
 		}
 	}
@@ -132,7 +161,8 @@ const styles = StyleSheet.create({
 		backgroundColor: '#ffffff',
 		borderWidth: 1,
 		padding: 10,
-		paddingTop: 10
+		paddingTop: 10,
+		margin: 5
 	},
 	textContainer: {
 		// flex: 1,
@@ -156,6 +186,23 @@ const styles = StyleSheet.create({
 	button: {
 		flex: 2,
 		padding: 100
+	},
+	titleAuthor: {
+		// flex: 1,
+		margin: 5,
+		width: 300,
+		textAlignVertical: 'top',
+		flexDirection: 'column',
+		alignItems: 'stretch',
+		fontSize: 18,
+		fontWeight: 'bold',
+		// height: 100,
+		paddingTop: 0,
+		borderColor: color.softRed,
+		backgroundColor: color.gray,
+		borderWidth: 1,
+		padding: 10,
+		paddingTop: 10
 	}
 	// button
 });
