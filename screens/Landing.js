@@ -34,7 +34,7 @@ export default class Landing extends Component {
 							Words
 						</Text>
 						<Text style={[ styles.subHeader, { fontFamily: 'lemon-milk' } ]}>
-							Tell a story in 100 words.
+							Tell a story in 100 words {'\n'} and 5 minutes.
 						</Text>
 					</View>
 				) : null}
