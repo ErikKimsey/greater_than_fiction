@@ -2,22 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import color from '../assets/globals/colors';
 
-/**
- * Clock functionality
- * Count down from 5minutes
- */
-
-/**
-   * get now
-   * set 5 min from now
-   * 
-   * -OR-
-   * set NOW
-   * set 1000 * 60 * 5
-   *  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-   *  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-   */
-
 export default class clock extends Component {
 	state = {
 		total: 5,
@@ -51,10 +35,15 @@ export default class clock extends Component {
 				this.calcRemainingTime(_now, deadline);
 			}, 1000);
 		} else {
+      this.getTimesUp();
 			this.stopClock(clock);
 		}
 		this.setState({ clock });
-	};
+  };
+  
+  getTimesUp = () => {
+    return this.props.remaining(this.state.timesUp);
+  }
 
 	calcRemainingTime = (now, deadline) => {
 		let difference = deadline - now;

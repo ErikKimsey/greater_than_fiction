@@ -57,7 +57,11 @@ export default class TextEditor extends Component {
 		this.setState({ isPublished: !this.state.isPublished });
 	};
 
-	getRemainingTime = () => {};
+	getRemainingTime = (cb) => {
+		console.log(cb);
+
+		let remaining = cb;
+	};
 
 	saveToCameraRoll = () => {
 		captureScreen({
@@ -65,21 +69,6 @@ export default class TextEditor extends Component {
 			quality: 0.8
 		}).then((uri) => console.log('Image saved to', uri), (error) => console.error('Oops, snapshot failed', error));
 	};
-
-	handleAuthor = (e) => {
-		e.preventDefault();
-		this.setState({ author: text });
-	};
-
-	handleTitle = (text) => {
-		console.log(text);
-
-		this.setState({ title: this.state.title + text });
-	};
-
-	componentDidUpdate() {}
-
-	componentWillUnmount() {}
 
 	render() {
 		{
