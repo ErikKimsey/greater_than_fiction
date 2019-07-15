@@ -51,20 +51,6 @@ export default class TextEditor extends Component {
 		this.setIsPublished();
 	};
 
-	closeSnapShot = () => {
-		this.setState({ imgURI: '' });
-	};
-
-	setPreviewImg = () => {
-		this.setState({ previewImg: true });
-	};
-
-	takeSnapShot = () => {
-		this.refs.viewShot.capture().then((uri) => {
-			this.setState({ imgURI: uri });
-		});
-	};
-
 	setIsPublished = () => {
 		this.setState({ isPublished: !this.state.isPublished });
 	};

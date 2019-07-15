@@ -28,7 +28,6 @@ export default class clock extends Component {
 	};
 
 	componentDidMount() {
-		console.log(this.props);
 		this.setClock();
 	}
 
@@ -40,7 +39,6 @@ export default class clock extends Component {
 		var now = new Date().getTime();
 		let fiveMin = 60 * 5 * 1000;
 		let deadline = now + fiveMin;
-		console.log(deadline);
 		this.clockRunning(deadline, now);
 	};
 
@@ -53,7 +51,6 @@ export default class clock extends Component {
 				this.calcRemainingTime(_now, deadline);
 			}, 1000);
 		} else {
-			console.log('Times up!!!!!!!');
 			this.stopClock(clock);
 		}
 		this.setState({ clock });
