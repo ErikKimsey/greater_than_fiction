@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Image, CameraRoll } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Image, CameraRoll, KeyboardAvoidingView } from 'react-native';
 import { takeSnapshotAsync } from 'expo';
 import { Camera, Permissions } from 'expo';
 import color from '../assets/globals/colors';
@@ -81,7 +81,8 @@ export default class TextEditor extends Component {
 		{
 			if (!this.state.isPublished && this.state.previewImg === false) {
 				return (
-					<View style={styles.container}>
+					<KeyboardAvoidingView style={styles.container} behavior="padding">
+						{/* <View style={styles.container}> */}
 						<View style={styles.textContainer}>
 							<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
 							<Clock remaining={this.getRemainingTime} />
@@ -132,7 +133,8 @@ export default class TextEditor extends Component {
 								accessibilityLabel="Publish"
 							/>
 						</View>
-					</View>
+						{/* </View> */}
+					</KeyboardAvoidingView>
 				);
 			} else if (this.state.isPublished) {
 				return <Published preview={this.state.text} title={this.state.title} author={this.state.author} />;
