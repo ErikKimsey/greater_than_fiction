@@ -29,16 +29,16 @@ export default class clock extends Component {
 	clockRunning = (deadline, now) => {
 		let _now = now;
 		let clock;
-		if (_now < deadline) {
-			clock = setInterval(() => {
+		clock = setInterval(() => {
+			if (_now < deadline) {
 				_now = new Date().getTime();
 				this.calcRemainingTime(_now, deadline);
 				this.getTimesUp();
-			}, 1000);
-		} else {
-			this.getTimesUp();
-			this.stopClock(clock);
-		}
+			} else {
+				this.getTimesUp();
+				this.stopClock(clock);
+			}
+		}, 1000);
 		this.setState({ clock });
 	};
 

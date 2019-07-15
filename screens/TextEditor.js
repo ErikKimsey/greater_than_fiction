@@ -114,7 +114,7 @@ export default class TextEditor extends Component {
 								style={styles.button}
 								onPress={this.onPressPublish}
 								title="Publish"
-								color="#841584"
+								color="#000000"
 								accessibilityLabel="Publish"
 							/>
 						</View>
