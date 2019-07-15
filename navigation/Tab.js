@@ -11,7 +11,7 @@ export default (Tab = createBottomTabNavigator(
 		About
 	},
 	{
-		// initialRouteName: 'Landing',
+		initialRouteName: 'TextEditor',
 		tabBarOptions: {
 			activeTintColor: color.gray,
 			activeBackgroundColor: color.softRed,

@@ -4,7 +4,7 @@ import { Camera, Permissions } from 'expo';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
 import { captureScreen } from 'react-native-view-shot';
-import { setClock, getRemainingTime } from '../components/clock';
+import Clock from '../components/clock';
 
 export default class TextEditor extends Component {
 	constructor(props) {
@@ -14,14 +14,11 @@ export default class TextEditor extends Component {
 			wordCount: 100,
 			isPublished: false,
 			imgURI: '',
-			previewImg: false,
-			remainingTime: getRemainingTime()
+			previewImg: false
 		};
 	}
 
-	componentDidMount() {
-		setClock();
-	}
+	componentDidMount() {}
 
 	onPressPreview = () => {
 		wordCount(this.state.text);
@@ -89,9 +86,10 @@ export default class TextEditor extends Component {
 			if (!this.state.isPublished && this.state.previewImg === false) {
 				return (
 					<View style={styles.container}>
-						{/* <Text>{this.state.prompt}</Text> */}
-						<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
-						<Text style={styles.count}>Time {getRemainingTime} </Text>
+						<View style={styles.textContainer}>
+							<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
+							<Clock />
+						</View>
 						<TextInput
 							style={styles.paragraph}
 							onChangeText={(text) => {
@@ -155,9 +153,14 @@ const styles = StyleSheet.create({
 		padding: 10,
 		paddingTop: 10
 	},
+	textContainer: {
+		// flex: 1,
+		flexDirection: 'column'
+	},
 	count: {
 		fontWeight: '900',
-		fontSize: 20
+		fontSize: 20,
+		paddingLeft: 10
 	},
 	final: {
 		fontWeight: '900',
