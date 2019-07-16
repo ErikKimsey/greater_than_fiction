@@ -1,13 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import color from '../assets/globals/colors';
+import { takeSnapshotAsync } from 'expo';
+import { Camera, Permissions } from 'expo';
+import { captureScreen } from 'react-native-view-shot';
 
 export default function Published(props) {
-	console.log('>>>> PUBLISHED <<<<<');
-	console.log(props.navigation.state);
 	let { text, title, author } = props.navigation.state.params;
-	console.log(text);
-
 	return (
 		<View style={styles.publishedContainer}>
 			<Text style={styles.text}>{text}</Text>

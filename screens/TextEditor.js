@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, CameraRoll, KeyboardAvoidingView } from 'react-native';
-import { takeSnapshotAsync } from 'expo';
-import { Camera, Permissions } from 'expo';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
-import { captureScreen } from 'react-native-view-shot';
-import Clock from '../components/clock';
 
 export default class TextEditor extends Component {
 	constructor(props) {
@@ -52,12 +48,11 @@ export default class TextEditor extends Component {
 	closeFinal = () => {
 		this.handleClearInput();
 		this.handleResetWordCount();
-		// this.setIsPublished();
+		this.setIsPublished();
 	};
 
 	setIsPublished = () => {
 		this.setState({ isPublished: !this.state.isPublished });
-		console.log();
 	};
 
 	getRemainingTime = (cb) => {
@@ -99,7 +94,7 @@ export default class TextEditor extends Component {
 						this.setState({ author: text });
 					}}
 					value={this.state.author}
-					// editable={true}
+					editable={true}
 					placeholder="Author name..."
 				/>
 				<View style={styles.buttonContainer}>
