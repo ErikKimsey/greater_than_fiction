@@ -20,8 +20,8 @@ export default class clock extends Component {
 
 	resetClock = () => {
 		this.setState({
-			remainingMin: 4,
-			remainingSec: 59
+			remainingMin: '4',
+			remainingSec: '59'
 		});
 	};
 

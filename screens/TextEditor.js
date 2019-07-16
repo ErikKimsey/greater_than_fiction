@@ -70,51 +70,49 @@ export default class TextEditor extends Component {
 
 	render() {
 		let clock = this.state.isPublished ? null : <Clock remaining={this.getRemainingTime} />;
-		{
-			return (
-				<KeyboardAvoidingView style={styles.container} behavior="padding">
-					<View style={styles.textContainer}>
-						<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
-						{clock}
-					</View>
-					<TextInput
-						style={styles.paragraph}
-						onChangeText={(text) => this.handleInputChange(text)}
-						value={this.state.text}
-						editable={true}
-						multiline={true}
-						placeholder="100 words. Go..."
+		return (
+			<KeyboardAvoidingView style={styles.container} behavior="padding">
+				<View style={styles.textContainer}>
+					<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
+					{clock}
+				</View>
+				<TextInput
+					style={styles.paragraph}
+					onChangeText={(text) => this.handleInputChange(text)}
+					value={this.state.text}
+					editable={true}
+					multiline={true}
+					placeholder="100 words. Go..."
+				/>
+				<TextInput
+					style={styles.titleAuthor}
+					onChangeText={(text) => {
+						this.setState({ title: text });
+					}}
+					value={this.state.title}
+					editable={true}
+					placeholder="Title..."
+				/>
+				<TextInput
+					style={styles.titleAuthor}
+					onChangeText={(text) => {
+						this.setState({ author: text });
+					}}
+					value={this.state.author}
+					// editable={true}
+					placeholder="Author name..."
+				/>
+				<View style={styles.buttonContainer}>
+					<Button
+						style={styles.button}
+						onPress={this.onPressPublish}
+						title="Publish"
+						color="#000000"
+						accessibilityLabel="Publish"
 					/>
-					<TextInput
-						style={styles.titleAuthor}
-						onChangeText={(text) => {
-							this.setState({ title: text });
-						}}
-						value={this.state.title}
-						editable={true}
-						placeholder="Title..."
-					/>
-					<TextInput
-						style={styles.titleAuthor}
-						onChangeText={(text) => {
-							this.setState({ author: text });
-						}}
-						value={this.state.author}
-						// editable={true}
-						placeholder="Author name..."
-					/>
-					<View style={styles.buttonContainer}>
-						<Button
-							style={styles.button}
-							onPress={this.onPressPublish}
-							title="Publish"
-							color="#000000"
-							accessibilityLabel="Publish"
-						/>
-					</View>
-				</KeyboardAvoidingView>
-			);
-		}
+				</View>
+			</KeyboardAvoidingView>
+		);
 	}
 }
 
