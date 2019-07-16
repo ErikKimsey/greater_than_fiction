@@ -4,13 +4,19 @@ import TextEditor from '../screens/TextEditor';
 
 const commonScreens = {
 	Published: {
-		screen: Published
+		screen: Published,
+		navigationOptions: {
+			header: null
+		}
 	}
 };
 
 const PublishedStack = createStackNavigator({
 	TextEditor: {
-		screen: TextEditor
+		screen: TextEditor,
+		navigationOptions: {
+			header: null
+		}
 	},
 	...commonScreens
 });

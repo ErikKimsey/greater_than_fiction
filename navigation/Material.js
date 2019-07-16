@@ -45,17 +45,6 @@ export default (Material = createMaterialBottomTabNavigator(
 				)
 			}
 		}
-		// Published: {
-		// 	screen: Published,
-		// 	navigationOptions: {
-		// 		// tabBarLabel: 'Home',
-		// 		// tabBarIcon: ({ tintColor }) => (
-		// 		// 	<View>
-		// 		// 		<Ionicons style={[ { color: tintColor } ]} size={25} name={'md-information-circle'} />
-		// 		// 	</View>
-		// 		// )
-		// 	}
-		// }
 	},
 	{
 		initialRouteName: 'Landing',

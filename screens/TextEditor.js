@@ -6,8 +6,6 @@ import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
 import { captureScreen } from 'react-native-view-shot';
 import Clock from '../components/clock';
-import Published from './Published';
-import NavigationService from '../navigation/NavigationService.js';
 
 export default class TextEditor extends Component {
 	constructor(props) {
