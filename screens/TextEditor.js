@@ -23,7 +23,9 @@ export default class TextEditor extends Component {
 		};
 	}
 
-	componentDidMount() {}
+	componentDidMount() {
+		// console.log(this.props.navigation.navigate);
+	}
 
 	onPressPreview = () => {
 		wordCount(this.state.text);
@@ -55,9 +57,9 @@ export default class TextEditor extends Component {
 	};
 
 	navToPublished = () => {
-		console.log('nav to published');
-
-		NavigationService.navigate('Published', {
+		// console.log('nav to published');
+		// () => navigation.navigate("Admin")
+		this.props.navigation.navigate('Published', {
 			text: this.state.text,
 			title: this.state.title,
 			author: this.state.author
@@ -72,12 +74,12 @@ export default class TextEditor extends Component {
 		this.setState({ isPublished: cb });
 	};
 
-	saveToCameraRoll = () => {
-		captureScreen({
-			format: 'jpg',
-			quality: 0.8
-		}).then((uri) => console.log('Image saved to', uri), (error) => console.error('Oops, snapshot failed', error));
-	};
+	// saveToCameraRoll = () => {
+	// 	captureScreen({
+	// 		format: 'jpg',
+	// 		quality: 0.8
+	// 	}).then((uri) => console.log('Image saved to', uri), (error) => console.error('Oops, snapshot failed', error));
+	// };
 
 	componentWillUnmount() {
 		this.handleClearInput();
@@ -129,9 +131,10 @@ export default class TextEditor extends Component {
 						</View>
 					</KeyboardAvoidingView>
 				);
-			} else if (this.state.isPublished) {
-				return <Published preview={this.state.text} title={this.state.title} author={this.state.author} />;
 			}
+			// else if (this.state.isPublished) {
+			// 	return <Published preview={this.state.text} title={this.state.title} author={this.state.author} />;
+			// }
 		}
 	}
 }

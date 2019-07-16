@@ -3,14 +3,17 @@ import { View, Text, StyleSheet } from 'react-native';
 import color from '../assets/globals/colors';
 
 export default function Published(props) {
-	console.log(props);
+	console.log('>>>> PUBLISHED <<<<<');
+	console.log(props.navigation.state);
+	let { text, title, author } = props.navigation.state.params;
+	console.log(text);
 
 	return (
 		<View style={styles.publishedContainer}>
-			<Text style={styles.text}>{props.preview}</Text>
+			<Text style={styles.text}>{text}</Text>
 			<View style={styles.titleAuthorContainer}>
-				<Text style={styles.titleAuthor}>"{props.title}"</Text>
-				<Text style={styles.titleAuthor}>by {props.author}</Text>
+				<Text style={styles.titleAuthor}>"{title}"</Text>
+				<Text style={styles.titleAuthor}>by {author}</Text>
 			</View>
 		</View>
 	);

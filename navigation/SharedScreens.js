@@ -1,4 +1,4 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import Published from '../screens/Published';
 import TextEditor from '../screens/TextEditor';
 
