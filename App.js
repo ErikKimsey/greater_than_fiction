@@ -7,7 +7,6 @@ const AppContainer = createAppContainer(Navigator);
 
 export default class App extends Component {
 	render() {
-		console.log('app container');
 		return (
 			<AppContainer
 				ref={(navigatorRef) => {

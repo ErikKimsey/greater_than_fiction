@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, CameraRoll, KeyboardAvoidingView } from 'react-native';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
+import Clock from '../components/clock';
 
 export default class TextEditor extends Component {
 	constructor(props) {

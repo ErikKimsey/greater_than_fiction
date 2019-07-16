@@ -13,8 +13,6 @@ export default class clock extends Component {
 	};
 
 	componentDidMount() {
-		console.log('clock mounts');
-
 		this.setClock();
 	}
 
@@ -76,7 +74,6 @@ export default class clock extends Component {
 	};
 
 	componentWillUnmount() {
-		console.log('clock unmounts');
 		this.stopClock(this.state.clock);
 	}
 
