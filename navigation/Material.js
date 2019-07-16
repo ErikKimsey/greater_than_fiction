@@ -8,6 +8,8 @@ import Landing from '../screens/Landing';
 import TextEditor from '../screens/TextEditor';
 import About from '../screens/About';
 
+import { PublishedStack } from './SharedScreens';
+
 export default (Material = createMaterialBottomTabNavigator(
 	{
 		Landing: {
@@ -22,7 +24,7 @@ export default (Material = createMaterialBottomTabNavigator(
 			}
 		},
 		TextEditor: {
-			screen: TextEditor,
+			screen: PublishedStack,
 			navigationOptions: {
 				tabBarLabel: 'Go!',
 				tabBarIcon: ({ tintColor }) => (
@@ -43,6 +45,17 @@ export default (Material = createMaterialBottomTabNavigator(
 				)
 			}
 		}
+		// Published: {
+		// 	screen: Published,
+		// 	navigationOptions: {
+		// 		// tabBarLabel: 'Home',
+		// 		// tabBarIcon: ({ tintColor }) => (
+		// 		// 	<View>
+		// 		// 		<Ionicons style={[ { color: tintColor } ]} size={25} name={'md-information-circle'} />
+		// 		// 	</View>
+		// 		// )
+		// 	}
+		// }
 	},
 	{
 		initialRouteName: 'Landing',

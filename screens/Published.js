@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import color from '../assets/globals/colors';
 
 export default function Published(props) {
+	console.log(props);
+
 	return (
 		<View style={styles.publishedContainer}>
 			<Text style={styles.text}>{props.preview}</Text>

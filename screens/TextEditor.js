@@ -7,6 +7,7 @@ import { wordCount } from '../utilities/wordCount';
 import { captureScreen } from 'react-native-view-shot';
 import Clock from '../components/clock';
 import Published from './Published';
+import NavigationService from '../navigation/NavigationService.js';
 
 export default class TextEditor extends Component {
 	constructor(props) {
@@ -51,6 +52,16 @@ export default class TextEditor extends Component {
 		this.handleClearInput();
 		this.handleResetWordCount();
 		this.setIsPublished();
+	};
+
+	navToPublished = () => {
+		console.log('nav to published');
+
+		NavigationService.navigate('Published', {
+			text: this.state.text,
+			title: this.state.title,
+			author: this.state.author
+		});
 	};
 
 	setIsPublished = () => {
@@ -110,7 +121,7 @@ export default class TextEditor extends Component {
 						<View style={styles.buttonContainer}>
 							<Button
 								style={styles.button}
-								onPress={this.onPressPublish}
+								onPress={this.navToPublished}
 								title="Publish"
 								color="#000000"
 								accessibilityLabel="Publish"
