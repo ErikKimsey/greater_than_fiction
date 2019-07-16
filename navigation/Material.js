@@ -5,7 +5,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 import color from '../assets/globals/colors';
 import Landing from '../screens/Landing';
-import TextEditor from '../screens/TextEditor';
 import About from '../screens/About';
 
 import { PublishedStack } from './SharedScreens';
@@ -37,7 +36,6 @@ export default (Material = createMaterialBottomTabNavigator(
 		About: {
 			screen: About,
 			navigationOptions: {
-				// tabBarLabel: 'Home',
 				tabBarIcon: ({ tintColor }) => (
 					<View>
 						<Ionicons style={[ { color: tintColor } ]} size={25} name={'md-information-circle'} />

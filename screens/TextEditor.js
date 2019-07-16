@@ -21,17 +21,14 @@ export default class TextEditor extends Component {
 		};
 	}
 
-	componentDidMount() {
-		// console.log(this.props.navigation.navigate);
-	}
-
-	onPressPreview = () => {
-		wordCount(this.state.text);
-	};
+	componentDidMount() {}
 
 	onPressPublish = () => {
-		this.setState({ isPublished: true });
-		this.saveToCameraRoll();
+		this.props.navigation.navigate('Published', {
+			text: this.state.text,
+			title: this.state.title,
+			author: this.state.author
+		});
 	};
 
 	handleInputChange = (text) => {
@@ -55,8 +52,6 @@ export default class TextEditor extends Component {
 	};
 
 	navToPublished = () => {
-		// console.log('nav to published');
-		// () => navigation.navigate("Admin")
 		this.props.navigation.navigate('Published', {
 			text: this.state.text,
 			title: this.state.title,
@@ -72,67 +67,55 @@ export default class TextEditor extends Component {
 		this.setState({ isPublished: cb });
 	};
 
-	// saveToCameraRoll = () => {
-	// 	captureScreen({
-	// 		format: 'jpg',
-	// 		quality: 0.8
-	// 	}).then((uri) => console.log('Image saved to', uri), (error) => console.error('Oops, snapshot failed', error));
-	// };
-
 	componentWillUnmount() {
 		this.handleClearInput();
 	}
 
 	render() {
 		{
-			if (!this.state.isPublished && this.state.previewImg === false) {
-				return (
-					<KeyboardAvoidingView style={styles.container} behavior="padding">
-						<View style={styles.textContainer}>
-							<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
-							<Clock remaining={this.getRemainingTime} />
-						</View>
-						<TextInput
-							style={styles.paragraph}
-							onChangeText={(text) => this.handleInputChange(text)}
-							value={this.state.text}
-							editable={true}
-							multiline={true}
-							placeholder="100 words. Go..."
+			return (
+				<KeyboardAvoidingView style={styles.container} behavior="padding">
+					<View style={styles.textContainer}>
+						<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
+						<Clock remaining={this.getRemainingTime} />
+					</View>
+					<TextInput
+						style={styles.paragraph}
+						onChangeText={(text) => this.handleInputChange(text)}
+						value={this.state.text}
+						editable={true}
+						multiline={true}
+						placeholder="100 words. Go..."
+					/>
+					<TextInput
+						style={styles.titleAuthor}
+						onChangeText={(text) => {
+							this.setState({ title: text });
+						}}
+						value={this.state.title}
+						editable={true}
+						placeholder="Title..."
+					/>
+					<TextInput
+						style={styles.titleAuthor}
+						onChangeText={(text) => {
+							this.setState({ author: text });
+						}}
+						value={this.state.author}
+						// editable={true}
+						placeholder="Author name..."
+					/>
+					<View style={styles.buttonContainer}>
+						<Button
+							style={styles.button}
+							onPress={this.onPressPublish}
+							title="Publish"
+							color="#000000"
+							accessibilityLabel="Publish"
 						/>
-						<TextInput
-							style={styles.titleAuthor}
-							onChangeText={(text) => {
-								this.setState({ title: text });
-							}}
-							value={this.state.title}
-							editable={true}
-							placeholder="Title..."
-						/>
-						<TextInput
-							style={styles.titleAuthor}
-							onChangeText={(text) => {
-								this.setState({ author: text });
-							}}
-							value={this.state.author}
-							// editable={true}
-							placeholder="Author name..."
-						/>
-						<View style={styles.buttonContainer}>
-							<Button
-								style={styles.button}
-								onPress={this.navToPublished}
-								title="Publish"
-								color="#000000"
-								accessibilityLabel="Publish"
-							/>
-						</View>
-					</KeyboardAvoidingView>
-				);
-			}
-			// else if (this.state.isPublished) {
-			// 	return <Published preview={this.state.text} title={this.state.title} author={this.state.author} />;
-			// }
+					</View>
+				</KeyboardAvoidingView>
+			);
 		}
 	}
 }
