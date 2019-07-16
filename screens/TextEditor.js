@@ -21,7 +21,9 @@ export default class TextEditor extends Component {
 		};
 	}
 
-	componentDidMount() {}
+	componentDidMount() {
+		this.setState({ isPublished: false });
+	}
 
 	onPressPublish = () => {
 		this.props.navigation.navigate('Published', {
@@ -29,6 +31,8 @@ export default class TextEditor extends Component {
 			title: this.state.title,
 			author: this.state.author
 		});
+		this.closeFinal();
+		this.setState({ isPublished: false });
 	};
 
 	handleInputChange = (text) => {
@@ -48,19 +52,12 @@ export default class TextEditor extends Component {
 	closeFinal = () => {
 		this.handleClearInput();
 		this.handleResetWordCount();
-		this.setIsPublished();
-	};
-
-	navToPublished = () => {
-		this.props.navigation.navigate('Published', {
-			text: this.state.text,
-			title: this.state.title,
-			author: this.state.author
-		});
+		// this.setIsPublished();
 	};
 
 	setIsPublished = () => {
 		this.setState({ isPublished: !this.state.isPublished });
+		console.log();
 	};
 
 	getRemainingTime = (cb) => {
@@ -72,12 +69,13 @@ export default class TextEditor extends Component {
 	}
 
 	render() {
+		let clock = this.state.isPublished ? null : <Clock remaining={this.getRemainingTime} />;
 		{
 			return (
 				<KeyboardAvoidingView style={styles.container} behavior="padding">
 					<View style={styles.textContainer}>
 						<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
-						<Clock remaining={this.getRemainingTime} />
+						{clock}
 					</View>
 					<TextInput
 						style={styles.paragraph}

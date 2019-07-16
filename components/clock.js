@@ -8,12 +8,22 @@ export default class clock extends Component {
 		remainingSec: '59',
 		remainingMin: '4',
 		timesUp: false,
-		clock: null
+		clock: null,
+		isStarted: false
 	};
 
 	componentDidMount() {
+		console.log('clock mounts');
+
 		this.setClock();
 	}
+
+	resetClock = () => {
+		this.setState({
+			remainingMin: 4,
+			remainingSec: 59
+		});
+	};
 
 	startClock = () => {
 		this.setClock();
@@ -42,6 +52,10 @@ export default class clock extends Component {
 		this.setState({ clock });
 	};
 
+	toggleIsStarted = () => {
+		this.setState({ isStarted: !this.state.isStarted });
+	};
+
 	getTimesUp = () => {
 		return this.props.remaining(this.state.timesUp);
 	};
@@ -62,6 +76,7 @@ export default class clock extends Component {
 	};
 
 	componentWillUnmount() {
+		console.log('clock unmounts');
 		this.stopClock(this.state.clock);
 	}
 
@@ -74,7 +89,13 @@ export default class clock extends Component {
 			return (
 				<View>
 					<Text style={styles.countdown}>
-						Time remaing: {`${this.state.remainingMin}:${this.state.remainingSec}`}
+						<Text>{this.state.remainingMin}</Text>
+						<Text>:</Text>
+						{this.state.remainingSec.length === 1 ? (
+							`'0' ${this.state.remainingSec}`
+						) : (
+							this.state.remainingSec
+						)}
 					</Text>
 				</View>
 			);
@@ -85,6 +106,7 @@ export default class clock extends Component {
 const styles = StyleSheet.create({
 	container: {},
 	countdown: {
+		flexDirection: 'row',
 		color: color.softRed,
 		fontWeight: '900',
 		fontSize: 20,
