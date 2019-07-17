@@ -5,6 +5,7 @@ import color from '../assets/globals/colors';
 import axios from 'axios';
 import * as Font from 'expo-font';
 import goInstructions from '../assets/GoDialog';
+import makePrompt from '../utilities/makePrompt';
 
 export default class Go extends Component {
 	constructor(props) {
