@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Button } from 'react-native';
 import * as Font from 'expo-font';
 
 import color from '../assets/globals/colors';
@@ -23,6 +23,10 @@ export default class Landing extends Component {
 		this.setState({ fontLoaded: true });
 	}
 
+	handleGo = () => {
+		console.log('go');
+	};
+
 	render() {
 		return (
 			// <ImageBackground source={bkgrd} style={styles.image}>
@@ -36,6 +40,12 @@ export default class Landing extends Component {
 						<Text style={[ styles.subHeader, { fontFamily: 'lemon-milk' } ]}>
 							Tell a story in 100 words {'\n'} and 5 minutes.
 						</Text>
+						<Button
+							title="Go!"
+							onPress={this.handleGo}
+							color={color.softRed}
+							accessibilityLabel="Go, write!"
+						/>
 					</View>
 				) : null}
 			</View>

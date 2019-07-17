@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import color from '../assets/globals/colors';
 
-export default class clock extends Component {
+export default class Clock extends Component {
 	state = {
 		total: 5,
 		remainingSec: '59',
