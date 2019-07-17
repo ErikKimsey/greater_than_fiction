@@ -11,31 +11,21 @@ export default class Landing extends Component {
 	};
 
 	async componentDidMount() {
-		console.log(
-			this.props.navigation.navigate('Go', {
-				goText: 'Go Text'
-			})
-		);
 
-		// console.log(retrieveFonts());
-
-		// await Font.loadAsync({
-		// 	'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
-		// 	dayrom: require('../assets/fonts/DAYROM.ttf'),
-		// 	painterz: require('../assets/fonts/Painterz.ttf'),
-		// 	cubesity: require('../assets/fonts/cubesity.ttf'),
-		// 	fatC: require('../assets/fonts/FatC.ttf'),
-		// 	fatCat: require('../assets/fonts/FatCat.ttf'),
-		// 	slukoni: require('../assets/fonts/Slukoni.otf')
-		// });
-		console.log('FONTS >>>>>>');
-		console.log(fontList);
+		await Font.loadAsync({
+			'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
+			dayrom: require('../assets/fonts/DAYROM.ttf'),
+			painterz: require('../assets/fonts/Painterz.ttf'),
+			cubesity: require('../assets/fonts/cubesity.ttf'),
+			fatC: require('../assets/fonts/FatC.ttf'),
+			fatCat: require('../assets/fonts/FatCat.ttf'),
+			slukoni: require('../assets/fonts/Slukoni.otf')
+		});
 
 		this.setState({ fontLoaded: true });
 	}
 
 	handleGo = () => {
-		console.log('go');
 		this.props.navigation.navigate('Go');
 	};
 
@@ -53,7 +43,7 @@ export default class Landing extends Component {
 							Tell a story in 100 words {'\n'} and 5 minutes.
 						</Text>
 						<Button
-							title="Go!"
+							title="Get set..."
 							onPress={this.handleGo}
 							color={color.softRed}
 							accessibilityLabel="Go, write!"

@@ -3,32 +3,46 @@ import { View, Text, Button, ImageBackground, StyleSheet } from 'react-native';
 import abstract from '../assets/abstract.png';
 import color from '../assets/globals/colors';
 import axios from 'axios';
+import * as Font from 'expo-font';
+import goInstructions from '../assets/GoDialog';
 
 export default class Go extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			prompt: 'YOYOYOYO',
-			instructions: 'INSTRUCTIONS'
+			instructions: '',
+			fontLoaded: false
 		};
 	}
 
-	componentDidMount() {}
+	async componentDidMount() {
+		this.setState({ instructions: goInstructions });
+		await Font.loadAsync({
+			'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
+			dayrom: require('../assets/fonts/DAYROM.ttf'),
+			painterz: require('../assets/fonts/Painterz.ttf'),
+			cubesity: require('../assets/fonts/cubesity.ttf'),
+			fatC: require('../assets/fonts/FatC.ttf'),
+			fatCat: require('../assets/fonts/FatCat.ttf'),
+			slukoni: require('../assets/fonts/Slukoni.otf')
+		});
+
+		this.setState({ fontLoaded: true });
+	}
 
 	onPressGo = () => {
-		// this.props.navigation.navigate('TextEditor', {
-		// 	prompt: this.state.prompt
-		// });
-		console.log(this.props);
-		console.log('go');
+		this.props.navigation.navigate('TextEditor', {
+			prompt: this.state.prompt
+		});
 	};
 
 	render() {
 		return (
 			<ImageBackground source={abstract} style={[ styles.container, { width: '100%', height: '100%' } ]}>
+				<Text style={styles.instructions}>{this.state.instructions}</Text>
 				<Text>Prompt:</Text>
 				<Text style={styles.prompt}>{this.state.prompt}</Text>
-				<Text style={styles.instructions}>{this.state.instructions}</Text>
 				<Button
 					title="Go!"
 					color={color.softRed}

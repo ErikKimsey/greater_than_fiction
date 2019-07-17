@@ -25,7 +25,6 @@ async function retrieveFonts() {
 }
 
 retrieveFonts();
-console.log(fontList);
 
 export default retrieveFonts;
 export { fontList };
