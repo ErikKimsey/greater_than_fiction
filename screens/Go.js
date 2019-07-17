@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { View, Text, Button, ImageBackground, StyleSheet } from 'react-native';
 import abstract from '../assets/abstract.png';
 import color from '../assets/globals/colors';
+import axios from 'axios';
 
 export default class Go extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			prompt: '',
-			instructions: ''
+			prompt: 'YOYOYOYO',
+			instructions: 'INSTRUCTIONS'
 		};
 	}
 
@@ -25,8 +26,9 @@ export default class Go extends Component {
 	render() {
 		return (
 			<ImageBackground source={abstract} style={[ styles.container, { width: '100%', height: '100%' } ]}>
-				{/* <Text>{this.state.prompt}</Text>
-				<Text>{this.state.instructions}</Text> */}
+				<Text>Prompt:</Text>
+				<Text style={styles.prompt}>{this.state.prompt}</Text>
+				<Text style={styles.instructions}>{this.state.instructions}</Text>
 				<Button title="Go!" onPress={this.onPressGo} style={styles.button} accessibilityLabel="Go, write!" />
 			</ImageBackground>
 		);
@@ -36,11 +38,24 @@ export default class Go extends Component {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: color.gray,
-		flex: 1
+		flex: 1,
+		padding: 10
+	},
+	prompt: {
+		color: '#ffffff',
+		height: '30%',
+		// backgroundColor: color.softRed,
+		marginBottom: 10
+	},
+	instructions: {
+		color: '#ffffff',
+		height: '30%',
+		// backgroundColor: color.softRed,
+		marginBottom: 10,
+		marginTop: 10
 	},
 	button: {
 		color: color.softRed,
-    padding: 10,
-    
+		padding: 10
 	}
 });
