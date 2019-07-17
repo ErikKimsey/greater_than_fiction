@@ -29,7 +29,13 @@ export default class Go extends Component {
 				<Text>Prompt:</Text>
 				<Text style={styles.prompt}>{this.state.prompt}</Text>
 				<Text style={styles.instructions}>{this.state.instructions}</Text>
-				<Button title="Go!" onPress={this.onPressGo} style={styles.button} accessibilityLabel="Go, write!" />
+				<Button
+					title="Go!"
+					color={color.softRed}
+					onPress={this.onPressGo}
+					style={[ styles.button ]}
+					accessibilityLabel="Go, write!"
+				/>
 			</ImageBackground>
 		);
 	}
