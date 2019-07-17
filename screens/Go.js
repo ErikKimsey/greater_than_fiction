@@ -40,16 +40,24 @@ export default class Go extends Component {
 	render() {
 		return (
 			<ImageBackground source={abstract} style={[ styles.container, { width: '100%', height: '100%' } ]}>
-				<Text style={styles.instructions}>{this.state.instructions}</Text>
-				<Text>Prompt:</Text>
-				<Text style={styles.prompt}>{this.state.prompt}</Text>
-				<Button
-					title="Go!"
-					color={color.softRed}
-					onPress={this.onPressGo}
-					style={[ styles.button ]}
-					accessibilityLabel="Go, write!"
-				/>
+				{this.state.fontLoaded ? (
+					<View style={styles.subContainer}>
+						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.instructions ]}>
+							{this.state.instructions}
+						</Text>
+						<Text>Prompt:</Text>
+						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.prompt ]}>
+							{this.state.prompt}
+						</Text>
+						<Button
+							title="Go!"
+							color={color.softRed}
+							onPress={this.onPressGo}
+							style={[ styles.button ]}
+							accessibilityLabel="Go, write!"
+						/>
+					</View>
+				) : null}
 			</ImageBackground>
 		);
 	}
@@ -58,21 +66,25 @@ export default class Go extends Component {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: color.gray,
+		flex: 1
+	},
+	subContainer: {
 		flex: 1,
 		padding: 10
 	},
 	prompt: {
 		color: '#ffffff',
+		marginTop: 10,
 		height: '30%',
 		// backgroundColor: color.softRed,
 		marginBottom: 10
 	},
 	instructions: {
 		color: '#ffffff',
-		height: '30%',
+		height: '40%',
 		// backgroundColor: color.softRed,
 		marginBottom: 10,
-		marginTop: 10
+		marginTop: 100
 	},
 	button: {
 		color: color.softRed,
