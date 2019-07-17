@@ -45,7 +45,7 @@ export default class Go extends Component {
 						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.instructions ]}>
 							{this.state.instructions}
 						</Text>
-						<Text>Prompt:</Text>
+						<Text>Your prompt:</Text>
 						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.prompt ]}>
 							{this.state.prompt}
 						</Text>
@@ -70,24 +70,30 @@ const styles = StyleSheet.create({
 	},
 	subContainer: {
 		flex: 1,
-		padding: 10
+		padding: 10,
+		margin: 20,
+		top: 10,
+		backgroundColor: 'rgba(255,255,255,0.2)'
 	},
 	prompt: {
-		color: '#ffffff',
+		color: color.softRed,
 		marginTop: 10,
 		height: '30%',
 		// backgroundColor: color.softRed,
-		marginBottom: 10
+		marginBottom: 10,
+		fontSize: 18
 	},
 	instructions: {
 		color: '#ffffff',
 		height: '40%',
 		// backgroundColor: color.softRed,
 		marginBottom: 10,
-		marginTop: 100
+		marginTop: 90,
+		fontSize: 18
 	},
 	button: {
 		color: color.softRed,
 		padding: 10
+		// marginBottom: 10
 	}
 });
