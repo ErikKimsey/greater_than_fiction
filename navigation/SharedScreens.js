@@ -13,6 +13,15 @@ const commonScreens = {
 	}
 };
 
+const goScreens = {
+	Go: {
+		screen: Go,
+		navigationOptions: {
+			header: null
+		}
+	}
+};
+
 const PublishedStack = createStackNavigator({
 	TextEditor: {
 		screen: TextEditor,
@@ -29,12 +38,7 @@ const LandingStack = createStackNavigator({
 			header: null
 		}
 	},
-	Go: {
-		screen: Go,
-		navigationOptions: {
-			header: null
-		}
-	}
+	...goScreens
 });
 
 export { PublishedStack, LandingStack };

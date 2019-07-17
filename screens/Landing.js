@@ -11,6 +11,12 @@ export default class Landing extends Component {
 	};
 
 	async componentDidMount() {
+		console.log(
+			this.props.navigation.navigate('Go', {
+				goText: 'Go Text'
+			})
+		);
+
 		await Font.loadAsync({
 			'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
 			dayrom: require('../assets/fonts/DAYROM.ttf'),
@@ -25,6 +31,7 @@ export default class Landing extends Component {
 
 	handleGo = () => {
 		console.log('go');
+		this.props.navigation.navigate('Go');
 	};
 
 	render() {

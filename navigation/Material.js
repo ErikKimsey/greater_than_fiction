@@ -7,12 +7,12 @@ import color from '../assets/globals/colors';
 import Landing from '../screens/Landing';
 import About from '../screens/About';
 
-import { PublishedStack } from './SharedScreens';
+import { PublishedStack, LandingStack } from './SharedScreens';
 
 export default (Material = createMaterialBottomTabNavigator(
 	{
 		Landing: {
-			screen: Landing,
+			screen: LandingStack,
 			navigationOptions: {
 				tabBarLabel: '100 Words',
 				tabBarIcon: ({ tintColor }) => (
