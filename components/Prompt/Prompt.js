@@ -18,7 +18,17 @@ export default class Prompt extends Component {
 		this.setState({ length: len });
 	}
 
-	generatePrompt = () => {};
+	generatePrompt = () => {
+		for (let i = 0; i < 3; i++) {
+			// generate random number
+			let index = this.randomize(0, this.state.length);
+			console.log('index >>>> ', index);
+
+			// use number as index
+			// grab words from WERD[index]
+			// push word to this.state.werds
+		}
+	};
 
 	werdsLength = () => {
 		if (this.state.werds != null) {
