@@ -5,7 +5,7 @@ import color from '../assets/globals/colors';
 import axios from 'axios';
 import * as Font from 'expo-font';
 import goInstructions from '../assets/GoDialog';
-import makePrompt from '../utilities/makePrompt';
+import Prompt from '../components/Prompt/Prompt';
 
 export default class Go extends Component {
 	constructor(props) {
@@ -47,9 +47,8 @@ export default class Go extends Component {
 							{this.state.instructions}
 						</Text>
 						<Text>Your prompt:</Text>
-						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.prompt ]}>
-							{this.state.prompt}
-						</Text>
+						<Prompt />
+						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.prompt ]} />
 						<Button
 							title="Go!"
 							color={color.softRed}
