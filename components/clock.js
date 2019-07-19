@@ -74,6 +74,7 @@ export default class Clock extends Component {
 	};
 
 	componentWillUnmount() {
+		console.log('>>>> ');
 		this.stopClock(this.state.clock);
 	}
 

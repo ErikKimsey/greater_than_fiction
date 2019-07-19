@@ -14,7 +14,8 @@ export default class TextEditor extends Component {
 			imgURI: '',
 			previewImg: false,
 			author: '',
-			title: ''
+			title: '',
+			clockReset: false
 		};
 	}
 
@@ -61,12 +62,19 @@ export default class TextEditor extends Component {
 		this.setState({ isPublished: cb });
 	};
 
+	resetClock = () => {
+		this.setState({ resetClock: true });
+		return this.state.isPublished;
+	};
+
 	componentWillUnmount() {
 		this.handleClearInput();
 	}
 
 	render() {
-		let clock = this.state.isPublished ? null : <Clock remaining={this.getRemainingTime} />;
+		let clock = this.state.isPublished ? null : (
+			<Clock remaining={this.getRemainingTime} reset={this.state.clockReset} />
+		);
 		return (
 			<KeyboardAvoidingView style={styles.container} behavior="padding">
 				<View style={styles.textContainer}>
