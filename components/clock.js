@@ -80,9 +80,11 @@ export default class Clock extends Component {
 
 	render() {
 		if (this.state.timesUp) {
-			<View>
-				<Text>Stop</Text>
-			</View>;
+			return (
+				<View>
+					<Text>Stop</Text>
+				</View>
+			);
 		} else {
 			return (
 				<View>
