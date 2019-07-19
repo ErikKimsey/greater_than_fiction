@@ -3,10 +3,17 @@ import { View, Text, StyleSheet } from 'react-native';
 import color from '../assets/globals/colors';
 import { takeSnapshotAsync } from 'expo';
 import { Camera, Permissions } from 'expo';
-import { captureScreen } from 'react-native-view-shot';
+import * as MediaLibrary from 'expo-media-library';
 
 export default function Published(props) {
-	let { text, title, author } = props.navigation.state.params;
+	const { text, title, author } = props.navigation.state.params;
+	// const targetPixelCount = 1080; // If you want full HD pictures
+	// const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
+	// pixels * pixelratio = targetPixelCount, so pixels = targetPixelCount / pixelRatio
+	// const pixels = targetPixelCount / pixelRatio;
+
+	console.log(this);
+
 	return (
 		<View style={styles.publishedContainer}>
 			<Text style={styles.text}>{text}</Text>

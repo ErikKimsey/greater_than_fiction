@@ -32,13 +32,13 @@ const PublishedStack = createStackNavigator({
 	...commonScreens
 });
 const LandingStack = createStackNavigator({
-	...goScreens,
 	Landing: {
 		screen: Landing,
 		navigationOptions: {
 			header: null
 		}
-	}
+	},
+	...goScreens
 });
 
 export { PublishedStack, LandingStack };

@@ -40,6 +40,7 @@ export default class TextEditor extends Component {
 
 	handleClearInput = () => {
 		this.setState({ text: '', author: '', title: '' });
+		this.setState({ isPublished: false });
 	};
 
 	handleResetWordCount = () => {

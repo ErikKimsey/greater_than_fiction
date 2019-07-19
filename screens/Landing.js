@@ -11,7 +11,6 @@ export default class Landing extends Component {
 	};
 
 	async componentDidMount() {
-
 		await Font.loadAsync({
 			'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
 			dayrom: require('../assets/fonts/DAYROM.ttf'),
@@ -21,7 +20,6 @@ export default class Landing extends Component {
 			fatCat: require('../assets/fonts/FatCat.ttf'),
 			slukoni: require('../assets/fonts/Slukoni.otf')
 		});
-
 		this.setState({ fontLoaded: true });
 	}
 
@@ -71,8 +69,6 @@ const styles = StyleSheet.create({
 	header100: {
 		textAlign: 'center',
 		fontSize: 186
-		// marginBottom: -10,
-		// paddingBottom: -10
 	},
 	headerWords: {
 		paddingTop: 0,
