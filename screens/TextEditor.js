@@ -68,6 +68,9 @@ export default class TextEditor extends Component {
 	};
 
 	componentWillUnmount() {
+		console.log('unmounted');
+
+		this.resetClock();
 		this.handleClearInput();
 	}
 
