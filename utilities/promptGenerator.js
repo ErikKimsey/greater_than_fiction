@@ -1,7 +1,8 @@
 /**
- * 1. Get WERDS,
- * 2. 
+ * generatePrompt
+ * As an argument, takes an array of strings.  It uses the array's length to randomize an index with which to create a new arrow of 3 strings.  That array is then joined into a single string to be displayed in the Prompt component.
  */
+
 const promptArr = [];
 
 const generatePrompt = (werds) => {

@@ -14,12 +14,8 @@ export default class Prompt extends Component {
 
 	componentWillMount() {
 		const promptArr = generatePrompt(this.state.werds);
-		console.log(promptArr);
-
 		this.setState({ prompt: promptArr });
 	}
-
-	componentDidMount() {}
 
 	render() {
 		return (
