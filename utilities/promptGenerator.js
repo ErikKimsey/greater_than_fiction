@@ -5,28 +5,28 @@
 
 const promptArr = [];
 
-const generatePrompt = (werds) => {
+function generatePrompt(werds) {
 	for (let i = 0; i < 3; i++) {
 		let index = randomize(0, werdsLength(werds));
 		promptArr.push(werds[index]);
 	}
 	return createPromptString(promptArr);
-};
+}
 
-const createPromptString = (arr) => {
+function createPromptString(arr) {
 	return arr.join(', ').toUpperCase();
-};
+}
 
-const werdsLength = (werds) => {
+function werdsLength(werds) {
 	if (werds) {
 		return werds.length;
 	}
-};
+}
 
-const randomize = (min, max) => {
+function randomize(min, max) {
 	min = Math.ceil(min);
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+}
 
 export default generatePrompt;
