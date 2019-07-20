@@ -16,6 +16,8 @@ export default class Published extends Component {
 
 	async componentDidMount() {
 		const { status } = await Permissions.askAsync(Permissions.CAMERA);
+		console.log({ hasCameraPermission: status === 'granted' });
+
 		this.setState({ hasCameraPermission: status === 'granted' });
 	}
 
@@ -50,10 +52,12 @@ export default class Published extends Component {
 					this._container = view;
 				}}
 			>
-				<Text style={styles.text}>{text}</Text>
-				<View style={styles.titleAuthorContainer}>
-					<Text style={styles.titleAuthor}>"{title}"</Text>
-					<Text style={styles.titleAuthor}>by {author}</Text>
+				<View style={styles.saveContainer}>
+					<Text style={styles.text}>{text}</Text>
+					<View style={styles.titleAuthorContainer}>
+						<Text style={styles.titleAuthor}>"{title}"</Text>
+						<Text style={styles.titleAuthor}>by {author}</Text>
+					</View>
 				</View>
 				<Button
 					title="Save"
@@ -77,6 +81,13 @@ export default class Published extends Component {
 
 const styles = StyleSheet.create({
 	publishedContainer: {
+		flex: 1,
+		justifyContent: 'flex-start',
+		padding: 50,
+		alignItems: 'stretch',
+		backgroundColor: color.gray
+	},
+	saveContainer: {
 		flex: 1,
 		justifyContent: 'flex-start',
 		padding: 50,
