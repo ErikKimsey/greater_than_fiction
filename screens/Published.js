@@ -1,46 +1,62 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
 import color from '../assets/globals/colors';
-import { takeSnapshotAsync } from 'expo';
+import { Constants, takeSnapshotAsync } from 'expo';
 import { Camera, Permissions } from 'expo';
 import * as MediaLibrary from 'expo-media-library';
 
-export default function Published(props) {
-	const { text, title, author } = props.navigation.state.params;
-	// const targetPixelCount = 1080; // If you want full HD pictures
-	// const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
-	// pixels * pixelratio = targetPixelCount, so pixels = targetPixelCount / pixelRatio
-	// const pixels = targetPixelCount / pixelRatio;
+export default class Published extends Component {
+	state = {
+		cameraRollUri: null
+	};
 
-	console.log(this);
-
-	const resetAction = StackActions.reset({
+	resetAction = StackActions.reset({
 		index: 0,
 		actions: [ NavigationActions.navigate({ routeName: 'Landing' }) ]
 	});
 
-	const exitPublished = () => {
+	exitPublished = () => {
 		// props.navigation.dispatch(StackActions.push('Landing'));
 		props.navigation.dispatch(resetAction);
 		// props.navigation.push('Landing');
 	};
 
-	return (
-		<View style={styles.publishedContainer}>
-			<Text style={styles.text}>{text}</Text>
-			<View style={styles.titleAuthorContainer}>
-				<Text style={styles.titleAuthor}>"{title}"</Text>
-				<Text style={styles.titleAuthor}>by {author}</Text>
-			</View>
-			<Button
-				title="Exit"
-				onPress={() => {
-					exitPublished();
+	_saveToCameraRollAsync = async () => {
+		let result = await takeSnapshotAsync(this._container, {
+			format: 'png',
+			result: 'file'
+		});
+
+		let saveResult = await CameraRoll.saveToCameraRoll(result, 'photo');
+		this.setState({ cameraRollUri: saveResult });
+	};
+	render() {
+		const { text, title, author } = this.props.navigation.state.params;
+		return (
+			<View
+				style={styles.publishedContainer}
+				ref={(view) => {
+					this._container = view;
 				}}
-			/>
-		</View>
-	);
+			>
+				<Text style={styles.text}>{text}</Text>
+				<View style={styles.titleAuthorContainer}>
+					<Text style={styles.titleAuthor}>"{title}"</Text>
+					<Text style={styles.titleAuthor}>by {author}</Text>
+				</View>
+				<Button
+					title="Exit"
+					onPress={() => {
+						exitPublished();
+					}}
+				/>
+				{this.state.cameraRollUri && (
+					<Image source={{ uri: this.state.cameraRollUri }} style={{ width: 200, height: 200 }} />
+				)}
+			</View>
+		);
+	}
 }
 
 const styles = StyleSheet.create({

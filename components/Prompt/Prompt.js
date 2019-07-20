@@ -13,7 +13,6 @@ export default class Prompt extends Component {
 	};
 
 	componentWillMount() {
-		// const promptArr = generatePrompt(this.state.werds);
 		this.setState({ prompt: generatePrompt(this.state.werds) });
 	}
 

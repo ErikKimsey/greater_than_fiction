@@ -11,7 +11,7 @@ export default class Go extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			prompt: 'YOYOYOYO',
+			prompt: [],
 			instructions: '',
 			fontLoaded: false
 		};
