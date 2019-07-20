@@ -5,19 +5,31 @@ import Landing from '../screens/Landing';
 import Go from '../screens/Go';
 
 const commonScreens = {
-  Landing: {
+	TextEditor: {
+		screen: TextEditor,
+		navigationOptions: {
+			header: null
+		}
+	},
+	Published: {
+		screen: Published,
+		navigationOptions: {
+			header: null
+		}
+	},
+	Landing: {
 		screen: Landing,
 		navigationOptions: {
 			header: null
 		}
-  },
-  Go: {
+	},
+	Go: {
 		screen: Go,
 		navigationOptions: {
 			header: null
 		}
-  },
-  TextEditor: {
+	},
+	TextEditor: {
 		screen: TextEditor,
 		navigationOptions: {
 			header: null
@@ -31,7 +43,6 @@ const commonScreens = {
 	}
 };
 
-
 const PublishedStack = createStackNavigator({
 	TextEditor: {
 		screen: TextEditor,
@@ -43,6 +54,12 @@ const PublishedStack = createStackNavigator({
 });
 
 const LandingStack = createStackNavigator({
+	TextEditor: {
+		screen: TextEditor,
+		navigationOptions: {
+			header: null
+		}
+	},
 	Landing: {
 		screen: Landing,
 		navigationOptions: {

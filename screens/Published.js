@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Image } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, CameraRoll } from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
 import color from '../assets/globals/colors';
-import { Constants, takeSnapshotAsync } from 'expo';
-import { Camera, Permissions } from 'expo';
+// import { takeSnapshotAsync } from 'expo';
+import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
+// import { Camera,  } from 'expo';
+import * as Permissions from 'expo-permissions';
 import * as MediaLibrary from 'expo-media-library';
 
 export default class Published extends Component {
 	state = {
-		cameraRollUri: null
+		cameraRollUri: null,
+		hasCameraPermission: false
 	};
+
+	async componentDidMount() {
+		const { status } = await Permissions.askAsync(Permissions.CAMERA);
+		this.setState({ hasCameraPermission: status === 'granted' });
+	}
 
 	resetAction = StackActions.reset({
 		index: 0,
@@ -25,10 +33,12 @@ export default class Published extends Component {
 	_saveToCameraRollAsync = async () => {
 		let result = await takeSnapshotAsync(this._container, {
 			format: 'png',
-			result: 'file'
+			result: 'tmpfile'
 		});
 
+		console.log(result);
 		let saveResult = await CameraRoll.saveToCameraRoll(result, 'photo');
+
 		this.setState({ cameraRollUri: saveResult });
 	};
 	render() {
@@ -46,9 +56,15 @@ export default class Published extends Component {
 					<Text style={styles.titleAuthor}>by {author}</Text>
 				</View>
 				<Button
+					title="Save"
+					onPress={() => {
+						this._saveToCameraRollAsync();
+					}}
+				/>
+				<Button
 					title="Exit"
 					onPress={() => {
-						exitPublished();
+						this.exitPublished();
 					}}
 				/>
 				{this.state.cameraRollUri && (
