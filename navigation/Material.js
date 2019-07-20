@@ -23,7 +23,7 @@ export default (Material = createMaterialBottomTabNavigator(
 			}
 		},
 		TextEditor: {
-			screen: PublishedStack,
+			screen: LandingStack,
 			navigationOptions: {
 				tabBarLabel: 'Go!',
 				tabBarIcon: ({ tintColor }) => (
@@ -45,7 +45,7 @@ export default (Material = createMaterialBottomTabNavigator(
 		}
 	},
 	{
-		initialRouteName: 'Landing',
+		initialRouteName: 'TextEditor',
 		activeColor: '#ffffff',
 		inactiveColor: color.gray,
 		activeTintColor: color.softRed,

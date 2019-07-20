@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image, CameraRoll, KeyboardAvoidingView } from 'react-native';
+import { withNavigationFocus } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
 import Clock from '../components/clock';
 
-export default class TextEditor extends Component {
+class TextEditor extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -183,3 +184,5 @@ const styles = StyleSheet.create({
 		color: color.softRed
 	}
 });
+
+export default withNavigationFocus(TextEditor);

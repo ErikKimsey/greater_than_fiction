@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import { StackActions, NavigationActions } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { takeSnapshotAsync } from 'expo';
 import { Camera, Permissions } from 'expo';
@@ -14,6 +15,17 @@ export default function Published(props) {
 
 	console.log(this);
 
+	const resetAction = StackActions.reset({
+		index: 0,
+		actions: [ NavigationActions.navigate({ routeName: 'Landing' }) ]
+	});
+
+	const exitPublished = () => {
+		// props.navigation.dispatch(StackActions.push('Landing'));
+		props.navigation.dispatch(resetAction);
+		// props.navigation.push('Landing');
+	};
+
 	return (
 		<View style={styles.publishedContainer}>
 			<Text style={styles.text}>{text}</Text>
@@ -21,6 +33,12 @@ export default function Published(props) {
 				<Text style={styles.titleAuthor}>"{title}"</Text>
 				<Text style={styles.titleAuthor}>by {author}</Text>
 			</View>
+			<Button
+				title="Exit"
+				onPress={() => {
+					exitPublished();
+				}}
+			/>
 		</View>
 	);
 }
