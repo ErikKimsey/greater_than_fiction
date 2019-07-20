@@ -22,17 +22,6 @@ export default (Material = createMaterialBottomTabNavigator(
 				)
 			}
 		},
-		// TextEditor: {
-		// 	screen: LandingStack,
-		// 	navigationOptions: {
-		// 		tabBarLabel: 'Go!',
-		// 		tabBarIcon: ({ tintColor }) => (
-		// 			<View>
-		// 				<Ionicons style={[ { color: tintColor } ]} size={25} name={'md-create'} />
-		// 			</View>
-		// 		)
-		// 	}
-		// },
 		About: {
 			screen: About,
 			navigationOptions: {

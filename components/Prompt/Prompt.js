@@ -1,51 +1,30 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { WERDS } from '../../assets/vocab/vocab';
+import generatePrompt from '../../utilities/promptGenerator';
 
 /**
- * GOAL: Return 3 random words.
+ * GOAL: Return 3 random words in a component.
  */
 export default class Prompt extends Component {
 	state = {
 		werds: WERDS,
-		length: null
+		prompt: null
 	};
 
-	componentDidMount() {
-		// this.setState({ werds: WERDS });
-		// this.generatePrompt();
-		let len = this.werdsLength();
-		this.setState({ length: len });
+	componentWillMount() {
+		const promptArr = generatePrompt(this.state.werds);
+		console.log(promptArr);
+
+		this.setState({ prompt: promptArr });
 	}
 
-	generatePrompt = () => {
-		for (let i = 0; i < 3; i++) {
-			// generate random number
-			let index = this.randomize(0, this.state.length);
-			console.log('index >>>> ', index);
-
-			// use number as index
-			// grab words from WERD[index]
-			// push word to this.state.werds
-		}
-	};
-
-	werdsLength = () => {
-		if (this.state.werds != null) {
-			return this.state.werds.length;
-		}
-	};
-
-	randomize = (min, max) => {
-		min = Math.ceil(min);
-		max = Math.floor(max);
-		return Math.floor(Math.random() * (max - min + 1)) + min;
-	};
+	componentDidMount() {}
 
 	render() {
 		return (
 			<View>
-				<Text>{this.state.length}</Text>
+				<Text>{this.state.prompt}</Text>
 			</View>
 		);
 	}
