@@ -22,17 +22,17 @@ export default (Material = createMaterialBottomTabNavigator(
 				)
 			}
 		},
-		TextEditor: {
-			screen: LandingStack,
-			navigationOptions: {
-				tabBarLabel: 'Go!',
-				tabBarIcon: ({ tintColor }) => (
-					<View>
-						<Ionicons style={[ { color: tintColor } ]} size={25} name={'md-create'} />
-					</View>
-				)
-			}
-		},
+		// TextEditor: {
+		// 	screen: LandingStack,
+		// 	navigationOptions: {
+		// 		tabBarLabel: 'Go!',
+		// 		tabBarIcon: ({ tintColor }) => (
+		// 			<View>
+		// 				<Ionicons style={[ { color: tintColor } ]} size={25} name={'md-create'} />
+		// 			</View>
+		// 		)
+		// 	}
+		// },
 		About: {
 			screen: About,
 			navigationOptions: {
@@ -45,7 +45,7 @@ export default (Material = createMaterialBottomTabNavigator(
 		}
 	},
 	{
-		initialRouteName: 'TextEditor',
+		initialRouteName: 'Landing',
 		activeColor: '#ffffff',
 		inactiveColor: color.gray,
 		activeTintColor: color.softRed,
