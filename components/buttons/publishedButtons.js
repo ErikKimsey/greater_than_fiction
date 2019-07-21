@@ -1,13 +1,17 @@
 import React from 'react';
 import { View, Button } from 'react-native';
 
-export default function PublishedButtons() {
+export default function PublishedButtons(props) {
+	console.log('btns props >>');
+
+	console.log(props);
+
 	const exitPublished = () => {
-		return props.exit();
+		return props.exitPublished();
 	};
 
-	const saveImage = () => {
-		return props.save();
+	const saveToRoll = () => {
+		return props.saveToRoll();
 	};
 
 	if (!props.saved) {
@@ -15,7 +19,7 @@ export default function PublishedButtons() {
 			<Button
 				title="Save"
 				onPress={() => {
-					this._saveToCameraRollAsync();
+					saveToRoll();
 				}}
 			/>
 		);
@@ -24,7 +28,7 @@ export default function PublishedButtons() {
 			<Button
 				title="Exit"
 				onPress={() => {
-					this.exitPublished();
+					exitPublished();
 				}}
 			/>
 		);

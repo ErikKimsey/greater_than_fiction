@@ -43,7 +43,7 @@ export default class Published extends Component {
 		console.log(result);
 		let saveResult = await CameraRoll.saveToCameraRoll(result, 'photo');
 
-		this.setState({ cameraRollUri: saveResult });
+		this.setState({ cameraRollUri: saveResult, saved: true });
 	};
 	render() {
 		const { text, title, author } = this.props.navigation.state.params;
@@ -64,7 +64,11 @@ export default class Published extends Component {
 				{this.state.cameraRollUri && (
 					<Image source={{ uri: this.state.cameraRollUri }} style={{ width: 200, height: 200 }} />
 				)}
-				<PublishedButton saved={this.state.saved} />
+				<PublishedButton
+					saved={this.state.saved}
+					saveToRoll={this._saveToCameraRollAsync}
+					exitPublished={this.exitPublished}
+				/>
 			</View>
 		);
 	}
