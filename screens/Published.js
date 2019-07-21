@@ -47,30 +47,45 @@ export default class Published extends Component {
 	};
 	render() {
 		const { text, title, author } = this.props.navigation.state.params;
-		return (
-			<View
-				style={styles.publishedContainer}
-				ref={(view) => {
-					this._container = view;
-				}}
-			>
-				<View style={styles.saveContainer}>
-					<Text style={styles.text}>{text}</Text>
-					<View style={styles.titleAuthorContainer}>
-						<Text style={styles.titleAuthor}>"{title}"</Text>
-						<Text style={styles.titleAuthor}>by {author}</Text>
+		if (!this.state.saved) {
+			return (
+				<View style={styles.publishedContainer}>
+					<View
+						style={styles.saveContainer}
+						ref={(view) => {
+							this._container = view;
+						}}
+					>
+						<Text style={styles.text}>{text}</Text>
+						<View style={styles.titleAuthorContainer}>
+							<Text style={styles.titleAuthor}>"{title}"</Text>
+							<Text style={styles.titleAuthor}>by {author}</Text>
+						</View>
 					</View>
+					{/* {this.state.cameraRollUri && (
+						<Image source={{ uri: this.state.cameraRollUri }} style={{ width: 200, height: 200 }} />
+					)} */}
+					<PublishedButton
+						saved={this.state.saved}
+						saveToRoll={this._saveToCameraRollAsync}
+						exitPublished={this.exitPublished}
+					/>
 				</View>
-				{this.state.cameraRollUri && (
-					<Image source={{ uri: this.state.cameraRollUri }} style={{ width: 200, height: 200 }} />
-				)}
-				<PublishedButton
-					saved={this.state.saved}
-					saveToRoll={this._saveToCameraRollAsync}
-					exitPublished={this.exitPublished}
-				/>
-			</View>
-		);
+			);
+		} else if (this.state.saved) {
+			return (
+				<View>
+					{this.state.cameraRollUri && (
+						<Image source={{ uri: this.state.cameraRollUri }} style={{ width: 200, height: 200 }} />
+					)}
+					<PublishedButton
+						saved={this.state.saved}
+						saveToRoll={this._saveToCameraRollAsync}
+						exitPublished={this.exitPublished}
+					/>
+				</View>
+			);
+		}
 	}
 }
 
