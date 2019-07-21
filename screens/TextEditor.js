@@ -74,6 +74,7 @@ class TextEditor extends Component {
 	}
 
 	render() {
+		let { prompt } = this.props.navigation.state.params;
 		let clock = this.state.isPublished ? null : (
 			<Clock remaining={this.getRemainingTime} reset={this.state.clockReset} />
 		);
@@ -82,6 +83,7 @@ class TextEditor extends Component {
 				<View style={styles.textContainer}>
 					<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
 					{clock}
+					<Text>{prompt}</Text>
 				</View>
 				<TextInput
 					style={styles.paragraph}

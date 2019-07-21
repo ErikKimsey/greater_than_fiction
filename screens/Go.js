@@ -11,7 +11,7 @@ export default class Go extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			prompt: [],
+			prompt: '',
 			instructions: '',
 			fontLoaded: false
 		};
@@ -38,6 +38,11 @@ export default class Go extends Component {
 		});
 	};
 
+	getPrompts = (prompts) => {
+		console.log(prompts);
+		this.setState({ prompt: prompts });
+	};
+
 	clearPromptArray = () => {
 		this.setState({ prompt: this.state.prompt.splice(0) });
 	};
@@ -51,7 +56,7 @@ export default class Go extends Component {
 							{this.state.instructions}
 						</Text>
 						<Text>Your prompt:</Text>
-						<Prompt />
+						<Prompt getPrompts={this.getPrompts} />
 						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.prompt ]} />
 						<Button
 							title="Go!"
