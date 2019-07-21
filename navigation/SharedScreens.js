@@ -5,24 +5,6 @@ import Landing from '../screens/Landing';
 import Go from '../screens/Go';
 
 const commonScreens = {
-	TextEditor: {
-		screen: TextEditor,
-		navigationOptions: {
-			header: null
-		}
-	},
-	Published: {
-		screen: Published,
-		navigationOptions: {
-			header: null
-		}
-	},
-	Landing: {
-		screen: Landing,
-		navigationOptions: {
-			header: null
-		}
-	},
 	Go: {
 		screen: Go,
 		navigationOptions: {
@@ -43,30 +25,39 @@ const commonScreens = {
 	}
 };
 
-const PublishedStack = createStackNavigator({
-	TextEditor: {
-		screen: TextEditor,
-		navigationOptions: {
-			header: null
+const LandingStack = createStackNavigator(
+	{
+		Landing: {
+			screen: Landing,
+			navigationOptions: {
+				header: null
+			}
+		},
+		Go: {
+			screen: Go,
+			navigationOptions: {
+				header: null
+			}
+		},
+		TextEditor: {
+			screen: TextEditor,
+			navigationOptions: {
+				header: null
+			}
+		},
+		Published: {
+			screen: Published,
+			navigationOptions: {
+				header: null
+			}
 		}
+		// ...commonScreens,
 	},
-	...commonScreens
-});
+	{
+		defaultNavigationOptions: {
+			unmountInactiveRoutes: true
+		}
+	}
+);
 
-const LandingStack = createStackNavigator({
-	TextEditor: {
-		screen: TextEditor,
-		navigationOptions: {
-			header: null
-		}
-	},
-	Landing: {
-		screen: Landing,
-		navigationOptions: {
-			header: null
-		}
-	},
-	...commonScreens
-});
-
-export { PublishedStack, LandingStack };
+export { LandingStack };

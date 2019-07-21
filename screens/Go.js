@@ -38,6 +38,10 @@ export default class Go extends Component {
 		});
 	};
 
+	clearPromptArray = () => {
+		this.setState({ prompt: this.state.prompt.splice(0) });
+	};
+
 	render() {
 		return (
 			<ImageBackground source={abstract} style={[ styles.container, { width: '100%', height: '100%' } ]}>

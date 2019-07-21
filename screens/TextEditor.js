@@ -16,7 +16,7 @@ class TextEditor extends Component {
 			previewImg: false,
 			imgURI: '',
 			author: '',
-			title: '',
+			title: ''
 		};
 	}
 
@@ -69,8 +69,6 @@ class TextEditor extends Component {
 	};
 
 	componentWillUnmount() {
-		console.log('unmounted');
-
 		this.resetClock();
 		this.handleClearInput();
 	}

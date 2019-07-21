@@ -3,9 +3,8 @@
  * As an argument, takes an array of strings.  It uses the array's length to randomize an index with which to create a new arrow of 3 strings.  That array is then joined into a single string to be displayed in the Prompt component.
  */
 
-const promptArr = [];
-
 function generatePrompt(werds) {
+	const promptArr = [];
 	for (let i = 0; i < 3; i++) {
 		let index = randomize(0, werdsLength(werds));
 		promptArr.push(werds[index]);

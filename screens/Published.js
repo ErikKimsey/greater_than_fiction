@@ -29,9 +29,7 @@ export default class Published extends Component {
 	});
 
 	exitPublished = () => {
-		// props.navigation.dispatch(StackActions.push('Landing'));
 		this.props.navigation.dispatch(this.resetAction);
-		// props.navigation.push('Landing');
 	};
 
 	_saveToCameraRollAsync = async () => {
@@ -40,7 +38,6 @@ export default class Published extends Component {
 			result: 'tmpfile'
 		});
 
-		console.log(result);
 		let saveResult = await CameraRoll.saveToCameraRoll(result, 'photo');
 
 		this.setState({ cameraRollUri: saveResult, saved: true });
