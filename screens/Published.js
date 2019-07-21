@@ -7,11 +7,13 @@ import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
 // import { Camera,  } from 'expo';
 import * as Permissions from 'expo-permissions';
 import * as MediaLibrary from 'expo-media-library';
+import PublishedButton from '../components/buttons/publishedButtons';
 
 export default class Published extends Component {
 	state = {
 		cameraRollUri: null,
-		hasCameraPermission: false
+		hasCameraPermission: false,
+		saved: false
 	};
 
 	async componentDidMount() {
@@ -28,7 +30,7 @@ export default class Published extends Component {
 
 	exitPublished = () => {
 		// props.navigation.dispatch(StackActions.push('Landing'));
-		props.navigation.dispatch(resetAction);
+		this.props.navigation.dispatch(this.resetAction);
 		// props.navigation.push('Landing');
 	};
 
@@ -59,21 +61,10 @@ export default class Published extends Component {
 						<Text style={styles.titleAuthor}>by {author}</Text>
 					</View>
 				</View>
-				<Button
-					title="Save"
-					onPress={() => {
-						this._saveToCameraRollAsync();
-					}}
-				/>
-				<Button
-					title="Exit"
-					onPress={() => {
-						this.exitPublished();
-					}}
-				/>
 				{this.state.cameraRollUri && (
 					<Image source={{ uri: this.state.cameraRollUri }} style={{ width: 200, height: 200 }} />
 				)}
+				<PublishedButton saved={this.state.saved} />
 			</View>
 		);
 	}
@@ -90,7 +81,7 @@ const styles = StyleSheet.create({
 	saveContainer: {
 		flex: 1,
 		justifyContent: 'flex-start',
-		padding: 50,
+		padding: 0,
 		alignItems: 'stretch',
 		backgroundColor: color.gray
 	},

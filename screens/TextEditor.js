@@ -12,11 +12,11 @@ class TextEditor extends Component {
 			text: '',
 			wordCount: 100,
 			isPublished: false,
-			imgURI: '',
+			clockReset: false,
 			previewImg: false,
+			imgURI: '',
 			author: '',
 			title: '',
-			clockReset: false
 		};
 	}
 
