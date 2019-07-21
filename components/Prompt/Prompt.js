@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { WERDS } from '../../assets/vocab/vocab';
-import { NavigationEvents } from 'react-navigation';
 import generatePrompt from '../../utilities/promptGenerator';
 
 /**
@@ -20,7 +19,6 @@ export default class Prompt extends Component {
 	render() {
 		return (
 			<View>
-				<NavigationEvents onDidBlur={() => this.setState({ prompt: this.state.prompt.splice() })} />
 				<Text>{this.state.prompt}</Text>
 			</View>
 		);

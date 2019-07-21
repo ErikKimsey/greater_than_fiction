@@ -1,11 +1,7 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { Button } from 'react-native';
 
 export default function PublishedButtons(props) {
-	console.log('btns props >>');
-
-	console.log(props);
-
 	const exitPublished = () => {
 		return props.exitPublished();
 	};
