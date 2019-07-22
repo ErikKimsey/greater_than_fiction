@@ -4,8 +4,6 @@ import { WERDS } from '../../assets/vocab/vocab';
 import generatePrompt from '../../utilities/promptGenerator';
 import color from '../../assets/globals/colors';
 
-const PromptContext = React.createContext();
-
 /**
  * GOAL: Return 3 random words in a component.
  */
@@ -35,7 +33,9 @@ export default class Prompt extends Component {
 const styles = StyleSheet.create({
 	text: {
 		marginTop: 10,
-		backgroundColor: color.softRed,
-		fontSize: 18
+		// backgroundColor: color.softRed,
+		color: color.softRed,
+		fontSize: 28,
+		fontWeight: '900'
 	}
 });
