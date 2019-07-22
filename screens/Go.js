@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, Button, ImageBackground, StyleSheet } from 'react-native';
 import abstract from '../assets/abstract.png';
 import color from '../assets/globals/colors';
-import axios from 'axios';
 import * as Font from 'expo-font';
 import goInstructions from '../assets/GoDialog';
 import Prompt from '../components/Prompt/Prompt';

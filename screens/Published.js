@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
 	publishedContainer: {
 		flex: 1,
 		justifyContent: 'flex-start',
-		padding: 50,
+		padding: 10,
 		margin: 0,
 		alignItems: 'stretch',
 		backgroundColor: color.gray
@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
 	viewImageContainer: {
 		flex: 1,
 		justifyContent: 'space-around',
-		alignItems: 'center'
+		alignItems: 'center',
+		backgroundColor: color.gray
 	},
 	image: {
 		// just
