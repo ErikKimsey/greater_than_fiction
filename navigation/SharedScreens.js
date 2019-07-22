@@ -50,8 +50,8 @@ const LandingStack = createStackNavigator(
 			navigationOptions: {
 				header: null
 			}
-		}
-		// ...commonScreens,
+		},
+		...commonScreens
 	},
 	{
 		defaultNavigationOptions: {

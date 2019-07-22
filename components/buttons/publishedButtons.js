@@ -10,7 +10,7 @@ export default function PublishedButtons(props) {
 		return props.saveToRoll();
 	};
 
-	if (!props.saved) {
+	if (props.saved === false) {
 		return (
 			<Button
 				title="Save"
@@ -19,7 +19,7 @@ export default function PublishedButtons(props) {
 				}}
 			/>
 		);
-	} else if (props.saved) {
+	} else if (props.saved === true) {
 		return (
 			<Button
 				title="Exit"

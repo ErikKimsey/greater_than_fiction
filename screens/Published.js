@@ -11,8 +11,7 @@ import PublishedButton from '../components/buttons/publishedButtons';
 
 const targetPixelCount = 1080; // If you want full HD pictures
 const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
-// pixels * pixelratio = targetPixelCount, so pixels = targetPixelCount / pixelRatio
-console.log(pixelRatio);
+// pixels * pixelratio = targetPixelCount, so pixels = targetPixelCount / pixelRati
 
 const pixels = targetPixelCount / pixelRatio;
 
@@ -20,14 +19,16 @@ export default class Published extends Component {
 	state = {
 		cameraRollUri: null,
 		hasCameraPermission: false,
-		saved: false
+		saved: false,
+		width: null,
+		height: null
 	};
 
 	async componentDidMount() {
 		const { status } = await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
-		console.log({ hasCameraPermission: status === 'granted' });
-
 		this.setState({ hasCameraPermission: status === 'granted' });
+		const { height, width } = this.props.navigation.state.params;
+		this.setState({ height, width });
 	}
 
 	resetAction = StackActions.reset({
@@ -43,8 +44,8 @@ export default class Published extends Component {
 		let result = await takeSnapshotAsync(this._container, {
 			format: 'png',
 			result: 'tmpfile',
-			height: pixels,
-			width: pixels / 1.5,
+			height: this.props.navigation.state.params.height,
+			width: this.props.navigation.state.params.width,
 			quality: 1
 		});
 
@@ -52,6 +53,13 @@ export default class Published extends Component {
 
 		this.setState({ cameraRollUri: saveResult, saved: true });
 	};
+
+	componentDidUpdate() {
+		console.log(this.state.saved);
+	}
+
+	setImageDimension = () => {};
+
 	render() {
 		const { text, title, author } = this.props.navigation.state.params;
 		if (!this.state.saved) {
@@ -81,11 +89,21 @@ export default class Published extends Component {
 			);
 		} else if (this.state.saved) {
 			return (
-				<View>
+				<View style={styles.viewImageContainer}>
 					{this.state.cameraRollUri && (
-						<Image source={{ uri: this.state.cameraRollUri }} style={{ width: 200, height: 900 }} />
+						<Image
+							source={{ uri: this.state.cameraRollUri }}
+							style={[
+								styles.image,
+								{
+									width: this.props.navigation.state.params.width * 0.8,
+									height: this.props.navigation.state.params.height * 0.8
+								}
+							]}
+						/>
 					)}
 					<PublishedButton
+						style={styles.publishedButton}
 						saved={this.state.saved}
 						saveToRoll={this._saveToCameraRollAsync}
 						exitPublished={this.exitPublished}
@@ -101,13 +119,15 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'flex-start',
 		padding: 50,
+		margin: 0,
 		alignItems: 'stretch',
 		backgroundColor: color.gray
 	},
 	saveContainer: {
 		flex: 1,
-		justifyContent: 'flex-start',
-		padding: 0,
+		justifyContent: 'center',
+		padding: 50,
+		margin: 20,
 		alignItems: 'stretch',
 		backgroundColor: color.gray
 	},
@@ -126,5 +146,17 @@ const styles = StyleSheet.create({
 	titleAuthor: {
 		color: color.softRed,
 		fontSize: 18
+	},
+	viewImageContainer: {
+		flex: 1,
+		justifyContent: 'space-around',
+		alignItems: 'center'
+	},
+	image: {
+		// just
+	},
+	publishedButton: {
+		height: 20,
+		width: 20
 	}
 });

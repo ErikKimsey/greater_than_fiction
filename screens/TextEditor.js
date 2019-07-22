@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Image, CameraRoll, KeyboardAvoidingView } from 'react-native';
+import {
+	View,
+	Text,
+	TextInput,
+	Button,
+	StyleSheet,
+	Image,
+	CameraRoll,
+	KeyboardAvoidingView,
+	Dimensions
+} from 'react-native';
 import { withNavigationFocus } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
@@ -16,19 +26,25 @@ class TextEditor extends Component {
 			previewImg: false,
 			imgURI: '',
 			author: '',
-			title: ''
+			title: '',
+			width: null,
+			height: null
 		};
 	}
 
 	componentDidMount() {
 		this.setState({ isPublished: false });
+		const { height, width } = Dimensions.get('window');
+		this.setState({ height: height, width: width });
 	}
 
 	onPressPublish = () => {
 		this.props.navigation.navigate('Published', {
 			text: this.state.text,
 			title: this.state.title,
-			author: this.state.author
+			author: this.state.author,
+			height: this.state.height,
+			width: this.state.width
 		});
 		this.closeFinal();
 		this.setState({ isPublished: false });

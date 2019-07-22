@@ -39,7 +39,6 @@ export default class Go extends Component {
 	};
 
 	getPrompts = (prompts) => {
-		console.log(prompts);
 		this.setState({ prompt: prompts });
 	};
 
