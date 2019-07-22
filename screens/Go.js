@@ -56,7 +56,7 @@ export default class Go extends Component {
 						</Text>
 						<Text>Your prompt:</Text>
 						<Prompt getPrompts={this.getPrompts} />
-						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.prompt ]} />
+						<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
 						<Button
 							title="Go!"
 							color={color.softRed}
@@ -74,34 +74,35 @@ export default class Go extends Component {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: color.gray,
-		flex: 1
+		flex: 1,
+		justifyContent: 'space-around',
+		alignItems: 'center'
 	},
 	subContainer: {
 		flex: 1,
 		padding: 10,
 		margin: 20,
 		top: 10,
-		backgroundColor: 'rgba(255,255,255,0.2)'
+		backgroundColor: 'rgba(255,255,255,0.2)',
+		justifyContent: 'space-around',
+		alignItems: 'center'
 	},
 	prompt: {
-		color: color.softRed,
+		color: '#ffffff',
 		marginTop: 10,
-		height: '30%',
 		// backgroundColor: color.softRed,
-		marginBottom: 10,
 		fontSize: 18
 	},
 	instructions: {
 		color: '#ffffff',
-		height: '40%',
 		// backgroundColor: color.softRed,
-		marginBottom: 10,
+		marginBottom: 0,
 		marginTop: 90,
 		fontSize: 18
 	},
 	button: {
 		color: color.softRed,
-		padding: 10
-		// marginBottom: 10
+		padding: 10,
+		marginBottom: 60
 	}
 });

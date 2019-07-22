@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { WERDS } from '../../assets/vocab/vocab';
 import generatePrompt from '../../utilities/promptGenerator';
+import color from '../../assets/globals/colors';
 
 const PromptContext = React.createContext();
 
@@ -27,6 +28,14 @@ export default class Prompt extends Component {
 	};
 
 	render() {
-		return <Text>{this.state.prompt}</Text>;
+		return <Text style={styles.text}>{this.state.prompt}</Text>;
 	}
 }
+
+const styles = StyleSheet.create({
+	text: {
+		marginTop: 10,
+		backgroundColor: color.softRed,
+		fontSize: 18
+	}
+});

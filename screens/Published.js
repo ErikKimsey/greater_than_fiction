@@ -154,6 +154,9 @@ const styles = StyleSheet.create({
 	},
 	image: {
 		// just
+		padding: 0,
+		margin: 0,
+		marginBottom: 40
 	},
 	publishedButton: {
 		height: 20,

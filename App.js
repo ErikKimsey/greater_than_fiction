@@ -8,12 +8,12 @@ const AppContainer = createAppContainer(LandingStack);
 export default class App extends Component {
 	render() {
 		return (
-			// <AppContainer
-			// 	ref={(navigatorRef) => {
-			// 		NavigationService.setTopLevelNav(navigatorRef);
-			// 	}}
-			// />
-			<AppContainer />
+			<AppContainer
+				ref={(navigatorRef) => {
+					NavigationService.setTopLevelNav(navigatorRef);
+				}}
+			/>
+			// <AppContainer />
 		);
 	}
 }
