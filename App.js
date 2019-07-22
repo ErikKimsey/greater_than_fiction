@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { createAppContainer } from 'react-navigation';
-import Navigator from './navigation/Material';
+import { LandingStack } from './navigation/SharedScreens';
 import NavigationService from './navigation/NavigationService';
 
-const AppContainer = createAppContainer(Navigator);
+const AppContainer = createAppContainer(LandingStack);
 
 export default class App extends Component {
 	render() {
 		return (
-			<AppContainer
-				ref={(navigatorRef) => {
-					NavigationService.setTopLevelNav(navigatorRef);
-				}}
-			/>
+			// <AppContainer
+			// 	ref={(navigatorRef) => {
+			// 		NavigationService.setTopLevelNav(navigatorRef);
+			// 	}}
+			// />
+			<AppContainer />
 		);
 	}
 }

@@ -54,6 +54,7 @@ const LandingStack = createStackNavigator(
 		...commonScreens
 	},
 	{
+		initialRoute: 'Landing',
 		defaultNavigationOptions: {
 			unmountInactiveRoutes: true
 		}

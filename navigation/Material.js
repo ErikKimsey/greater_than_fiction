@@ -4,10 +4,9 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import { Ionicons } from '@expo/vector-icons';
 
 import color from '../assets/globals/colors';
-import Landing from '../screens/Landing';
 import About from '../screens/About';
 
-import { PublishedStack, LandingStack } from './SharedScreens';
+import { LandingStack } from './SharedScreens';
 
 export default (Material = createMaterialBottomTabNavigator(
 	{
