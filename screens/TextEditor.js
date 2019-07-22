@@ -1,15 +1,5 @@
 import React, { Component } from 'react';
-import {
-	View,
-	Text,
-	TextInput,
-	Button,
-	StyleSheet,
-	Image,
-	CameraRoll,
-	KeyboardAvoidingView,
-	Dimensions
-} from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, KeyboardAvoidingView, Dimensions } from 'react-native';
 import { withNavigationFocus } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';

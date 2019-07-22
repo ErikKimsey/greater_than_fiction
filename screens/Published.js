@@ -2,18 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, Image, CameraRoll, PixelRatio } from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
 import color from '../assets/globals/colors';
-// import { PixelRatio } from 'expo';
 import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
-// import { Camera,  } from 'expo';
 import * as Permissions from 'expo-permissions';
-import * as MediaLibrary from 'expo-media-library';
 import PublishedButton from '../components/buttons/publishedButtons';
-
-const targetPixelCount = 1080; // If you want full HD pictures
-const pixelRatio = PixelRatio.get(); // The pixel ratio of the device
-// pixels * pixelratio = targetPixelCount, so pixels = targetPixelCount / pixelRati
-
-const pixels = targetPixelCount / pixelRatio;
 
 export default class Published extends Component {
 	state = {
@@ -50,7 +41,6 @@ export default class Published extends Component {
 		});
 
 		let saveResult = await CameraRoll.saveToCameraRoll(result, 'photo');
-
 		this.setState({ cameraRollUri: saveResult, saved: true });
 	};
 

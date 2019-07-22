@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import { WERDS } from '../../assets/vocab/vocab';
 import generatePrompt from '../../utilities/promptGenerator';
 import color from '../../assets/globals/colors';
