@@ -99,7 +99,7 @@ class TextEditor extends Component {
 				<View style={styles.textContainer}>
 					<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
 					{clock}
-					<Text>{prompt}</Text>
+					<Text style={styles.prompt}>Prompt: {prompt}</Text>
 				</View>
 				<TextInput
 					style={styles.paragraph}
@@ -129,10 +129,10 @@ class TextEditor extends Component {
 				/>
 				<View style={styles.buttonContainer}>
 					<Button
-						style={styles.button}
+						style={[ styles.button ]}
 						onPress={this.onPressPublish}
 						title="Publish"
-						color="#000000"
+						color={color.softRed}
 						accessibilityLabel="Publish"
 					/>
 				</View>
@@ -164,13 +164,13 @@ const styles = StyleSheet.create({
 		margin: 5
 	},
 	textContainer: {
-		flexDirection: 'column'
+		flexDirection: 'column',
+		paddingLeft: 10
 	},
 	count: {
 		color: color.softRed,
 		fontWeight: '900',
-		fontSize: 20,
-		paddingLeft: 10
+		fontSize: 20
 	},
 	final: {
 		fontWeight: '900',
@@ -182,7 +182,8 @@ const styles = StyleSheet.create({
 	},
 	button: {
 		paddingTop: 100,
-		paddingBottom: 100
+		paddingBottom: 100,
+		backgroundColor: color.softRed
 	},
 	titleAuthor: {
 		margin: 5,
@@ -194,10 +195,14 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		borderColor: color.softRed,
 		backgroundColor: color.gray,
-		borderWidth: 1,
+		borderWidth: 2,
 		paddingTop: 5,
 		paddingLeft: 10,
 		color: color.softRed
+	},
+	prompt: {
+		color: '#ffffff',
+		fontWeight: '900'
 	}
 });
 

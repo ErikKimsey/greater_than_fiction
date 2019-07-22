@@ -54,12 +54,6 @@ export default class Published extends Component {
 		this.setState({ cameraRollUri: saveResult, saved: true });
 	};
 
-	componentDidUpdate() {
-		console.log(this.state.saved);
-	}
-
-	setImageDimension = () => {};
-
 	render() {
 		const { text, title, author } = this.props.navigation.state.params;
 		if (!this.state.saved) {
@@ -77,9 +71,6 @@ export default class Published extends Component {
 							<Text style={styles.titleAuthor}>by {author}</Text>
 						</View>
 					</View>
-					{/* {this.state.cameraRollUri && (
-						<Image source={{ uri: this.state.cameraRollUri }} style={{ width: 200, height: 200 }} />
-					)} */}
 					<PublishedButton
 						saved={this.state.saved}
 						saveToRoll={this._saveToCameraRollAsync}
@@ -96,14 +87,13 @@ export default class Published extends Component {
 							style={[
 								styles.image,
 								{
-									width: this.props.navigation.state.params.width * 0.8,
+									width: this.props.navigation.state.params.width * 0.7,
 									height: this.props.navigation.state.params.height * 0.8
 								}
 							]}
 						/>
 					)}
 					<PublishedButton
-						style={styles.publishedButton}
 						saved={this.state.saved}
 						saveToRoll={this._saveToCameraRollAsync}
 						exitPublished={this.exitPublished}

@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
 	},
 	subContainer: {
 		flex: 1,
-		padding: 10,
+		padding: 30,
 		margin: 20,
 		top: 10,
 		backgroundColor: 'rgba(255,255,255,0.2)',
@@ -89,19 +89,16 @@ const styles = StyleSheet.create({
 	},
 	prompt: {
 		color: '#ffffff',
-		// marginTop: 10,
-		// backgroundColor: color.softRed,
 		fontSize: 18
 	},
 	instructions: {
 		color: '#ffffff',
-		// backgroundColor: color.softRed,
 		marginBottom: 0,
 		marginTop: 90,
 		fontSize: 22
 	},
 	button: {
 		color: color.softRed,
-		marginBottom: 60
+		marginBottom: 80
 	}
 });

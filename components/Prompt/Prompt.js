@@ -33,7 +33,6 @@ export default class Prompt extends Component {
 const styles = StyleSheet.create({
 	text: {
 		marginTop: 10,
-		// backgroundColor: color.softRed,
 		color: color.softRed,
 		fontSize: 28,
 		fontWeight: '900'
