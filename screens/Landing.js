@@ -23,7 +23,7 @@ export default class Landing extends Component {
 		});
 		this.setState({ fontLoaded: true });
 		const gyro = new DynamicBackground();
-		console.log(gyro.checkGyroAccess());
+		gyro.checkGyroAccess();
 	}
 
 	handleGo = () => {
