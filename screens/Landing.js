@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ImageBackground, Button } from 'react-native';
 import * as Font from 'expo-font';
+import DynamicBackground from '../utilities/dynamicBackground';
 
 import color from '../assets/globals/colors';
 import { fontList } from '../assets/fonts/retrieveFonts';
@@ -21,6 +22,8 @@ export default class Landing extends Component {
 			slukoni: require('../assets/fonts/Slukoni.otf')
 		});
 		this.setState({ fontLoaded: true });
+		const gyro = new DynamicBackground();
+		console.log(gyro.checkGyroAccess());
 	}
 
 	handleGo = () => {
