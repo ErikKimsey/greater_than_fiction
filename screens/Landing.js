@@ -5,6 +5,8 @@ import * as Font from 'expo-font';
 import color from '../assets/globals/colors';
 import { fontList } from '../assets/fonts/retrieveFonts';
 
+import { BackgroundStyles } from '../stylesheets/backgroundStyleSheet';
+
 export default class Landing extends Component {
 	state = {
 		fontLoaded: false
@@ -21,6 +23,9 @@ export default class Landing extends Component {
 			slukoni: require('../assets/fonts/Slukoni.otf')
 		});
 		this.setState({ fontLoaded: true });
+		console.log(BackgroundStyles(200));
+
+		// BackgroundStyles().backgroundContainer.logProps(200);
 	}
 
 	handleGo = () => {
