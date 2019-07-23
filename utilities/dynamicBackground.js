@@ -1,10 +1,9 @@
 import { Gyroscope } from 'expo-sensors';
 
-class DynamicBackground {
+class GyroScope {
 	constructor() {}
 
 	async checkGyroAccess() {
-		console.log('checking access');
 		if (await Gyroscope.isAvailableAsync()) {
 			this.initGyroListener();
 		} else {
@@ -13,18 +12,17 @@ class DynamicBackground {
 	}
 
 	async initGyroListener() {
-		console.log('adding listener');
 		await Gyroscope.addListener((result) => {
-			console.log('result');
-			console.log(result);
+			this.getGyroData(result);
 		});
 	}
 
 	getGyroData(res) {
+		console.log('result in getGyroData');
 		console.log(res);
 	}
 
 	removeGyroListener() {}
 }
 
-export default DynamicBackground;
+export default GyroScope;
