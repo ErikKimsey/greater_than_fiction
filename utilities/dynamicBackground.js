@@ -1,7 +1,9 @@
 import { Gyroscope } from 'expo-sensors';
 
 class GyroScope {
-	constructor() {}
+	constructor() {
+		gyroData: null;
+	}
 
 	async checkGyroAccess() {
 		if (await Gyroscope.isAvailableAsync()) {
@@ -13,13 +15,18 @@ class GyroScope {
 
 	async initGyroListener() {
 		await Gyroscope.addListener((result) => {
-			this.getGyroData(result);
+			this.setGyroData(result);
 		});
 	}
 
-	getGyroData(res) {
-		console.log('result in getGyroData');
+	setGyroData(res) {
+		// console.log('result in getGyroData');
 		console.log(res);
+		this.gyroData = res;
+	}
+
+	getGyroData() {
+		return this.gyroData;
 	}
 
 	removeGyroListener() {}

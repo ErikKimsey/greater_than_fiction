@@ -6,6 +6,7 @@ import color from '../assets/globals/colors';
 import { fontList } from '../assets/fonts/retrieveFonts';
 
 import { BackgroundStyles } from '../stylesheets/backgroundStyleSheet';
+import { initGyro, getGyroData } from '../utilities/gyroColorMapping';
 
 export default class Landing extends Component {
 	state = {
@@ -24,6 +25,9 @@ export default class Landing extends Component {
 		});
 		this.setState({ fontLoaded: true });
 		console.log(BackgroundStyles(200));
+		console.log('initing gyro from Landing');
+		console.log(initGyro());
+		console.log(getGyroData());
 
 		// BackgroundStyles().backgroundContainer.logProps(200);
 	}

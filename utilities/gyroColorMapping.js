@@ -1,4 +1,4 @@
-import GyroScrope from '../utilities/dynamicBackground';
+import GyroScope from '../utilities/dynamicBackground';
 
 const RGBValues = {
 	r: 111,
@@ -12,14 +12,24 @@ const XYZValues = {
 	z: 0
 };
 
+let gyro = null;
+
 const colors = {
 	color_1: `rgb(${RGBValues.r},${RGBValues.g},${RGBValues.b})`,
 	color_2: `rgb(${RGBValues.r},${RGBValues.g},${RGBValues.b})`
 };
 
-const setAxisVals = (axisObj) => {
-  
+const initGyro = () => {
+	gyro = new GyroScope();
+	gyro.checkGyroAccess();
+	console.log('initing gyro in colorMapping');
 };
+
+const getGyroData = () => {
+	console.log(gyro.gyroData);
+};
+
+const setAxisVals = (axisObj) => {};
 
 const colorMapping = (data) => {
 	console.log('Color data >> ');
@@ -52,7 +62,7 @@ const mapAxisToRGBLimit = (axisVal, rgbVal) => {};
 
 const checkBounds = () => {};
 
-p5.prototype.map = function(incoming, lowerCurent, upperCurrent, lowerTarget, upperTarget, withinBoundsBool) {
+const map = function(incoming, lowerCurent, upperCurrent, lowerTarget, upperTarget, withinBoundsBool) {
 	const newval =
 		(incoming - lowerCurent) / (upperCurrent - lowerCurent) * (upperTarget - upperCurrent) + upperCurrent;
 	if (!withinBounds) {
@@ -68,3 +78,5 @@ p5.prototype.map = function(incoming, lowerCurent, upperCurrent, lowerTarget, up
 const constrain = function(incoming, lowLimit, highLimit) {
 	return Math.max(Math.min(n, high), low);
 };
+
+export { initGyro, getGyroData };
