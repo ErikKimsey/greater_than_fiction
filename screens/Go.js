@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, Button, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
 import brainbulb from '../assets/fibo.png';
 import color from '../assets/globals/colors';
 import * as Font from 'expo-font';
@@ -63,12 +63,13 @@ export default class Go extends Component {
 						<Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
 						<Prompt getPrompts={this.getPrompts} />
 						<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
-						<Button
-							title="Go!"
-							color={color.Gray}
+						<TouchableOpacity
+							style={styles.button}
 							onPress={this.onPressGo}
 							accessibilityLabel="Go, write!"
-						/>
+						>
+							<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Go!</Text>
+						</TouchableOpacity>
 					</View>
 				) : null}
 			</ImageBackground>
@@ -96,8 +97,8 @@ const styles = StyleSheet.create({
 		color: color.Yellow,
 		fontSize: 52,
 		textAlign: 'center',
-		alignItems: 'center',
-		marginTop: 30
+		alignItems: 'center'
+		// marginTop: 30
 	},
 	instructions: {
 		width: 333,
@@ -111,9 +112,16 @@ const styles = StyleSheet.create({
 		textAlign: 'left'
 	},
 	button: {
-		color: color.Gray,
-		marginBottom: 80,
+		// position: 'absolute',
+		alignItems: 'center',
+		backgroundColor: color.Gray,
+		// marginBottom: 10,
 		paddingLeft: 50,
 		paddingRight: 50
+	},
+	buttonText: {
+		color: color.Yellow,
+		fontSize: 18,
+		padding: 10
 	}
 });
