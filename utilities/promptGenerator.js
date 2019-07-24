@@ -7,7 +7,13 @@ function generatePrompt(werds) {
 	const promptArr = [];
 	for (let i = 0; i < 3; i++) {
 		let index = randomize(0, werdsLength(werds));
-		promptArr.push(werds[index]);
+		if (werds[index] === '' || werds[index] === ' ') {
+			return generatePrompt(werds);
+		} else if (findDuplicates(werds, index) === true) {
+			return generatePrompt(werds);
+		} else {
+			promptArr.push(werds[index]);
+		}
 	}
 	return createPromptString(promptArr);
 }
@@ -19,6 +25,18 @@ function createPromptString(arr) {
 function werdsLength(werds) {
 	if (werds) {
 		return werds.length;
+	}
+}
+
+function findDuplicates(werds, index) {
+	if (index > 0) {
+		for (let werd in werds) {
+			if (werd === --index) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 }
 
