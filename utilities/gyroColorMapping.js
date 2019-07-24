@@ -22,18 +22,17 @@ const colors = {
 const initGyro = () => {
 	gyro = new GyroScope();
 	gyro.checkGyroAccess();
-	console.log('initing gyro in colorMapping');
 };
 
 const getGyroData = () => {
-	console.log(gyro.gyroData);
+	// console.log(gyro.gyroData);
 };
 
 const setAxisVals = (axisObj) => {};
 
 const colorMapping = (data) => {
-	console.log('Color data >> ');
-	console.log(data);
+	// console.log('Color data >> ');
+	// console.log(data);
 };
 
 const mapAxisToRGBLimit = (axisVal, rgbVal) => {};

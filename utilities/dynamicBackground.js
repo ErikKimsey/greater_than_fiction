@@ -20,8 +20,6 @@ class GyroScope {
 	}
 
 	setGyroData(res) {
-		// console.log('result in getGyroData');
-		console.log(res);
 		this.gyroData = res;
 	}
 

@@ -24,10 +24,10 @@ export default class Landing extends Component {
 			slukoni: require('../assets/fonts/Slukoni.otf')
 		});
 		this.setState({ fontLoaded: true });
-		console.log(BackgroundStyles(200));
-		console.log('initing gyro from Landing');
-		console.log(initGyro());
-		console.log(getGyroData());
+		// console.log(BackgroundStyles(200));
+		// console.log('initing gyro from Landing');
+		// console.log(initGyro());
+		// console.log(getGyroData());
 
 		// BackgroundStyles().backgroundContainer.logProps(200);
 	}
