@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
-import brainbulb from '../assets/up_arrows.png';
+import brainbulb from '../assets/zipper.jpg';
 import color from '../assets/globals/colors';
 import * as Font from 'expo-font';
 import goInstructions from '../assets/GoDialog';

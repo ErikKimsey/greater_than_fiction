@@ -7,7 +7,12 @@ import { fontList } from '../assets/fonts/retrieveFonts';
 
 import { BackgroundStyles } from '../stylesheets/backgroundStyleSheet';
 import { initGyro, getGyroData } from '../utilities/gyroColorMapping';
-import brainbulb from '../assets/up_arrows.png';
+import brainbulb from '../assets/brain_bulb.png';
+// import brainbulb from '../assets/pen_notebook.jpg';
+// import brainbulb from '../assets/notebook.jpg';
+// import brainbulb from '../assets/typewriter.jpg';
+// import brainbulb from '../assets/burroughs.jpg';
+// import brainbulb from '../assets/zipper.jpg';
 
 export default class Landing extends Component {
 	state = {
