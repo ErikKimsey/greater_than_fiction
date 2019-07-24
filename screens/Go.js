@@ -49,29 +49,28 @@ export default class Go extends Component {
 		return (
 			<ImageBackground
 				source={brainbulb}
-				style={[
-					styles.container,
-					styles.image,
-					{ width: '100%', height: '100%', backgroundColor: color.Plum }
-				]}
+				style={[ { width: '100%', height: '100%', backgroundColor: color.Gray } ]}
 			>
-				{this.state.fontLoaded ? (
-					<View style={styles.subContainer}>
-						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.instructions ]}>
-							{this.state.instructions}
-						</Text>
-						<Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
-						<Prompt getPrompts={this.getPrompts} />
-						<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
-						<TouchableOpacity
-							style={styles.button}
-							onPress={this.onPressGo}
-							accessibilityLabel="Go, write!"
-						>
-							<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Go!</Text>
-						</TouchableOpacity>
-					</View>
-				) : null}
+				<View style={styles.container}>
+					{this.state.fontLoaded ? (
+						<View>
+							<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.instructions ]}>
+								{this.state.instructions}
+							</Text>
+							<Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
+							<Prompt getPrompts={this.getPrompts} />
+							<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
+							<TouchableOpacity
+								style={styles.button}
+								onPress={this.onPressGo}
+								activeOpacity={0.8}
+								accessibilityLabel="Go, write!"
+							>
+								<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Go!</Text>
+							</TouchableOpacity>
+						</View>
+					) : null}
+				</View>
 			</ImageBackground>
 		);
 	}
@@ -79,20 +78,19 @@ export default class Go extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: color.Plum,
 		flex: 1,
-		justifyContent: 'space-around',
-		alignItems: 'center'
-	},
-	image: {},
-	subContainer: {
-		flex: 1,
-		padding: 16,
-		margin: 2,
-		top: 3,
+		alignItems: 'center',
 		justifyContent: 'center',
-		alignItems: 'stretch'
+		padding: 20
 	},
+	// subContainer: {
+	// 	// flex: 1,
+	// 	padding: 16,
+	// 	margin: 2,
+	// 	top: 3,
+	// 	justifyContent: 'space-between',
+	// 	alignItems: 'stretch'
+	// },
 	prompt: {
 		color: color.Yellow,
 		fontSize: 52,
@@ -101,12 +99,13 @@ const styles = StyleSheet.create({
 		// marginTop: 30
 	},
 	instructions: {
-		width: 333,
+		width: 377,
 		color: '#ffffff',
 		color: color.Gold,
 		lineHeight: 24,
 		marginBottom: 0,
 		marginTop: 0,
+		padding: 16,
 		top: 10,
 		fontSize: 20,
 		textAlign: 'left'
@@ -114,13 +113,14 @@ const styles = StyleSheet.create({
 	button: {
 		// position: 'absolute',
 		alignItems: 'center',
-		backgroundColor: color.Gray,
+		backgroundColor: color.softRed,
 		// marginBottom: 10,
+		bottom: 0,
 		paddingLeft: 50,
 		paddingRight: 50
 	},
 	buttonText: {
-		color: color.Yellow,
+		color: color.Gold,
 		fontSize: 18,
 		padding: 10
 	}

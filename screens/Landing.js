@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Button } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Button, TouchableOpacity } from 'react-native';
 import * as Font from 'expo-font';
 
 import color from '../assets/globals/colors';
@@ -50,17 +50,26 @@ export default class Landing extends Component {
 								W3rds
 							</Text>
 							<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
-								Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill creative-block.
+								Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill
+								creative-block.
 							</Text>
 							{/* <Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
 								Your Goal: {'\n'} Break your block in 100 words {'\n'} and 5 minutes.
 							</Text> */}
-							<Button
+							<TouchableOpacity
+								style={styles.button}
+								onPress={this.handleGo}
+								activeOpacity={0.8}
+								accessibilityLabel="Go, write!"
+							>
+								<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
+							</TouchableOpacity>
+							{/* <Button
 								title="Get set..."
 								onPress={this.handleGo}
 								color={color.Plum}
 								accessibilityLabel="Go, write!"
-							/>
+							/> */}
 						</View>
 					) : null}
 				</View>
@@ -111,5 +120,19 @@ const styles = StyleSheet.create({
 		fontSize: 24,
 		color: color.Gold,
 		paddingBottom: 10
+	},
+	button: {
+		// position: 'absolute',
+		alignItems: 'center',
+		backgroundColor: color.softRed,
+		// marginBottom: 10,
+		paddingLeft: 50,
+		paddingRight: 50,
+		bottom: 0
+	},
+	buttonText: {
+		color: color.Gold,
+		fontSize: 18,
+		padding: 10
 	}
 });
