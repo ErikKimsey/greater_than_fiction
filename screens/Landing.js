@@ -7,6 +7,7 @@ import { fontList } from '../assets/fonts/retrieveFonts';
 
 import { BackgroundStyles } from '../stylesheets/backgroundStyleSheet';
 import { initGyro, getGyroData } from '../utilities/gyroColorMapping';
+import brainbulb from '../assets/fibo.png';
 
 export default class Landing extends Component {
 	state = {
@@ -38,30 +39,32 @@ export default class Landing extends Component {
 
 	render() {
 		return (
-			// <ImageBackground source={bkgrd} style={styles.image}>
-			<View style={styles.container}>
-				{this.state.fontLoaded ? (
-					<View>
-						<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>100</Text>
-						<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
-							W3rds
-						</Text>
-						<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
-							Scientifically proven, by SoftBodySocial Inc. (on stimulants), to kill creative-block.
-						</Text>
-						<Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
-							Your Goal: {'\n'}Tell a story in 100 words {'\n'} and 5 minutes.
-						</Text>
-						<Button
-							title="Get set..."
-							onPress={this.handleGo}
-							color={color.Plum}
-							accessibilityLabel="Go, write!"
-						/>
-					</View>
-				) : null}
-			</View>
-			// </ImageBackground>
+			<ImageBackground source={brainbulb} style={[ styles.image, { width: '100%', height: '100%' } ]}>
+				<View style={styles.container}>
+					{this.state.fontLoaded ? (
+						<View>
+							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>
+								100
+							</Text>
+							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
+								W3rds
+							</Text>
+							<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
+								Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill creative-block.
+							</Text>
+							{/* <Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
+								Your Goal: {'\n'} Break your block in 100 words {'\n'} and 5 minutes.
+							</Text> */}
+							<Button
+								title="Get set..."
+								onPress={this.handleGo}
+								color={color.Plum}
+								accessibilityLabel="Go, write!"
+							/>
+						</View>
+					) : null}
+				</View>
+			</ImageBackground>
 		);
 	}
 }
@@ -69,13 +72,16 @@ export default class Landing extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: color.Gray,
+		// backgroundColor: color.Gray,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
 	image: {
-		zIndex: -1,
-		backgroundColor: color.gray
+		// zIndex: -1
+		// backgroundColor: color.gray
+		// transform: 'rotate(30deg)'
+		width: '50%',
+		backgroundColor: color.Gray
 	},
 	header100: {
 		textAlign: 'center',

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 import { WERDS } from '../../assets/vocab/vocab';
+import * as Font from 'expo-font';
 import generatePrompt from '../../utilities/promptGenerator';
 import color from '../../assets/globals/colors';
 
@@ -10,10 +11,22 @@ import color from '../../assets/globals/colors';
 export default class Prompt extends Component {
 	state = {
 		werds: WERDS,
-		prompt: []
+		prompt: [],
+		fontLoaded: false
 	};
 
-	componentWillMount() {
+	async componentWillMount() {
+		await Font.loadAsync({
+			'lemon-milk': require('../../assets/fonts/LemonMilk.otf'),
+			dayrom: require('../../assets/fonts/DAYROM.ttf'),
+			painterz: require('../../assets/fonts/Painterz.ttf'),
+			cubesity: require('../../assets/fonts/cubesity.ttf'),
+			fatC: require('../../assets/fonts/FatC.ttf'),
+			fatCat: require('../../assets/fonts/FatCat.ttf'),
+			slukoni: require('../../assets/fonts/Slukoni.otf')
+		});
+
+		this.setState({ fontLoaded: true });
 		this.setState({ prompt: generatePrompt(this.state.werds) });
 	}
 
@@ -26,15 +39,26 @@ export default class Prompt extends Component {
 	};
 
 	render() {
-		return <Text style={styles.text}>{this.state.prompt}</Text>;
+		return (
+			<View style={styles.promptContainer}>
+				{this.state.fontLoaded ? (
+					<Text style={[ styles.text, { fontFamily: 'lemon-milk' } ]}>{this.state.prompt}</Text>
+				) : null}
+			</View>
+		);
 	}
 }
 
 const styles = StyleSheet.create({
+	promptContainer: {
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'stretch',
+		padding: 10,
+		margin: 12
+	},
 	text: {
-		marginTop: 10,
 		color: color.softRed,
-		fontSize: 28,
-		fontWeight: '900'
+		fontSize: 48
 	}
 });

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button, ImageBackground, StyleSheet } from 'react-native';
-import abstract from '../assets/abstract.png';
+import brainbulb from '../assets/fibo.png';
 import color from '../assets/globals/colors';
 import * as Font from 'expo-font';
 import goInstructions from '../assets/GoDialog';
@@ -47,18 +47,25 @@ export default class Go extends Component {
 
 	render() {
 		return (
-			<ImageBackground source={abstract} style={[ styles.container, { width: '100%', height: '100%' } ]}>
+			<ImageBackground
+				source={brainbulb}
+				style={[
+					styles.container,
+					styles.image,
+					{ width: '100%', height: '100%', backgroundColor: color.Plum }
+				]}
+			>
 				{this.state.fontLoaded ? (
 					<View style={styles.subContainer}>
 						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.instructions ]}>
 							{this.state.instructions}
 						</Text>
-						<Text style={[ styles.prompt, { fontFamily: 'lemon-milk' } ]}>Your prompt:</Text>
+						<Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
 						<Prompt getPrompts={this.getPrompts} />
 						<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
 						<Button
 							title="Go!"
-							color={color.Plum}
+							color={color.Gray}
 							onPress={this.onPressGo}
 							accessibilityLabel="Go, write!"
 						/>
@@ -71,35 +78,40 @@ export default class Go extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: color.Yellow,
+		backgroundColor: color.Plum,
 		flex: 1,
 		justifyContent: 'space-around',
 		alignItems: 'center'
 	},
+	image: {},
 	subContainer: {
 		flex: 1,
-		padding: 30,
-		margin: 30,
-		top: 10,
-		// backgroundColor: 'rgba(255,255,255,0.1)',
-		justifyContent: 'space-around',
-		alignItems: 'center'
+		padding: 16,
+		margin: 2,
+		top: 3,
+		justifyContent: 'center',
+		alignItems: 'stretch'
 	},
 	prompt: {
-		color: '#ffffff',
-		color: color.Plum,
-		fontSize: 18
+		color: color.Yellow,
+		fontSize: 52,
+		textAlign: 'center',
+		alignItems: 'center',
+		marginTop: 30
 	},
 	instructions: {
+		width: 333,
 		color: '#ffffff',
-		color: color.gray,
+		color: color.Gold,
+		lineHeight: 24,
 		marginBottom: 0,
-		marginTop: 90,
-		fontSize: 22,
-		textAlign: 'center'
+		marginTop: 0,
+		top: 10,
+		fontSize: 20,
+		textAlign: 'left'
 	},
 	button: {
-		color: color.Plum,
+		color: color.Gray,
 		marginBottom: 80,
 		paddingLeft: 50,
 		paddingRight: 50
