@@ -7,7 +7,7 @@ import { fontList } from '../assets/fonts/retrieveFonts';
 
 import { BackgroundStyles } from '../stylesheets/backgroundStyleSheet';
 import { initGyro, getGyroData } from '../utilities/gyroColorMapping';
-import brainbulb from '../assets/fibo.png';
+import brainbulb from '../assets/up_arrows.png';
 
 export default class Landing extends Component {
 	state = {
@@ -39,31 +39,35 @@ export default class Landing extends Component {
 
 	render() {
 		return (
-			<ImageBackground source={brainbulb} style={[ styles.image, { width: '100%', height: '100%' } ]}>
+			<ImageBackground source={brainbulb} style={[ styles.image, { width: '100%', height: '120%' } ]}>
 				<View style={styles.container}>
 					{this.state.fontLoaded ? (
 						<View>
-							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>
-								100
-							</Text>
-							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
-								W3rds
-							</Text>
-							<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
-								Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill
-								creative-block.
-							</Text>
-							{/* <Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
+							<View>
+								<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>
+									100
+								</Text>
+								<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
+									W3rds
+								</Text>
+								<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
+									Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill
+									creative-block.
+								</Text>
+								{/* <Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
 								Your Goal: {'\n'} Break your block in 100 words {'\n'} and 5 minutes.
 							</Text> */}
-							<TouchableOpacity
-								style={styles.button}
-								onPress={this.handleGo}
-								activeOpacity={0.8}
-								accessibilityLabel="Go, write!"
-							>
-								<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
-							</TouchableOpacity>
+							</View>
+							<View style={styles.buttonContainer}>
+								<TouchableOpacity
+									style={styles.button}
+									onPress={this.handleGo}
+									activeOpacity={0.8}
+									accessibilityLabel="Go, write!"
+								>
+									<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
+								</TouchableOpacity>
+							</View>
 							{/* <Button
 								title="Get set..."
 								onPress={this.handleGo}
@@ -79,18 +83,15 @@ export default class Landing extends Component {
 }
 
 const styles = StyleSheet.create({
+	image: {
+		backgroundColor: color.Gray
+	},
 	container: {
 		flex: 1,
-		// backgroundColor: color.Gray,
+		height: 400,
+		// backgroundColor: color.Gold,
 		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	image: {
-		// zIndex: -1
-		// backgroundColor: color.gray
-		// transform: 'rotate(30deg)'
-		width: '50%',
-		backgroundColor: color.Gray
+		justifyContent: 'space-around'
 	},
 	header100: {
 		textAlign: 'center',
@@ -112,14 +113,15 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		color: color.Gold,
 		padding: 16,
-		opacity: 0.8
-		// marginBottom: 10
+		opacity: 0.8,
+		marginBottom: 100
 	},
-	subHeader_2: {
-		textAlign: 'center',
-		fontSize: 24,
-		color: color.Gold,
-		paddingBottom: 10
+	buttonContainer: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		position: 'absolute',
+		bottom: 0,
+		width: '90%'
 	},
 	button: {
 		// position: 'absolute',

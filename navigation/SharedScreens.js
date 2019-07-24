@@ -27,14 +27,14 @@ const commonScreens = {
 
 const LandingStack = createStackNavigator(
 	{
-		Go: {
-			screen: Go,
+		Landing: {
+			screen: Landing,
 			navigationOptions: {
 				header: null
 			}
 		},
-		Landing: {
-			screen: Landing,
+		Go: {
+			screen: Go,
 			navigationOptions: {
 				header: null
 			}
@@ -54,7 +54,7 @@ const LandingStack = createStackNavigator(
 		...commonScreens
 	},
 	{
-		initialRoute: 'Go',
+		initialRoute: 'Landing',
 		defaultNavigationOptions: {
 			unmountInactiveRoutes: true
 		}

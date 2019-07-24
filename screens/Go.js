@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
-import brainbulb from '../assets/fibo.png';
+import brainbulb from '../assets/up_arrows.png';
 import color from '../assets/globals/colors';
 import * as Font from 'expo-font';
 import goInstructions from '../assets/GoDialog';
@@ -49,25 +49,31 @@ export default class Go extends Component {
 		return (
 			<ImageBackground
 				source={brainbulb}
-				style={[ { width: '100%', height: '100%', backgroundColor: color.Gray } ]}
+				style={[ { width: '100%', height: '120%', backgroundColor: color.Gray } ]}
 			>
 				<View style={styles.container}>
 					{this.state.fontLoaded ? (
 						<View>
-							<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.instructions ]}>
-								{this.state.instructions}
-							</Text>
-							<Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
-							<Prompt getPrompts={this.getPrompts} />
-							<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
-							<TouchableOpacity
-								style={styles.button}
-								onPress={this.onPressGo}
-								activeOpacity={0.8}
-								accessibilityLabel="Go, write!"
-							>
-								<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Go!</Text>
-							</TouchableOpacity>
+							<View>
+								<Text
+									style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.instructions ]}
+								>
+									{this.state.instructions}
+								</Text>
+								<Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
+								<Prompt getPrompts={this.getPrompts} />
+								<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
+							</View>
+							<View style={styles.buttonContainer}>
+								<TouchableOpacity
+									style={styles.button}
+									onPress={this.onPressGo}
+									activeOpacity={0.8}
+									accessibilityLabel="Go, write!"
+								>
+									<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Go!</Text>
+								</TouchableOpacity>
+							</View>
 						</View>
 					) : null}
 				</View>
@@ -80,8 +86,9 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: 'center',
-		justifyContent: 'center',
-		padding: 20
+		justifyContent: 'space-around',
+		padding: 20,
+		height: 400
 	},
 	// subContainer: {
 	// 	// flex: 1,
@@ -97,21 +104,27 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		alignItems: 'center'
 		// marginTop: 30
+		// marginBottom: 100
 	},
 	instructions: {
 		width: 377,
 		color: '#ffffff',
 		color: color.Gold,
 		lineHeight: 24,
-		marginBottom: 0,
 		marginTop: 0,
 		padding: 16,
 		top: 10,
 		fontSize: 20,
 		textAlign: 'left'
 	},
+	buttonContainer: {
+		alignItems: 'center',
+		justifyContent: 'center',
+		position: 'absolute',
+		bottom: 0,
+		width: '90%'
+	},
 	button: {
-		// position: 'absolute',
 		alignItems: 'center',
 		backgroundColor: color.softRed,
 		// marginBottom: 10,

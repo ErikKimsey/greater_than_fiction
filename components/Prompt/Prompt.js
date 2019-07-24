@@ -53,12 +53,13 @@ const styles = StyleSheet.create({
 	promptContainer: {
 		flexDirection: 'column',
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		marginBottom: 10
 		// padding: 10
 		// margin: 12
 	},
 	text: {
 		color: color.softRed,
-		fontSize: 38
+		fontSize: 22
 	}
 });
