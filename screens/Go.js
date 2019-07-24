@@ -53,14 +53,13 @@ export default class Go extends Component {
 						<Text style={[ { fontFamily: 'lemon-milk', color: color.softRed }, styles.instructions ]}>
 							{this.state.instructions}
 						</Text>
-						<Text style={styles.prompt}>Your prompt:</Text>
+						<Text style={[ styles.prompt, { fontFamily: 'lemon-milk' } ]}>Your prompt:</Text>
 						<Prompt getPrompts={this.getPrompts} />
 						<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
 						<Button
 							title="Go!"
-							color={color.softRed}
+							color={color.Plum}
 							onPress={this.onPressGo}
-							style={[ styles.button ]}
 							accessibilityLabel="Go, write!"
 						/>
 					</View>
@@ -72,7 +71,7 @@ export default class Go extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: color.gray,
+		backgroundColor: color.Yellow,
 		flex: 1,
 		justifyContent: 'space-around',
 		alignItems: 'center'
@@ -80,24 +79,29 @@ const styles = StyleSheet.create({
 	subContainer: {
 		flex: 1,
 		padding: 30,
-		margin: 20,
+		margin: 30,
 		top: 10,
-		backgroundColor: 'rgba(255,255,255,0.2)',
+		// backgroundColor: 'rgba(255,255,255,0.1)',
 		justifyContent: 'space-around',
 		alignItems: 'center'
 	},
 	prompt: {
 		color: '#ffffff',
+		color: color.Plum,
 		fontSize: 18
 	},
 	instructions: {
 		color: '#ffffff',
+		color: color.gray,
 		marginBottom: 0,
 		marginTop: 90,
-		fontSize: 22
+		fontSize: 22,
+		textAlign: 'center'
 	},
 	button: {
-		color: color.softRed,
-		marginBottom: 80
+		color: color.Plum,
+		marginBottom: 80,
+		paddingLeft: 50,
+		paddingRight: 50
 	}
 });
