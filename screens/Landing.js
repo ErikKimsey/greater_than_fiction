@@ -42,17 +42,20 @@ export default class Landing extends Component {
 			<View style={styles.container}>
 				{this.state.fontLoaded ? (
 					<View>
-						<Text style={[ { fontFamily: 'slukoni', color: color.softRed }, styles.header100 ]}>100</Text>
-						<Text style={[ { fontFamily: 'slukoni', color: color.softRed }, styles.headerWords ]}>
-							Words
+						<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>100</Text>
+						<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
+							W3rds
 						</Text>
-						<Text style={[ styles.subHeader, { fontFamily: 'lemon-milk' } ]}>
-							Tell a story in 100 words {'\n'} and 5 minutes.
+						<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
+							Scientifically proven, by SoftBodySocial Inc. (on stimulants), to kill creative-block.
+						</Text>
+						<Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
+							Your Goal: {'\n'}Tell a story in 100 words {'\n'} and 5 minutes.
 						</Text>
 						<Button
 							title="Get set..."
 							onPress={this.handleGo}
-							color={color.softRed}
+							color={color.Plum}
 							accessibilityLabel="Go, write!"
 						/>
 					</View>
@@ -66,10 +69,9 @@ export default class Landing extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: color.gray,
+		backgroundColor: color.Gray,
 		alignItems: 'center',
-		justifyContent: 'center',
-		color: color.softRed
+		justifyContent: 'center'
 	},
 	image: {
 		zIndex: -1,
@@ -77,16 +79,31 @@ const styles = StyleSheet.create({
 	},
 	header100: {
 		textAlign: 'center',
-		fontSize: 186
+		fontSize: 186,
+		color: color.Yellow
 	},
 	headerWords: {
 		paddingTop: 0,
 		marginTop: 0,
 		textAlign: 'center',
-		fontSize: 96
+		color: color.Yellow,
+		fontSize: 96,
+		opacity: 0.9
 	},
-	subHeader: {
+	subHeader_1: {
+		width: 377,
+		alignSelf: 'center',
 		textAlign: 'center',
-		fontSize: 20
+		fontSize: 16,
+		color: color.Gold,
+		padding: 16,
+		opacity: 0.8
+		// marginBottom: 10
+	},
+	subHeader_2: {
+		textAlign: 'center',
+		fontSize: 24,
+		color: color.Gold,
+		paddingBottom: 10
 	}
 });
