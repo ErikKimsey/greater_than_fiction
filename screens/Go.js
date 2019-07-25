@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
-import brainbulb from '../assets/zipper.jpg';
+import brainbulb from '../assets/cartographer.png';
 import color from '../assets/globals/colors';
 import * as Font from 'expo-font';
 import goInstructions from '../assets/GoDialog';
@@ -47,56 +47,47 @@ export default class Go extends Component {
 
 	render() {
 		return (
-			// <ImageBackground
-			// 	source={brainbulb}
-			// 	style={[ { width: '100%', height: '120%', backgroundColor: color.Gray } ]}
-			// >
-			<View style={styles.container}>
-				{this.state.fontLoaded ? (
-					<View>
+			<ImageBackground
+				source={brainbulb}
+				style={[ { width: '100%', height: '120%', backgroundColor: color.darkGrayPurple } ]}
+			>
+				<View style={styles.container}>
+					{this.state.fontLoaded ? (
 						<View>
-							<Text style={[ { fontFamily: 'lemon-milk' }, styles.instructions ]}>
-								{this.state.instructions}
-							</Text>
-							<View style={styles.buttonContainer}>
-								<TouchableOpacity
-									style={styles.button}
-									onPress={this.onPressGo}
-									activeOpacity={0.8}
-									accessibilityLabel="Go, write!"
-								>
-									<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Go!</Text>
-								</TouchableOpacity>
+							<View>
+								<Text style={[ { fontFamily: 'lemon-milk' }, styles.instructions ]}>
+									{this.state.instructions}
+								</Text>
+								<View style={styles.buttonContainer}>
+									<TouchableOpacity
+										style={styles.button}
+										onPress={this.onPressGo}
+										activeOpacity={0.8}
+										accessibilityLabel="Go, write!"
+									>
+										<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Go!</Text>
+									</TouchableOpacity>
+								</View>
+								<Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
+								<Text style={[ styles.prompt_2, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
+								<Prompt getPrompts={this.getPrompts} />
+								<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
 							</View>
-							<Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
-							<Text style={[ styles.prompt_2, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
-							<Prompt getPrompts={this.getPrompts} />
-							<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
 						</View>
-					</View>
-				) : null}
-			</View>
-			// </ImageBackground>
+					) : null}
+				</View>
+			</ImageBackground>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: color.mattGray,
 		flex: 1,
 		height: 500,
 		alignItems: 'center',
 		justifyContent: 'space-around'
 	},
-	// subContainer: {
-	// 	// flex: 1,
-	// 	padding: 16,
-	// 	margin: 2,
-	// 	top: 3,
-	// 	justifyContent: 'space-between',
-	// 	alignItems: 'stretch'
-	// },
 	prompt: {
 		color: color.popnPurple,
 		fontSize: 52,

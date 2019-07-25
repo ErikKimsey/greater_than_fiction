@@ -7,12 +7,13 @@ import { fontList } from '../assets/fonts/retrieveFonts';
 
 import { BackgroundStyles } from '../stylesheets/backgroundStyleSheet';
 import { initGyro, getGyroData } from '../utilities/gyroColorMapping';
-import brainbulb from '../assets/brain_bulb.png';
+// import brainbulb from '../assets/brain_bulb.png';
 // import brainbulb from '../assets/pen_notebook.jpg';
 // import brainbulb from '../assets/notebook.jpg';
 // import brainbulb from '../assets/typewriter.jpg';
 // import brainbulb from '../assets/burroughs.jpg';
 // import brainbulb from '../assets/zipper.jpg';
+import brainbulb from '../assets/cartographer.png';
 
 export default class Landing extends Component {
 	state = {
@@ -44,59 +45,63 @@ export default class Landing extends Component {
 
 	render() {
 		return (
-			// <ImageBackground source={brainbulb} style={[ styles.image, { width: '100%', height: '120%' } ]}>
-			<View style={styles.container}>
-				{this.state.fontLoaded ? (
-					<View>
+			<ImageBackground source={brainbulb} style={[ styles.image, { width: '100%', height: '120%',backgroundColor: color.mattPurple  } ]}>
+				<View style={styles.container}>
+					{this.state.fontLoaded ? (
 						<View>
-							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>
-								100
-							</Text>
-							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100_2 ]}>
-								100
-							</Text>
-							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
-								W3rds
-							</Text>
-							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords_2 ]}>
-								W3rds
-							</Text>
-							<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
-								Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill
-								creative-block.
-							</Text>
-							{/* <Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
+							<View>
+								<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>
+									100
+								</Text>
+								<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100_2 ]}>
+									100
+								</Text>
+								<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
+									W3rds
+								</Text>
+								<Text
+									style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords_2 ]}
+								>
+									W3rds
+								</Text>
+								<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
+									Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill
+									creative-block.
+								</Text>
+								{/* <Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
 								Your Goal: {'\n'} Break your block in 100 words {'\n'} and 5 minutes.
 							</Text> */}
-						</View>
-						<View style={styles.buttonContainer}>
-							<TouchableOpacity
-								style={styles.button}
-								onPress={this.handleGo}
-								activeOpacity={0.8}
-								accessibilityLabel="Go, write!"
-							>
-								<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
-							</TouchableOpacity>
-						</View>
-						{/* <Button
+							</View>
+							<View style={styles.buttonContainer}>
+								<TouchableOpacity
+									style={styles.button}
+									onPress={this.handleGo}
+									activeOpacity={0.8}
+									accessibilityLabel="Go, write!"
+								>
+									<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
+								</TouchableOpacity>
+							</View>
+							{/* <Button
 								title="Get set..."
 								onPress={this.handleGo}
 								color={color.Plum}
 								accessibilityLabel="Go, write!"
 							/> */}
-					</View>
-				) : null}
-			</View>
-			// </ImageBackground>
+						</View>
+					) : null}
+				</View>
+			</ImageBackground>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
-	image: {},
+	image: {
+		opacity: 1
+	},
 	container: {
-		backgroundColor: color.mattGray,
+		// backgroundColor: color.mattGray,
 		flex: 1,
 		height: 400,
 		alignItems: 'center',
