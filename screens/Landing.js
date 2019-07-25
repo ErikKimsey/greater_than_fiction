@@ -44,79 +44,101 @@ export default class Landing extends Component {
 
 	render() {
 		return (
-			<ImageBackground source={brainbulb} style={[ styles.image, { width: '100%', height: '120%' } ]}>
-				<View style={styles.container}>
-					{this.state.fontLoaded ? (
+			// <ImageBackground source={brainbulb} style={[ styles.image, { width: '100%', height: '120%' } ]}>
+			<View style={styles.container}>
+				{this.state.fontLoaded ? (
+					<View>
 						<View>
-							<View>
-								<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>
-									100
-								</Text>
-								<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
-									W3rds
-								</Text>
-								<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
-									Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill
-									creative-block.
-								</Text>
-								{/* <Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
+							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>
+								100
+							</Text>
+							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100_2 ]}>
+								100
+							</Text>
+							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
+								W3rds
+							</Text>
+							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords_2 ]}>
+								W3rds
+							</Text>
+							<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
+								Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill
+								creative-block.
+							</Text>
+							{/* <Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
 								Your Goal: {'\n'} Break your block in 100 words {'\n'} and 5 minutes.
 							</Text> */}
-							</View>
-							<View style={styles.buttonContainer}>
-								<TouchableOpacity
-									style={styles.button}
-									onPress={this.handleGo}
-									activeOpacity={0.8}
-									accessibilityLabel="Go, write!"
-								>
-									<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
-								</TouchableOpacity>
-							</View>
-							{/* <Button
+						</View>
+						<View style={styles.buttonContainer}>
+							<TouchableOpacity
+								style={styles.button}
+								onPress={this.handleGo}
+								activeOpacity={0.8}
+								accessibilityLabel="Go, write!"
+							>
+								<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
+							</TouchableOpacity>
+						</View>
+						{/* <Button
 								title="Get set..."
 								onPress={this.handleGo}
 								color={color.Plum}
 								accessibilityLabel="Go, write!"
 							/> */}
-						</View>
-					) : null}
-				</View>
-			</ImageBackground>
+					</View>
+				) : null}
+			</View>
+			// </ImageBackground>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
-	image: {
-		backgroundColor: color.Gray
-	},
+	image: {},
 	container: {
+		backgroundColor: color.mattGray,
 		flex: 1,
 		height: 400,
-		// backgroundColor: color.Gold,
 		alignItems: 'center',
 		justifyContent: 'space-around'
 	},
 	header100: {
 		textAlign: 'center',
 		fontSize: 186,
-		color: color.Yellow
+		color: color.popnPurple
+	},
+	header100_2: {
+		position: 'absolute',
+		textAlign: 'center',
+		fontSize: 196,
+		color: color.Yellow,
+		zIndex: 10,
+		opacity: 0.4
 	},
 	headerWords: {
 		paddingTop: 0,
 		marginTop: 0,
 		textAlign: 'center',
-		color: color.Yellow,
+		color: color.popnPurple,
 		fontSize: 96,
 		opacity: 0.9
+	},
+	headerWords_2: {
+		position: 'absolute',
+		paddingTop: 0,
+		marginTop: 0,
+		top: 211,
+		textAlign: 'center',
+		color: color.Yellow,
+		fontSize: 96,
+		opacity: 0.4
 	},
 	subHeader_1: {
 		width: 377,
 		alignSelf: 'center',
 		textAlign: 'center',
 		fontSize: 16,
-		color: color.Gold,
+		color: color.pastelBlueWhite,
 		padding: 16,
 		opacity: 0.8,
 		marginBottom: 100
@@ -129,16 +151,18 @@ const styles = StyleSheet.create({
 		width: '90%'
 	},
 	button: {
-		// position: 'absolute',
 		alignItems: 'center',
-		backgroundColor: color.softRed,
-		// marginBottom: 10,
+		backgroundColor: 'transparent',
+		// opacity: 0.8,
 		paddingLeft: 50,
 		paddingRight: 50,
-		bottom: 0
+		bottom: 0,
+		borderWidth: 1,
+		borderColor: color.pastelBlueWhite,
+		borderRadius: 5
 	},
 	buttonText: {
-		color: color.Gold,
+		color: color.pastelBlueWhite,
 		fontSize: 18,
 		padding: 10
 	}
