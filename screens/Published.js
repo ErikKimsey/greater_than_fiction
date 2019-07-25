@@ -50,6 +50,7 @@ export default class Published extends Component {
 			return (
 				<View style={styles.publishedContainer}>
 					<View
+						collapsable={false}
 						style={styles.saveContainer}
 						ref={(view) => {
 							this._container = view;
@@ -61,11 +62,7 @@ export default class Published extends Component {
 							<Text style={styles.titleAuthor}>by {author}</Text>
 						</View>
 					</View>
-					<PublishedButton
-						saved={this.state.saved}
-						saveToRoll={this._saveToCameraRollAsync}
-						exitPublished={this.exitPublished}
-					/>
+					<PublishedButton saved={this.state.saved} saveToRoll={this._saveToCameraRollAsync} />
 				</View>
 			);
 		} else if (this.state.saved) {
@@ -83,11 +80,7 @@ export default class Published extends Component {
 							]}
 						/>
 					)}
-					<PublishedButton
-						saved={this.state.saved}
-						saveToRoll={this._saveToCameraRollAsync}
-						exitPublished={this.exitPublished}
-					/>
+					<PublishedButton saved={this.state.saved} exitPublished={this.exitPublished} />
 				</View>
 			);
 		}
@@ -101,15 +94,15 @@ const styles = StyleSheet.create({
 		padding: 10,
 		margin: 0,
 		alignItems: 'stretch',
-		backgroundColor: color.gray
+		backgroundColor: color.mattPurple
 	},
 	saveContainer: {
 		flex: 1,
 		justifyContent: 'center',
 		padding: 50,
 		margin: 20,
-		alignItems: 'stretch',
-		backgroundColor: color.gray
+		alignItems: 'stretch'
+		// backgroundColor: color.gray
 	},
 	text: {
 		borderStyle: 'solid',
@@ -131,10 +124,9 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'space-around',
 		alignItems: 'center',
-		backgroundColor: color.gray
+		backgroundColor: color.mattPurple
 	},
 	image: {
-		// just
 		padding: 0,
 		margin: 0,
 		marginBottom: 40
