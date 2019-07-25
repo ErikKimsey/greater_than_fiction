@@ -49,7 +49,7 @@ export default class Go extends Component {
 		return (
 			<ImageBackground
 				source={brainbulb}
-				style={[ { width: '100%', height: '120%', backgroundColor: color.darkGrayPurple } ]}
+				style={[ { width: '100%', height: '120%', backgroundColor: color.mattPurple } ]}
 			>
 				<View style={styles.container}>
 					{this.state.fontLoaded ? (
@@ -92,14 +92,17 @@ const styles = StyleSheet.create({
 		color: color.popnPurple,
 		fontSize: 52,
 		textAlign: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		textShadowColor: color.pastelBlueWhite,
+		textShadowOffset: { width: -1, height: 1 },
+		textShadowRadius: 10
 	},
 	prompt_2: {
 		color: color.Yellow,
-		fontSize: 56,
+		fontSize: 52,
 		position: 'absolute',
 		top: 222,
-		left: 10,
+		left: 22,
 		textAlign: 'center',
 		color: color.Yellow,
 		zIndex: 10,
@@ -119,14 +122,13 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		// position: 'absolute',
-		top: 255,
-		bottom: 0,
-		width: '90%'
+		top: 236,
+		// bottom: 0,
+		width: '100%'
 	},
 	button: {
 		alignItems: 'center',
 		backgroundColor: 'transparent',
-		// opacity: 0.8,
 		paddingLeft: 50,
 		paddingRight: 50,
 		bottom: 0,
