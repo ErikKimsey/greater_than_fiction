@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, KeyboardAvoidingView, Dimensions } from 'react-native';
+import {
+	View,
+	Text,
+	TextInput,
+	Button,
+	StyleSheet,
+	KeyboardAvoidingView,
+	Dimensions,
+	ImageBackground
+} from 'react-native';
 import { withNavigationFocus } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
 import Clock from '../components/clock';
 import Prompt from '../components/Prompt/Prompt';
+import brainbulb from '../assets/cartographer.png';
 
 class TextEditor extends Component {
 	constructor(props) {
@@ -87,49 +97,54 @@ class TextEditor extends Component {
 			<Clock remaining={this.getRemainingTime} reset={this.state.clockReset} />
 		);
 		return (
-			<KeyboardAvoidingView style={styles.container} behavior="padding">
-				<View style={styles.textContainer}>
-					<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
-					{clock}
-					<Prompt />
-					{/* <Text style={styles.prompt}>Prompt: {prompt}</Text> */}
-				</View>
-				<TextInput
-					style={styles.paragraph}
-					onChangeText={(text) => this.handleInputChange(text)}
-					value={this.state.text}
-					editable={true}
-					multiline={true}
-					placeholder="100 words. Go..."
-				/>
-				<TextInput
-					style={styles.titleAuthor}
-					onChangeText={(text) => {
-						this.setState({ title: text });
-					}}
-					value={this.state.title}
-					editable={true}
-					placeholder="Title..."
-				/>
-				<TextInput
-					style={styles.titleAuthor}
-					onChangeText={(text) => {
-						this.setState({ author: text });
-					}}
-					value={this.state.author}
-					editable={true}
-					placeholder="Author name..."
-				/>
-				<View style={styles.buttonContainer}>
-					<Button
-						style={[ styles.button ]}
-						onPress={this.onPressPublish}
-						title="Publish"
-						color={color.softRed}
-						accessibilityLabel="Publish"
+			<ImageBackground
+				source={brainbulb}
+				style={[ { width: '100%', height: '100%', backgroundColor: color.mattPurple } ]}
+			>
+				<KeyboardAvoidingView style={styles.container} behavior="padding">
+					<View style={styles.textContainer}>
+						<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
+						{clock}
+						<Prompt />
+						{/* <Text style={styles.prompt}>Prompt: {prompt}</Text> */}
+					</View>
+					<TextInput
+						style={styles.paragraph}
+						onChangeText={(text) => this.handleInputChange(text)}
+						value={this.state.text}
+						editable={true}
+						multiline={true}
+						placeholder="100 words. Go..."
 					/>
-				</View>
-			</KeyboardAvoidingView>
+					<TextInput
+						style={styles.titleAuthor}
+						onChangeText={(text) => {
+							this.setState({ title: text });
+						}}
+						value={this.state.title}
+						editable={true}
+						placeholder="Title..."
+					/>
+					<TextInput
+						style={styles.titleAuthor}
+						onChangeText={(text) => {
+							this.setState({ author: text });
+						}}
+						value={this.state.author}
+						editable={true}
+						placeholder="Author name..."
+					/>
+					<View style={styles.buttonContainer}>
+						<Button
+							style={[ styles.button ]}
+							onPress={this.onPressPublish}
+							title="Publish"
+							color={color.softRed}
+							accessibilityLabel="Publish"
+						/>
+					</View>
+				</KeyboardAvoidingView>
+			</ImageBackground>
 		);
 	}
 }
@@ -138,8 +153,8 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column',
-		paddingTop: 50,
-		backgroundColor: color.gray
+		paddingTop: 50
+		// backgroundColor: color.gray
 	},
 	paragraph: {
 		flex: 4,
