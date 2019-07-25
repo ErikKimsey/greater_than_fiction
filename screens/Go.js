@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
 import brainbulb from '../assets/cartographer.png';
 import color from '../assets/globals/colors';
 import * as Font from 'expo-font';
@@ -27,14 +27,10 @@ export default class Go extends Component {
 			fatCat: require('../assets/fonts/FatCat.ttf'),
 			slukoni: require('../assets/fonts/Slukoni.otf')
 		});
-		console.log(this.state.prompt);
-
 		this.setState({ fontLoaded: true });
 	}
 
 	onPressGo = () => {
-		console.log(this.state.prompt);
-
 		this.props.navigation.navigate('TextEditor', {
 			prompt: this.state.prompt
 		});
@@ -124,9 +120,7 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		alignItems: 'center',
 		justifyContent: 'center',
-		// position: 'absolute',
 		top: 236,
-		// bottom: 0,
 		width: '100%'
 	},
 	button: {

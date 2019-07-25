@@ -37,7 +37,6 @@ class TextEditor extends Component {
 		this.setState({ isPublished: false });
 		const { height, width } = Dimensions.get('window');
 		this.setState({ height: height, width: width });
-		// console.log(this.props.navigation.state.params);
 	}
 
 	onPressPublish = () => {
@@ -92,7 +91,6 @@ class TextEditor extends Component {
 	}
 
 	render() {
-		let { prompt } = this.props.navigation.state.params;
 		let clock = this.state.isPublished ? null : (
 			<Clock remaining={this.getRemainingTime} reset={this.state.clockReset} />
 		);
@@ -154,7 +152,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'column',
 		paddingTop: 50
-		// backgroundColor: color.gray
 	},
 	paragraph: {
 		flex: 4,
