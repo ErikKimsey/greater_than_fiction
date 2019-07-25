@@ -45,7 +45,10 @@ export default class Landing extends Component {
 
 	render() {
 		return (
-			<ImageBackground source={brainbulb} style={[ styles.image, { width: '100%', height: '120%',backgroundColor: color.mattPurple  } ]}>
+			<ImageBackground
+				source={brainbulb}
+				style={[ styles.image, { width: '100%', height: '120%', backgroundColor: color.mattPurple } ]}
+			>
 				<View style={styles.container}>
 					{this.state.fontLoaded ? (
 						<View>
@@ -110,17 +113,24 @@ const styles = StyleSheet.create({
 	header100: {
 		textAlign: 'center',
 		fontSize: 186,
-		color: color.popnPurple
+		color: color.popnPurple,
+		textShadowColor: color.pastelBlueWhite,
+		textShadowOffset: { width: -1, height: 1 },
+		textShadowRadius: 10
 	},
 	header100_2: {
 		position: 'absolute',
 		textAlign: 'center',
-		fontSize: 196,
+		fontSize: 190,
+		left: 5,
 		color: color.Yellow,
 		zIndex: 10,
 		opacity: 0.4
 	},
 	headerWords: {
+		textShadowColor: color.pastelBlueWhite,
+		textShadowOffset: { width: -1, height: 1 },
+		textShadowRadius: 10,
 		paddingTop: 0,
 		marginTop: 0,
 		textAlign: 'center',
@@ -146,7 +156,10 @@ const styles = StyleSheet.create({
 		color: color.pastelBlueWhite,
 		padding: 16,
 		opacity: 0.8,
-		marginBottom: 100
+		marginBottom: 100,
+		textShadowColor: color.pastelBlueWhite,
+		// textShadowOffset: { width: 3, height: 0 },
+		textShadowRadius: 3
 	},
 	buttonContainer: {
 		alignItems: 'center',
