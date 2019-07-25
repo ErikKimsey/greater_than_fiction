@@ -4,6 +4,7 @@ import { withNavigationFocus } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
 import Clock from '../components/clock';
+import Prompt from '../components/Prompt/Prompt';
 
 class TextEditor extends Component {
 	constructor(props) {
@@ -26,6 +27,7 @@ class TextEditor extends Component {
 		this.setState({ isPublished: false });
 		const { height, width } = Dimensions.get('window');
 		this.setState({ height: height, width: width });
+		// console.log(this.props.navigation.state.params);
 	}
 
 	onPressPublish = () => {
@@ -89,7 +91,8 @@ class TextEditor extends Component {
 				<View style={styles.textContainer}>
 					<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
 					{clock}
-					<Text style={styles.prompt}>Prompt: {prompt}</Text>
+					<Prompt />
+					{/* <Text style={styles.prompt}>Prompt: {prompt}</Text> */}
 				</View>
 				<TextInput
 					style={styles.paragraph}

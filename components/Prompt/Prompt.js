@@ -11,7 +11,7 @@ import color from '../../assets/globals/colors';
 export default class Prompt extends Component {
 	state = {
 		werds: WERDS,
-		prompt: [],
+		prompt: '',
 		fontLoaded: false
 	};
 
@@ -31,7 +31,9 @@ export default class Prompt extends Component {
 	}
 
 	componentDidMount() {
-		this.getPrompts();
+		console.log(this.state.prompt);
+
+		// this.getPrompts();
 	}
 
 	getPrompts = () => {

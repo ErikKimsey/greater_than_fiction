@@ -27,11 +27,14 @@ export default class Go extends Component {
 			fatCat: require('../assets/fonts/FatCat.ttf'),
 			slukoni: require('../assets/fonts/Slukoni.otf')
 		});
+		console.log(this.state.prompt);
 
 		this.setState({ fontLoaded: true });
 	}
 
 	onPressGo = () => {
+		console.log(this.state.prompt);
+
 		this.props.navigation.navigate('TextEditor', {
 			prompt: this.state.prompt
 		});
