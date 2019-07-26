@@ -118,9 +118,10 @@ const styles = StyleSheet.create({
 		textAlign: 'center'
 	},
 	buttonContainer: {
+		position: 'absolute',
 		alignItems: 'center',
 		justifyContent: 'center',
-		top: 286,
+		top: 411,
 		width: '100%'
 	},
 	button: {
