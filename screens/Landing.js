@@ -7,12 +7,6 @@ import { fontList } from '../assets/fonts/retrieveFonts';
 
 import { BackgroundStyles } from '../stylesheets/backgroundStyleSheet';
 import { initGyro, getGyroData } from '../utilities/gyroColorMapping';
-// import brainbulb from '../assets/brain_bulb.png';
-// import brainbulb from '../assets/pen_notebook.jpg';
-// import brainbulb from '../assets/notebook.jpg';
-// import brainbulb from '../assets/typewriter.jpg';
-// import brainbulb from '../assets/burroughs.jpg';
-// import brainbulb from '../assets/zipper.jpg';
 import brainbulb from '../assets/cartographer.png';
 
 export default class Landing extends Component {
@@ -31,12 +25,6 @@ export default class Landing extends Component {
 			slukoni: require('../assets/fonts/Slukoni.otf')
 		});
 		this.setState({ fontLoaded: true });
-		// console.log(BackgroundStyles(200));
-		// console.log('initing gyro from Landing');
-		// console.log(initGyro());
-		// console.log(getGyroData());
-
-		// BackgroundStyles().backgroundContainer.logProps(200);
 	}
 
 	handleGo = () => {
@@ -47,53 +35,55 @@ export default class Landing extends Component {
 		return (
 			<ImageBackground
 				source={brainbulb}
-				style={[ styles.image, { width: '100%', height: '120%', backgroundColor: color.mattPurple } ]}
+				style={[
+					styles.image,
+					{ width: '100%', height: '120%', backgroundColor: color.mattPurple },
+					styles.container
+				]}
 			>
-				<View style={styles.container}>
-					{this.state.fontLoaded ? (
+				{/* <View style={styles.container}> */}
+				{this.state.fontLoaded ? (
+					<View>
 						<View>
-							<View>
-								<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>
-									100
-								</Text>
-								<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100_2 ]}>
-									100
-								</Text>
-								<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
-									W3rds
-								</Text>
-								<Text
-									style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords_2 ]}
-								>
-									W3rds
-								</Text>
-								<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
-									Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill
-									creative-block.
-								</Text>
-								{/* <Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
+							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>
+								100
+							</Text>
+							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100_2 ]}>
+								100
+							</Text>
+							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
+								W3rds
+							</Text>
+							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords_2 ]}>
+								W3rds
+							</Text>
+							<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
+								Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill
+								creative-block.
+							</Text>
+							{/* <Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
 								Your Goal: {'\n'} Break your block in 100 words {'\n'} and 5 minutes.
 							</Text> */}
-							</View>
-							<View style={styles.buttonContainer}>
-								<TouchableOpacity
-									style={styles.button}
-									onPress={this.handleGo}
-									activeOpacity={0.8}
-									accessibilityLabel="Go, write!"
-								>
-									<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
-								</TouchableOpacity>
-							</View>
-							{/* <Button
+						</View>
+						<View style={styles.buttonContainer}>
+							<TouchableOpacity
+								style={styles.button}
+								onPress={this.handleGo}
+								activeOpacity={0.8}
+								accessibilityLabel="Landing!"
+							>
+								<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
+							</TouchableOpacity>
+						</View>
+						{/* <Button
 								title="Get set..."
 								onPress={this.handleGo}
 								color={color.Plum}
 								accessibilityLabel="Go, write!"
 							/> */}
-						</View>
-					) : null}
-				</View>
+					</View>
+				) : null}
+				{/* </View> */}
 			</ImageBackground>
 		);
 	}
@@ -106,7 +96,7 @@ const styles = StyleSheet.create({
 	container: {
 		// backgroundColor: color.mattGray,
 		flex: 1,
-		height: 400,
+		height: 500,
 		alignItems: 'center',
 		justifyContent: 'space-around'
 	},
@@ -164,9 +154,8 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		alignItems: 'center',
 		justifyContent: 'center',
-		position: 'absolute',
-		bottom: 0,
-		width: '90%'
+		top: 286,
+		width: '100%'
 	},
 	button: {
 		alignItems: 'center',
@@ -174,7 +163,7 @@ const styles = StyleSheet.create({
 		// opacity: 0.8,
 		paddingLeft: 50,
 		paddingRight: 50,
-		bottom: 0,
+		bottom: 40,
 		borderWidth: 1,
 		borderColor: color.pastelBlueWhite,
 		borderRadius: 5

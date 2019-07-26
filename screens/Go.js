@@ -48,33 +48,33 @@ export default class Go extends Component {
 		return (
 			<ImageBackground
 				source={brainbulb}
-				style={[ { width: '100%', height: '120%', backgroundColor: color.mattPurple } ]}
+				style={[ { width: '100%', height: '120%', backgroundColor: color.mattPurple }, styles.container ]}
 			>
-				<View style={styles.container}>
-					{this.state.fontLoaded ? (
+				{/* <View style={styles.container}> */}
+				{this.state.fontLoaded ? (
+					<View>
 						<View>
-							<View>
-								<Text style={[ { fontFamily: 'lemon-milk' }, styles.instructions ]}>
-									{this.state.instructions}
-								</Text>
-								<View style={styles.buttonContainer}>
-									<TouchableOpacity
-										style={styles.button}
-										onPress={this.onPressGo}
-										activeOpacity={0.8}
-										accessibilityLabel="Go, write!"
-									>
-										<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Go!</Text>
-									</TouchableOpacity>
-								</View>
-								<Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
-								<Text style={[ styles.prompt_2, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
-								<Prompt getPrompts={this.getPrompts} />
-								<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
+							<Text style={[ { fontFamily: 'lemon-milk' }, styles.instructions ]}>
+								{this.state.instructions}
+							</Text>
+							<View style={styles.buttonContainer}>
+								<TouchableOpacity
+									style={styles.button}
+									onPress={this.onPressGo}
+									activeOpacity={0.8}
+									accessibilityLabel="Go screen!"
+								>
+									<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Go!</Text>
+								</TouchableOpacity>
 							</View>
+							<Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
+							<Text style={[ styles.prompt_2, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
+							<Prompt getPrompts={this.getPrompts} />
+							<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
 						</View>
-					) : null}
-				</View>
+					</View>
+				) : null}
+				{/* </View> */}
 			</ImageBackground>
 		);
 	}
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
 	buttonContainer: {
 		alignItems: 'center',
 		justifyContent: 'center',
-		top: 236,
+		top: 286,
 		width: '100%'
 	},
 	button: {
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
 		backgroundColor: 'transparent',
 		paddingLeft: 50,
 		paddingRight: 50,
-		bottom: 0,
+		bottom: 40,
 		borderWidth: 1,
 		borderColor: color.pastelBlueWhite,
 		borderRadius: 5
