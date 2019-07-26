@@ -45,7 +45,7 @@ export default class Landing extends Component {
 				{this.state.fontLoaded ? (
 					<View>
 						{/* <View> */}
-						<Image source={werdsLogo} style={[ styles.image, { width: '90vw', height: 261 } ]} />
+						<Image source={werdsLogo} style={[ { width: 400, height: 261, left: 14 } ]} />
 
 						<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
 							Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill creative-block.
@@ -70,18 +70,13 @@ export default class Landing extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		// backgroundColor: color.mattGray,
 		flex: 1,
 		height: 500,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
 	image: {
-		opacity: 1,
-		// width: 381,
-		margin: 20,
-		alignSelf: 'center',
-		backgroundColor: '#fff'
+		opacity: 1
 	},
 	subHeader_1: {
 		width: 377,
