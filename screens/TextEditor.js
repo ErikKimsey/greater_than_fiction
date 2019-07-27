@@ -26,7 +26,6 @@ class TextEditor extends Component {
 			prompt: this.props.navigation.state.params.prompt,
 			fontLoaded: false
 		};
-		// console.log(this.props.navigation.state.params.prompt);
 	}
 
 	async componentDidMount() {
@@ -146,15 +145,6 @@ class TextEditor extends Component {
 							accessLabel="Publish"
 							btnFont="lemon-milk"
 						/>
-						{/* <View style={styles.buttonContainer}> */}
-						{/* <Button
-							style={[ styles.button ]}
-							onPress={this.onPressPublish}
-							title="Publish"
-							color={color.softRed}
-							accessibilityLabel="Publish"
-						/> */}
-						{/* </View> */}
 					</KeyboardAvoidingView>
 				) : null}
 			</ImageBackground>
@@ -189,7 +179,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center'
 	},
 	count: {
-		color: color.softRed,
+		color: color.pastelBlueWhite,
 		fontSize: 20
 	},
 	final: {
@@ -204,15 +194,16 @@ const styles = StyleSheet.create({
 		alignSelf: 'flex-end',
 		fontSize: 18,
 		fontWeight: 'bold',
-		borderColor: color.softRed,
+		borderColor: color.pastelBlueWhite,
 		backgroundColor: color.gray,
 		borderWidth: 2,
 		paddingTop: 5,
 		paddingLeft: 10,
-		color: color.softRed
+		color: color.pastelBlueWhite
+		// color: color.softRed
 	},
 	prompt: {
-		color: '#ffffff'
+		color: color.softRed
 	}
 });
 

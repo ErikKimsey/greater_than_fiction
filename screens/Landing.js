@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
 		opacity: 0.8,
 		marginBottom: 100,
 		textShadowColor: color.pastelBlueWhite,
-		// textShadowOffset: { width: 3, height: 0 },
 		textShadowRadius: 3
 	},
 	buttonContainer: {
