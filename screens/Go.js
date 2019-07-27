@@ -90,26 +90,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-around'
 	},
-	prompt: {
-		color: color.popnPurple,
-		fontSize: 52,
-		textAlign: 'center',
-		alignItems: 'center',
-		textShadowColor: color.pastelBlueWhite,
-		textShadowOffset: { width: -1, height: 1 },
-		textShadowRadius: 10
-	},
-	prompt_2: {
-		color: color.Yellow,
-		fontSize: 52,
-		position: 'absolute',
-		top: 222,
-		left: 22,
-		textAlign: 'center',
-		color: color.Yellow,
-		zIndex: 10,
-		opacity: 0.4
-	},
 	instructions: {
 		width: 377,
 		color: color.pastelBlueWhite,
