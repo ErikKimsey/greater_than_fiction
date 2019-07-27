@@ -29,14 +29,17 @@ class TextEditor extends Component {
 			author: '',
 			title: '',
 			width: null,
-			height: null
+			height: null,
+			prompt: this.props.navigation.state.params.prompt
 		};
+		// console.log(this.props.navigation.state.params.prompt);
 	}
 
 	componentDidMount() {
 		this.setState({ isPublished: false });
 		const { height, width } = Dimensions.get('window');
 		this.setState({ height: height, width: width });
+		// console.log(this.props);
 	}
 
 	onPressPublish = () => {
@@ -103,8 +106,7 @@ class TextEditor extends Component {
 					<View style={styles.textContainer}>
 						<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
 						{clock}
-						<Prompt />
-						{/* <Text style={styles.prompt}>Prompt: {prompt}</Text> */}
+						<Text style={styles.prompt}>{this.state.prompt}</Text>
 					</View>
 					<TextInput
 						style={styles.paragraph}

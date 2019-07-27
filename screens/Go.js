@@ -33,12 +33,15 @@ export default class Go extends Component {
 	}
 
 	onPressGo = () => {
+		console.log(this.state.prompt);
 		this.props.navigation.navigate('TextEditor', {
 			prompt: this.state.prompt
 		});
 	};
 
 	getPrompts = (prompts) => {
+		console.log(prompts);
+
 		this.setState({ prompt: prompts });
 	};
 
@@ -96,9 +99,10 @@ const styles = StyleSheet.create({
 		lineHeight: 24,
 		marginTop: 0,
 		padding: 16,
-		top: 10,
+		top: 0,
 		fontSize: 20,
-		textAlign: 'center'
+		textAlign: 'center',
+		marginBottom: 38
 	},
 	buttonContainer: {
 		position: 'absolute',

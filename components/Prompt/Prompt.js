@@ -28,9 +28,12 @@ export default class Prompt extends Component {
 
 		this.setState({ fontLoaded: true });
 		this.setState({ prompt: generatePrompt(this.state.werds) });
+		this.getPrompts();
 	}
 
 	getPrompts = () => {
+		// console.log(this.state);
+
 		return this.props.getPrompts(this.state.prompt);
 	};
 
@@ -70,7 +73,7 @@ const styles = StyleSheet.create({
 	},
 	text_2: {
 		position: 'absolute',
-		fontSize: 36,
+		fontSize: 38,
 		color: '#3E3145',
 		opacity: 0.2,
 		left: 12,
@@ -78,7 +81,7 @@ const styles = StyleSheet.create({
 		zIndex: -1,
 		textAlign: 'center',
 		textShadowColor: color.Gray,
-		textShadowOffset: { width: -7, height: 4 },
+		textShadowOffset: { width: -3, height: 4 },
 		textShadowRadius: 10
 	}
 });
