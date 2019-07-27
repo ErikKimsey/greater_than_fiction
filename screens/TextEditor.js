@@ -39,7 +39,6 @@ class TextEditor extends Component {
 		this.setState({ isPublished: false });
 		const { height, width } = Dimensions.get('window');
 		this.setState({ height: height, width: width });
-		// console.log(this.props);
 	}
 
 	onPressPublish = () => {
