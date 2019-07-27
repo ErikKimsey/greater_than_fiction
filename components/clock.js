@@ -62,6 +62,7 @@ export default class Clock extends Component {
 		let difference = deadline - now;
 		let remainingMin = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 		let remainingSec = Math.floor((difference % (1000 * 60)) / 1000);
+		remainingSec = remainingSec + '';
 		this.setState({
 			remainingMin,
 			remainingSec
@@ -90,11 +91,13 @@ export default class Clock extends Component {
 					<Text style={styles.countdown}>
 						<Text>{this.state.remainingMin}</Text>
 						<Text>:</Text>
-						{this.state.remainingSec.length === 1 ? (
-							`'0' ${this.state.remainingSec}`
-						) : (
-							this.state.remainingSec
-						)}
+						<Text>
+							{this.state.remainingSec.length < 2 ? (
+								`0${this.state.remainingSec}`
+							) : (
+								this.state.remainingSec
+							)}
+						</Text>
 					</Text>
 				</View>
 			);

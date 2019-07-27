@@ -204,7 +204,6 @@ const styles = StyleSheet.create({
 		paddingTop: 5,
 		paddingLeft: 10,
 		color: color.pastelBlueWhite
-		// color: color.softRed
 	},
 	prompt: {
 		color: color.softRed
