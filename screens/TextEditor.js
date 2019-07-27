@@ -197,10 +197,10 @@ const styles = StyleSheet.create({
 		alignSelf: 'flex-end',
 		fontSize: 18,
 		fontWeight: 'bold',
-		borderColor: color.pastelBlueWhite,
+		borderColor: color.gray,
 		borderRadius: 3,
 		backgroundColor: color.inputGray,
-		borderWidth: 2,
+		borderWidth: 1,
 		paddingTop: 5,
 		paddingLeft: 10,
 		color: color.pastelBlueWhite

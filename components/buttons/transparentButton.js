@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import color from '../../assets/globals/colors';
 
 export default function TransparentButton(props) {
@@ -10,7 +10,8 @@ export default function TransparentButton(props) {
 
 	return (
 		<View style={styles.buttonContainer}>
-			<TouchableOpacity
+			<TouchableHighlight
+				underlayColor={color.softRed}
 				style={styles.button}
 				onPress={() => {
 					pressButton();
@@ -19,7 +20,7 @@ export default function TransparentButton(props) {
 				accessibilityLabel={accessLabel}
 			>
 				<Text style={[ { fontFamily: btnFont }, styles.buttonText ]}>{btnLabel}</Text>
-			</TouchableOpacity>
+			</TouchableHighlight>
 		</View>
 	);
 }
