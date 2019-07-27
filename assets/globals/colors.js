@@ -13,5 +13,6 @@ export default {
 	softRed: '#FF6F73',
 	Yellow: '#FAED26',
 	Plum: '#3E3145',
-	Gray: '#5A5560'
+  Gray: '#5A5560',
+  inputGray:'#222222'
 };
