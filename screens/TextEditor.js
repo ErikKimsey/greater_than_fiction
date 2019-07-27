@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-import {
-	View,
-	Text,
-	TextInput,
-	Button,
-	StyleSheet,
-	KeyboardAvoidingView,
-	Dimensions,
-	ImageBackground
-} from 'react-native';
+import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Dimensions, ImageBackground } from 'react-native';
+import * as Font from 'expo-font';
 import { withNavigationFocus } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
 import Clock from '../components/clock';
 import Prompt from '../components/Prompt/Prompt';
 import brainbulb from '../assets/cartographer.png';
+import TransparentButton from '../components/buttons/transparentButton';
 
 class TextEditor extends Component {
 	constructor(props) {
@@ -29,11 +22,23 @@ class TextEditor extends Component {
 			author: '',
 			title: '',
 			width: null,
-			height: null
+			height: null,
+			prompt: this.props.navigation.state.params.prompt,
+			fontLoaded: false
 		};
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
+		await Font.loadAsync({
+			'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
+			dayrom: require('../assets/fonts/DAYROM.ttf'),
+			painterz: require('../assets/fonts/Painterz.ttf'),
+			cubesity: require('../assets/fonts/cubesity.ttf'),
+			fatC: require('../assets/fonts/FatC.ttf'),
+			fatCat: require('../assets/fonts/FatCat.ttf'),
+			slukoni: require('../assets/fonts/Slukoni.otf')
+		});
+		this.setState({ fontLoaded: true });
 		this.setState({ isPublished: false });
 		const { height, width } = Dimensions.get('window');
 		this.setState({ height: height, width: width });
@@ -99,49 +104,49 @@ class TextEditor extends Component {
 				source={brainbulb}
 				style={[ { width: '100%', height: '100%', backgroundColor: color.mattPurple } ]}
 			>
-				<KeyboardAvoidingView style={styles.container} behavior="padding">
-					<View style={styles.textContainer}>
-						<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
-						{clock}
-						<Prompt />
-						{/* <Text style={styles.prompt}>Prompt: {prompt}</Text> */}
-					</View>
-					<TextInput
-						style={styles.paragraph}
-						onChangeText={(text) => this.handleInputChange(text)}
-						value={this.state.text}
-						editable={true}
-						multiline={true}
-						placeholder="100 words. Go..."
-					/>
-					<TextInput
-						style={styles.titleAuthor}
-						onChangeText={(text) => {
-							this.setState({ title: text });
-						}}
-						value={this.state.title}
-						editable={true}
-						placeholder="Title..."
-					/>
-					<TextInput
-						style={styles.titleAuthor}
-						onChangeText={(text) => {
-							this.setState({ author: text });
-						}}
-						value={this.state.author}
-						editable={true}
-						placeholder="Author name..."
-					/>
-					<View style={styles.buttonContainer}>
-						<Button
-							style={[ styles.button ]}
-							onPress={this.onPressPublish}
-							title="Publish"
-							color={color.softRed}
-							accessibilityLabel="Publish"
+				{this.state.fontLoaded ? (
+					<KeyboardAvoidingView style={styles.container} behavior="padding">
+						<View style={styles.textContainer}>
+							<Text style={[ { fontFamily: 'lemon-milk' }, styles.count ]}>
+								Words remaining: {this.state.wordCount}
+							</Text>
+							{clock}
+							<Text style={[ { fontFamily: 'lemon-milk' }, styles.prompt ]}>{this.state.prompt}</Text>
+						</View>
+						<TextInput
+							style={styles.paragraph}
+							onChangeText={(text) => this.handleInputChange(text)}
+							value={this.state.text}
+							editable={true}
+							multiline={true}
+							placeholder="100 words. Go..."
 						/>
-					</View>
-				</KeyboardAvoidingView>
+						<TextInput
+							style={styles.titleAuthor}
+							onChangeText={(text) => {
+								this.setState({ title: text });
+							}}
+							value={this.state.title}
+							editable={true}
+							placeholder="Title..."
+						/>
+						<TextInput
+							style={styles.titleAuthor}
+							onChangeText={(text) => {
+								this.setState({ author: text });
+							}}
+							value={this.state.author}
+							editable={true}
+							placeholder="Author name..."
+						/>
+						<TransparentButton
+							pressBtn={this.onPressPublish}
+							btnLabel="Publish"
+							accessLabel="Publish"
+							btnFont="lemon-milk"
+						/>
+					</KeyboardAvoidingView>
+				) : null}
 			</ImageBackground>
 		);
 	}
@@ -162,33 +167,27 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		paddingTop: 0,
 		borderColor: 'gray',
-		backgroundColor: '#ffffff',
+		backgroundColor: color.inputGray,
+		color: '#ffffff',
+		// color: color.pastelBlueWhite,
 		borderWidth: 1,
+		borderRadius: 3,
 		padding: 10,
 		paddingTop: 10,
 		margin: 5
 	},
 	textContainer: {
 		flexDirection: 'column',
-		paddingLeft: 10
+		paddingLeft: 10,
+		alignItems: 'center'
 	},
 	count: {
-		color: color.softRed,
-		fontWeight: '900',
+		color: color.pastelBlueWhite,
 		fontSize: 20
 	},
 	final: {
 		fontWeight: '900',
 		fontSize: 20
-	},
-	buttonContainer: {
-		flexDirection: 'column',
-		padding: 20
-	},
-	button: {
-		paddingTop: 100,
-		paddingBottom: 100,
-		backgroundColor: color.softRed
 	},
 	titleAuthor: {
 		margin: 5,
@@ -198,16 +197,16 @@ const styles = StyleSheet.create({
 		alignSelf: 'flex-end',
 		fontSize: 18,
 		fontWeight: 'bold',
-		borderColor: color.softRed,
-		backgroundColor: color.gray,
-		borderWidth: 2,
+		borderColor: color.gray,
+		borderRadius: 3,
+		backgroundColor: color.inputGray,
+		borderWidth: 1,
 		paddingTop: 5,
 		paddingLeft: 10,
-		color: color.softRed
+		color: color.pastelBlueWhite
 	},
 	prompt: {
-		color: '#ffffff',
-		fontWeight: '900'
+		color: color.softRed
 	}
 });
 

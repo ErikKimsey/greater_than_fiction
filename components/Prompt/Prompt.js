@@ -28,15 +28,12 @@ export default class Prompt extends Component {
 
 		this.setState({ fontLoaded: true });
 		this.setState({ prompt: generatePrompt(this.state.werds) });
-	}
-
-	componentDidMount() {
-		console.log(this.state.prompt);
-
-		// this.getPrompts();
+		this.getPrompts();
 	}
 
 	getPrompts = () => {
+		// console.log(this.state);
+
 		return this.props.getPrompts(this.state.prompt);
 	};
 
@@ -44,7 +41,10 @@ export default class Prompt extends Component {
 		return (
 			<View style={styles.promptContainer}>
 				{this.state.fontLoaded ? (
-					<Text style={[ styles.text, { fontFamily: 'lemon-milk' } ]}>{this.state.prompt}</Text>
+					<View style={styles.textContainer}>
+						<Text style={[ styles.text_2, { fontFamily: 'cubesity' } ]}>{this.state.prompt}</Text>
+						<Text style={[ styles.text, { fontFamily: 'lemon-milk' } ]}>{this.state.prompt}</Text>
+					</View>
 				) : null}
 			</View>
 		);
@@ -53,15 +53,35 @@ export default class Prompt extends Component {
 
 const styles = StyleSheet.create({
 	promptContainer: {
-		flexDirection: 'column',
-		justifyContent: 'center',
+		// flexDirection: 'column',
+		// // justifyContent: 'center',
 		alignItems: 'center',
 		marginBottom: 10
 		// padding: 10
 		// margin: 12
 	},
+	textContainer: {
+		width: 380,
+		alignItems: 'center',
+		height: 80
+	},
 	text: {
-		color: color.softRed,
-		fontSize: 22
+		color: color.pastelBlueWhite,
+		fontSize: 24,
+		textAlign: 'center',
+		marginTop: 6
+	},
+	text_2: {
+		position: 'absolute',
+		fontSize: 38,
+		color: '#3E3145',
+		opacity: 0.2,
+		left: 12,
+		marginBottom: 17,
+		zIndex: -1,
+		textAlign: 'center',
+		textShadowColor: color.Gray,
+		textShadowOffset: { width: -3, height: 4 },
+		textShadowRadius: 10
 	}
 });

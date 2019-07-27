@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import * as Font from 'expo-font';
 
 import color from '../assets/globals/colors';
@@ -8,6 +8,7 @@ import { fontList } from '../assets/fonts/retrieveFonts';
 import { BackgroundStyles } from '../stylesheets/backgroundStyleSheet';
 import { initGyro, getGyroData } from '../utilities/gyroColorMapping';
 import brainbulb from '../assets/cartographer.png';
+import werdsLogo from '../assets/100_werds.png';
 
 export default class Landing extends Component {
 	state = {
@@ -41,30 +42,13 @@ export default class Landing extends Component {
 					styles.container
 				]}
 			>
-				{/* <View style={styles.container}> */}
 				{this.state.fontLoaded ? (
 					<View>
-						<View>
-							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100 ]}>
-								100
-							</Text>
-							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.header100_2 ]}>
-								100
-							</Text>
-							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords ]}>
-								W3rds
-							</Text>
-							<Text style={[ { fontFamily: 'cubesity', color: color.softRed }, styles.headerWords_2 ]}>
-								W3rds
-							</Text>
-							<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
-								Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill
-								creative-block.
-							</Text>
-							{/* <Text style={[ styles.subHeader_2, { fontFamily: 'lemon-milk' } ]}>
-								Your Goal: {'\n'} Break your block in 100 words {'\n'} and 5 minutes.
-							</Text> */}
-						</View>
+						<Image source={werdsLogo} style={[ { width: 400, height: 261, left: 14 } ]} />
+
+						<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
+							Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill creative-block.
+						</Text>
 						<View style={styles.buttonContainer}>
 							<TouchableOpacity
 								style={styles.button}
@@ -75,68 +59,22 @@ export default class Landing extends Component {
 								<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
 							</TouchableOpacity>
 						</View>
-						{/* <Button
-								title="Get set..."
-								onPress={this.handleGo}
-								color={color.Plum}
-								accessibilityLabel="Go, write!"
-							/> */}
 					</View>
 				) : null}
-				{/* </View> */}
 			</ImageBackground>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
-	image: {
-		opacity: 1
-	},
 	container: {
-		// backgroundColor: color.mattGray,
 		flex: 1,
 		height: 500,
 		alignItems: 'center',
-		justifyContent: 'space-around'
+		justifyContent: 'center'
 	},
-	header100: {
-		textAlign: 'center',
-		fontSize: 186,
-		color: color.popnPurple,
-		textShadowColor: color.pastelBlueWhite,
-		textShadowOffset: { width: -1, height: 1 },
-		textShadowRadius: 10
-	},
-	header100_2: {
-		position: 'absolute',
-		textAlign: 'center',
-		fontSize: 190,
-		left: 5,
-		color: color.Yellow,
-		zIndex: 10,
-		opacity: 0.4
-	},
-	headerWords: {
-		textShadowColor: color.pastelBlueWhite,
-		textShadowOffset: { width: -1, height: 1 },
-		textShadowRadius: 10,
-		paddingTop: 0,
-		marginTop: 0,
-		textAlign: 'center',
-		color: color.popnPurple,
-		fontSize: 96,
-		opacity: 0.9
-	},
-	headerWords_2: {
-		position: 'absolute',
-		paddingTop: 0,
-		marginTop: 0,
-		top: 211,
-		textAlign: 'center',
-		color: color.Yellow,
-		fontSize: 96,
-		opacity: 0.4
+	image: {
+		opacity: 1
 	},
 	subHeader_1: {
 		width: 377,
@@ -148,19 +86,18 @@ const styles = StyleSheet.create({
 		opacity: 0.8,
 		marginBottom: 100,
 		textShadowColor: color.pastelBlueWhite,
-		// textShadowOffset: { width: 3, height: 0 },
 		textShadowRadius: 3
 	},
 	buttonContainer: {
+		position: 'absolute',
 		alignItems: 'center',
 		justifyContent: 'center',
-		top: 286,
+		top: 500,
 		width: '100%'
 	},
 	button: {
 		alignItems: 'center',
 		backgroundColor: 'transparent',
-		// opacity: 0.8,
 		paddingLeft: 50,
 		paddingRight: 50,
 		bottom: 40,

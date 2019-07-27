@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, Image, StyleSheet } from 'react-native';
 import brainbulb from '../assets/cartographer.png';
 import color from '../assets/globals/colors';
 import * as Font from 'expo-font';
 import goInstructions from '../assets/GoDialog';
 import Prompt from '../components/Prompt/Prompt';
+
+import promptImg from '../assets/prompt.png';
 
 export default class Go extends Component {
 	constructor(props) {
@@ -67,8 +69,9 @@ export default class Go extends Component {
 									<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Go!</Text>
 								</TouchableOpacity>
 							</View>
-							<Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
-							<Text style={[ styles.prompt_2, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
+							<Image source={promptImg} style={[ { width: 380, height: 60 } ]} />
+							{/* <Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
+							<Text style={[ styles.prompt_2, { fontFamily: 'slukoni' } ]}>Your prompt:</Text> */}
 							<Prompt getPrompts={this.getPrompts} />
 							<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
 						</View>
@@ -87,40 +90,22 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-around'
 	},
-	prompt: {
-		color: color.popnPurple,
-		fontSize: 52,
-		textAlign: 'center',
-		alignItems: 'center',
-		textShadowColor: color.pastelBlueWhite,
-		textShadowOffset: { width: -1, height: 1 },
-		textShadowRadius: 10
-	},
-	prompt_2: {
-		color: color.Yellow,
-		fontSize: 52,
-		position: 'absolute',
-		top: 222,
-		left: 22,
-		textAlign: 'center',
-		color: color.Yellow,
-		zIndex: 10,
-		opacity: 0.4
-	},
 	instructions: {
 		width: 377,
 		color: color.pastelBlueWhite,
 		lineHeight: 24,
 		marginTop: 0,
 		padding: 16,
-		top: 10,
+		top: 0,
 		fontSize: 20,
-		textAlign: 'center'
+		textAlign: 'center',
+		marginBottom: 38
 	},
 	buttonContainer: {
+		position: 'absolute',
 		alignItems: 'center',
 		justifyContent: 'center',
-		top: 286,
+		top: 460,
 		width: '100%'
 	},
 	button: {

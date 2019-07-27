@@ -24,7 +24,7 @@ function createPromptString(arr) {
 
 function werdsLength(werds) {
 	if (werds) {
-		return werds.length;
+		return werds.length - 1;
 	}
 }
 
