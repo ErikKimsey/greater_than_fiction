@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
-import {
-	View,
-	Text,
-	TextInput,
-	StyleSheet,
-	KeyboardAvoidingView,
-	Dimensions,
-	ImageBackground,
-	TouchableOpacity
-} from 'react-native';
+import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Dimensions, ImageBackground } from 'react-native';
+import * as Font from 'expo-font';
 import { withNavigationFocus } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
@@ -31,12 +23,23 @@ class TextEditor extends Component {
 			title: '',
 			width: null,
 			height: null,
-			prompt: this.props.navigation.state.params.prompt
+			prompt: this.props.navigation.state.params.prompt,
+			fontLoaded: false
 		};
 		// console.log(this.props.navigation.state.params.prompt);
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
+		await Font.loadAsync({
+			'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
+			dayrom: require('../assets/fonts/DAYROM.ttf'),
+			painterz: require('../assets/fonts/Painterz.ttf'),
+			cubesity: require('../assets/fonts/cubesity.ttf'),
+			fatC: require('../assets/fonts/FatC.ttf'),
+			fatCat: require('../assets/fonts/FatCat.ttf'),
+			slukoni: require('../assets/fonts/Slukoni.otf')
+		});
+		this.setState({ fontLoaded: true });
 		this.setState({ isPublished: false });
 		const { height, width } = Dimensions.get('window');
 		this.setState({ height: height, width: width });
@@ -102,49 +105,51 @@ class TextEditor extends Component {
 				source={brainbulb}
 				style={[ { width: '100%', height: '100%', backgroundColor: color.mattPurple } ]}
 			>
-				<KeyboardAvoidingView style={styles.container} behavior="padding">
-					<View style={styles.textContainer}>
-						<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
-						{clock}
-						<Text style={styles.prompt}>{this.state.prompt}</Text>
-					</View>
-					<TextInput
-						style={styles.paragraph}
-						onChangeText={(text) => this.handleInputChange(text)}
-						value={this.state.text}
-						editable={true}
-						multiline={true}
-						placeholder="100 words. Go..."
-					/>
-					<TextInput
-						style={styles.titleAuthor}
-						onChangeText={(text) => {
-							this.setState({ title: text });
-						}}
-						value={this.state.title}
-						editable={true}
-						placeholder="Title..."
-					/>
-					<TextInput
-						style={styles.titleAuthor}
-						onChangeText={(text) => {
-							this.setState({ author: text });
-						}}
-						value={this.state.author}
-						editable={true}
-						placeholder="Author name..."
-					/>
-					<TransparentButton pressBtn={this.onPressPublish} btnLabel="Publish" accessLabel="Publish" />
-					{/* <View style={styles.buttonContainer}> */}
-					{/* <Button
+				{this.state.fontLoaded ? (
+					<KeyboardAvoidingView style={styles.container} behavior="padding">
+						<View style={styles.textContainer}>
+							<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
+							{clock}
+							<Text style={styles.prompt}>{this.state.prompt}</Text>
+						</View>
+						<TextInput
+							style={styles.paragraph}
+							onChangeText={(text) => this.handleInputChange(text)}
+							value={this.state.text}
+							editable={true}
+							multiline={true}
+							placeholder="100 words. Go..."
+						/>
+						<TextInput
+							style={styles.titleAuthor}
+							onChangeText={(text) => {
+								this.setState({ title: text });
+							}}
+							value={this.state.title}
+							editable={true}
+							placeholder="Title..."
+						/>
+						<TextInput
+							style={styles.titleAuthor}
+							onChangeText={(text) => {
+								this.setState({ author: text });
+							}}
+							value={this.state.author}
+							editable={true}
+							placeholder="Author name..."
+						/>
+						<TransparentButton pressBtn={this.onPressPublish} btnLabel="Publish" accessLabel="Publish" />
+						{/* <View style={styles.buttonContainer}> */}
+						{/* <Button
 							style={[ styles.button ]}
 							onPress={this.onPressPublish}
 							title="Publish"
 							color={color.softRed}
 							accessibilityLabel="Publish"
 						/> */}
-					{/* </View> */}
-				</KeyboardAvoidingView>
+						{/* </View> */}
+					</KeyboardAvoidingView>
+				) : null}
 			</ImageBackground>
 		);
 	}
@@ -154,6 +159,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column',
+
 		paddingTop: 50
 	},
 	paragraph: {
@@ -173,7 +179,8 @@ const styles = StyleSheet.create({
 	},
 	textContainer: {
 		flexDirection: 'column',
-		paddingLeft: 10
+		paddingLeft: 10,
+		alignItems: 'center'
 	},
 	count: {
 		color: color.softRed,

@@ -4,9 +4,7 @@ import color from '../../assets/globals/colors';
 
 export default function TransparentButton(props) {
 	const { pressBtn, btnLabel, accessLabel } = props;
-	console.log(props);
 	const pressButton = () => {
-		console.log('pressing button');
 		return pressBtn();
 	};
 
@@ -39,7 +37,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		paddingLeft: 50,
 		paddingRight: 50,
-		bottom: 40,
+		// bottom: 40,
 		borderColor: color.pastelBlueWhite,
 		borderWidth: 1,
 		borderRadius: 5
