@@ -3,11 +3,11 @@ import {
 	View,
 	Text,
 	TextInput,
-	Button,
 	StyleSheet,
 	KeyboardAvoidingView,
 	Dimensions,
-	ImageBackground
+	ImageBackground,
+	TouchableOpacity
 } from 'react-native';
 import { withNavigationFocus } from 'react-navigation';
 import color from '../assets/globals/colors';
@@ -15,6 +15,7 @@ import { wordCount } from '../utilities/wordCount';
 import Clock from '../components/clock';
 import Prompt from '../components/Prompt/Prompt';
 import brainbulb from '../assets/cartographer.png';
+import TransparentButton from '../components/buttons/transparentButton';
 
 class TextEditor extends Component {
 	constructor(props) {
@@ -133,15 +134,16 @@ class TextEditor extends Component {
 						editable={true}
 						placeholder="Author name..."
 					/>
-					<View style={styles.buttonContainer}>
-						<Button
+					<TransparentButton pressBtn={this.onPressPublish} btnLabel="Publish" accessLabel="Publish" />
+					{/* <View style={styles.buttonContainer}> */}
+					{/* <Button
 							style={[ styles.button ]}
 							onPress={this.onPressPublish}
 							title="Publish"
 							color={color.softRed}
 							accessibilityLabel="Publish"
-						/>
-					</View>
+						/> */}
+					{/* </View> */}
 				</KeyboardAvoidingView>
 			</ImageBackground>
 		);
@@ -181,15 +183,6 @@ const styles = StyleSheet.create({
 	final: {
 		fontWeight: '900',
 		fontSize: 20
-	},
-	buttonContainer: {
-		flexDirection: 'column',
-		padding: 20
-	},
-	button: {
-		paddingTop: 100,
-		paddingBottom: 100,
-		backgroundColor: color.softRed
 	},
 	titleAuthor: {
 		margin: 5,

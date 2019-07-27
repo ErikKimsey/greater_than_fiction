@@ -44,13 +44,11 @@ export default class Landing extends Component {
 			>
 				{this.state.fontLoaded ? (
 					<View>
-						{/* <View> */}
 						<Image source={werdsLogo} style={[ { width: 400, height: 261, left: 14 } ]} />
 
 						<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
 							Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill creative-block.
 						</Text>
-						{/* </View> */}
 						<View style={styles.buttonContainer}>
 							<TouchableOpacity
 								style={styles.button}

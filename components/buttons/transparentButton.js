@@ -1,45 +1,47 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import color from '../../assets/globals/colors';
 
-export default function transparentButton() {
-
-  
+export default function TransparentButton(props) {
+	const { pressBtn, btnLabel, accessLabel } = props;
+	console.log(props);
 	const pressButton = () => {
 		console.log('pressing button');
-  };
-  
+		return pressBtn();
+	};
+
 	return (
-		<View>
-			<View style={styles.buttonContainer}>
-				<TouchableOpacity
-					style={styles.button}
-					onPress={pressButton}
-					activeOpacity={0.8}
-					accessibilityLabel="transButton!"
-				>
-					<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
-				</TouchableOpacity>
-			</View>
+		<View style={styles.buttonContainer}>
+			<TouchableOpacity
+				style={styles.button}
+				onPress={() => {
+					pressButton();
+				}}
+				activeOpacity={0.8}
+				accessibilityLabel={accessLabel}
+			>
+				<Text style={[ styles.buttonText ]}>{btnLabel}</Text>
+			</TouchableOpacity>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	buttonContainer: {
-		position: 'absolute',
+		flex: 1,
+		position: 'relative',
 		alignItems: 'center',
 		justifyContent: 'center',
-		top: 500,
-		width: '100%'
+		width: '100%',
+		margin: 5
 	},
 	button: {
 		alignItems: 'center',
-		backgroundColor: 'transparent',
 		paddingLeft: 50,
 		paddingRight: 50,
 		bottom: 40,
-		borderWidth: 1,
 		borderColor: color.pastelBlueWhite,
+		borderWidth: 1,
 		borderRadius: 5
 	},
 	buttonText: {
