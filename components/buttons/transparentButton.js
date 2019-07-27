@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import color from '../../assets/globals/colors';
 
 export default function TransparentButton(props) {
-	const { pressBtn, btnLabel, accessLabel } = props;
+	const { pressBtn, btnLabel, accessLabel, btnFont } = props;
 	const pressButton = () => {
 		return pressBtn();
 	};
@@ -18,7 +18,7 @@ export default function TransparentButton(props) {
 				activeOpacity={0.8}
 				accessibilityLabel={accessLabel}
 			>
-				<Text style={[ styles.buttonText ]}>{btnLabel}</Text>
+				<Text style={[ { fontFamily: btnFont }, styles.buttonText ]}>{btnLabel}</Text>
 			</TouchableOpacity>
 		</View>
 	);

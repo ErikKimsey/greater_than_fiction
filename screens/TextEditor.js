@@ -108,9 +108,11 @@ class TextEditor extends Component {
 				{this.state.fontLoaded ? (
 					<KeyboardAvoidingView style={styles.container} behavior="padding">
 						<View style={styles.textContainer}>
-							<Text style={styles.count}>Words remaining: {this.state.wordCount}</Text>
+							<Text style={[ { fontFamily: 'lemon-milk' }, styles.count ]}>
+								Words remaining: {this.state.wordCount}
+							</Text>
 							{clock}
-							<Text style={styles.prompt}>{this.state.prompt}</Text>
+							<Text style={[ { fontFamily: 'lemon-milk' }, styles.prompt ]}>{this.state.prompt}</Text>
 						</View>
 						<TextInput
 							style={styles.paragraph}
@@ -138,7 +140,12 @@ class TextEditor extends Component {
 							editable={true}
 							placeholder="Author name..."
 						/>
-						<TransparentButton pressBtn={this.onPressPublish} btnLabel="Publish" accessLabel="Publish" />
+						<TransparentButton
+							pressBtn={this.onPressPublish}
+							btnLabel="Publish"
+							accessLabel="Publish"
+							btnFont="lemon-milk"
+						/>
 						{/* <View style={styles.buttonContainer}> */}
 						{/* <Button
 							style={[ styles.button ]}
@@ -159,7 +166,6 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		flexDirection: 'column',
-
 		paddingTop: 50
 	},
 	paragraph: {
@@ -184,7 +190,6 @@ const styles = StyleSheet.create({
 	},
 	count: {
 		color: color.softRed,
-		fontWeight: '900',
 		fontSize: 20
 	},
 	final: {
@@ -207,8 +212,7 @@ const styles = StyleSheet.create({
 		color: color.softRed
 	},
 	prompt: {
-		color: '#ffffff',
-		fontWeight: '900'
+		color: '#ffffff'
 	}
 });
 
