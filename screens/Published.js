@@ -73,6 +73,7 @@ export default class Published extends Component {
 							<Text style={styles.titleAuthor}>What?</Text>
 							<Text style={styles.titleAuthor}>by A. Stinker</Text>
 						</View>
+						<Text style={styles.softbodyfooter}>100W33RDS - a SoftBodySocial platform</Text>
 					</View>
 					<TransparentButton
 						pressBtn={this._saveToCameraRollAsync}
@@ -155,5 +156,11 @@ const styles = StyleSheet.create({
 		padding: 20,
 		margin: 0,
 		borderColor: '#000000'
+	},
+	softbodyfooter: {
+		color: color.pastelBlueWhite,
+		fontSize: 12,
+		opacity: 0.5,
+		marginTop: 20
 	}
 });
