@@ -49,16 +49,25 @@ export default class Published extends Component {
 	};
 
 	render() {
-		const { text, title, author } = this.props.navigation.state.params;
+    const { text, title, author } = this.props.navigation.state.params;
+    const { width, height} = Dimensions.get('screen');
 		if (!this.state.saved) {
 			return (
-				<ImageBackground
-					source={brainbulb}
+				// <ImageBackground
+				// 	source={brainbulb}
+				// 	style={[
+				// 		{ width: '100%', height: '120%', backgroundColor: color.mattPurple },
+				// 		styles.publishedContainer
+				// 	]}
+				// >
+				<View
 					style={[
-						{ width: '100%', height: '120%', backgroundColor: color.mattPurple },
 						styles.publishedContainer
 					]}
 				>
+        <View style={[{top:0, left:0 }]}>
+          <Image style={{ height: height, width: width, position: 'absolute', top:0, left:0 }} source={brainbulb} />
+        </View>
 					<View
 						collapsable={false}
 						style={styles.saveContainer}
@@ -66,7 +75,7 @@ export default class Published extends Component {
 							this._container = view;
 						}}
 					>
-						<Text style={styles.text}>{text}</Text>
+						{/* <Text style={styles.text}>{text}</Text> */}
 						<Text style={styles.text}>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique sagittis nisl quis
 							suscipit. Donec turpis mauris, venenatis vel elit accumsan, vulputate pharetra leo.
@@ -93,17 +102,17 @@ export default class Published extends Component {
 						accessLabel="Save"
 						btnFont="lemon-milk"
 					/>
-				</ImageBackground>
+				</View>
 			);
 		} else if (this.state.saved) {
 			return (
-				<ImageBackground
-					source={brainbulb}
-					style={[
-						{ width: '100%', height: '120%', backgroundColor: color.mattPurple },
-						styles.viewImageContainer
-					]}
-				>
+       <View style={[
+          styles.publishedContainer
+        ]}
+      >
+      <View style={[{top:0, left:0 }]}>
+        <Image style={{ height: height, width: width, position: 'absolute', top:0, left:0 }} source={brainbulb} />
+      </View>
 					{this.state.cameraRollUri && (
 						<Image
 							source={{ uri: this.state.cameraRollUri }}
@@ -116,13 +125,15 @@ export default class Published extends Component {
 							]}
 						/>
 					)}
-					<TransparentButton
-						pressBtn={this.exitPublished}
-						btnLabel="Exit"
-						accessLabel="Exit"
-						btnFont="lemon-milk"
-					/>
-				</ImageBackground>
+					<View style={styles.transBtn}>
+						<TransparentButton
+							pressBtn={this.exitPublished}
+							btnLabel="Exit"
+							accessLabel="Exit"
+							btnFont="lemon-milk"
+						/>
+					</View>
+          </View>
 			);
 		}
 	}
@@ -132,8 +143,8 @@ const styles = StyleSheet.create({
 	publishedContainer: {
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center',
-		paddingTop: 50,
+		alignItems: 'stretch',
+		paddingTop: 0,
 		margin: 0,
 		backgroundColor: color.mattPurple
 	},
@@ -164,17 +175,20 @@ const styles = StyleSheet.create({
 		fontSize: 22
 	},
 	viewImageContainer: {
-		flex: 1,
-		paddingTop: 50,
-		margin: 0,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: color.mattPurple
-	},
-	image: {
 		paddingTop: 0,
 		margin: 0,
-		borderColor: '#000000'
+		top: 0,
+		justifyContent: 'center',
+		alignItems: 'stretch',
+		backgroundColor: color.Yellow
+	},
+	image: {
+		flex: 4,
+		paddingTop: 0,
+		margin: 0
+	},
+	transBtn: {
+		flex: 1
 	},
 	softbodyfooter: {
 		color: color.pastelBlueWhite,
