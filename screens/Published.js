@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Image, CameraRoll, PixelRatio } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, CameraRoll, ImageBackground } from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
 import * as Permissions from 'expo-permissions';
 import PublishedButton from '../components/buttons/publishedButtons';
 import TransparentButton from '../components/buttons/transparentButton';
+import brainbulb from '../assets/cartographer.png';
 
 export default class Published extends Component {
 	state = {
@@ -49,7 +50,14 @@ export default class Published extends Component {
 		const { text, title, author } = this.props.navigation.state.params;
 		if (!this.state.saved) {
 			return (
-				<View style={styles.publishedContainer}>
+				// <View style={styles.publishedContainer}>
+				<ImageBackground
+					source={brainbulb}
+					style={[
+						{ width: '100%', height: '120%', backgroundColor: color.mattPurple },
+						styles.publishedContainer
+					]}
+				>
 					<View
 						collapsable={false}
 						style={styles.saveContainer}
@@ -82,11 +90,19 @@ export default class Published extends Component {
 						btnFont="lemon-milk"
 					/>
 					{/* <PublishedButton saved={this.state.saved} saveToRoll={this._saveToCameraRollAsync} /> */}
-				</View>
+					{/* </View> */}
+				</ImageBackground>
 			);
 		} else if (this.state.saved) {
 			return (
-				<View style={styles.viewImageContainer}>
+				// <View style={styles.viewImageContainer}>
+				<ImageBackground
+					source={brainbulb}
+					style={[
+						{ width: '100%', height: '120%', backgroundColor: color.mattPurple },
+						styles.viewImageContainer
+					]}
+				>
 					{this.state.cameraRollUri && (
 						<Image
 							source={{ uri: this.state.cameraRollUri }}
@@ -105,7 +121,8 @@ export default class Published extends Component {
 						btnFont="lemon-milk"
 					/>
 					{/* <PublishedButton saved={this.state.saved} exitPublished={this.exitPublished} /> */}
-				</View>
+					{/* </View> */}
+				</ImageBackground>
 			);
 		}
 	}
@@ -125,7 +142,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		padding: 40,
 		margin: 0
-		// top: 80
 	},
 	text: {
 		borderStyle: 'solid',
