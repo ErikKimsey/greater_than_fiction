@@ -53,13 +53,6 @@ export default class Published extends Component {
     const { width, height} = Dimensions.get('screen');
 		if (!this.state.saved) {
 			return (
-				// <ImageBackground
-				// 	source={brainbulb}
-				// 	style={[
-				// 		{ width: '100%', height: '120%', backgroundColor: color.mattPurple },
-				// 		styles.publishedContainer
-				// 	]}
-				// >
 				<View
 					style={[
 						styles.publishedContainer
@@ -86,14 +79,14 @@ export default class Published extends Component {
 							imperdiet nulla nec volutpat. Cras in gravida quam. Donec dapibus leo at suscipit egestas.
 							Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam.
 						</Text>
-						{/* <View style={styles.titleAuthorContainer}>
+						<View style={styles.titleAuthorContainer}>
 							<Text style={styles.titleAuthor}>What?</Text>
 							<Text style={styles.titleAuthor}>by A. Stinker</Text>
-						</View> */}
-						<View style={styles.titleAuthorContainer}>
+						</View>
+						{/* <View style={styles.titleAuthorContainer}>
 							<Text style={[ styles.titleAuthor, styles.title ]}>{title}</Text>
 							<Text style={styles.titleAuthor}>{author}</Text>
-						</View>
+						</View> */}
 						<Text style={styles.softbodyfooter}>100W33RDS - a SoftBodySocial platform</Text>
 					</View>
 					<TransparentButton
@@ -107,10 +100,11 @@ export default class Published extends Component {
 		} else if (this.state.saved) {
 			return (
        <View style={[
-          styles.publishedContainer
+          styles.viewImageContainer,
+          { color:color.mattPurple}
         ]}
       >
-      <View style={[{top:0, left:0 }]}>
+      <View style={[styles.imageContainer,{top:0, left:0 }]}>
         <Image style={{ height: height, width: width, position: 'absolute', top:0, left:0 }} source={brainbulb} />
       </View>
 					{this.state.cameraRollUri && (
@@ -119,8 +113,8 @@ export default class Published extends Component {
 							resizeMode="contain"
 							style={[
 								{
-									width: this.props.navigation.state.params.width,
-									height: this.props.navigation.state.params.height
+									width: width*0.9,
+									height: height*0.7
 								}
 							]}
 						/>
@@ -149,13 +143,13 @@ const styles = StyleSheet.create({
 		backgroundColor: color.mattPurple
 	},
 	saveContainer: {
-		justifyContent: 'center',
+    justifyContent: 'center',
 		alignItems: 'center',
 		padding: 40,
 		margin: 0
 	},
 	text: {
-		borderStyle: 'solid',
+    borderStyle: 'solid',
 		borderColor: '#000000',
 		fontSize: 18,
 		color: '#ffffff',
@@ -163,32 +157,37 @@ const styles = StyleSheet.create({
 		margin: 1
 	},
 	titleAuthorContainer: {
-		alignItems: 'flex-end',
+    alignItems: 'flex-end',
 		justifyContent: 'flex-end',
 		paddingTop: 10
 	},
 	titleAuthor: {
-		color: color.softRed,
+    color: color.softRed,
 		fontSize: 18
 	},
 	title: {
-		fontSize: 22
+    fontSize: 22
 	},
 	viewImageContainer: {
-		paddingTop: 0,
+    flex:1,
+    paddingTop: 0,
 		margin: 0,
 		top: 0,
 		justifyContent: 'center',
 		alignItems: 'stretch',
-		backgroundColor: color.Yellow
-	},
+    backgroundColor: color.mattPurple
+  },
+  imageContainer:{
+    
+  },
 	image: {
-		flex: 4,
-		paddingTop: 0,
-		margin: 0
+    // flex:4,
+		// flex: 4,
+		// paddingTop: 0,
+		// margin: 0
 	},
 	transBtn: {
-		flex: 1
+    
 	},
 	softbodyfooter: {
 		color: color.pastelBlueWhite,
