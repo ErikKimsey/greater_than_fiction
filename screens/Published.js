@@ -5,6 +5,7 @@ import color from '../assets/globals/colors';
 import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
 import * as Permissions from 'expo-permissions';
 import PublishedButton from '../components/buttons/publishedButtons';
+import TransparentButton from '../components/buttons/transparentButton';
 
 export default class Published extends Component {
 	state = {
@@ -35,7 +36,7 @@ export default class Published extends Component {
 		let result = await takeSnapshotAsync(this._container, {
 			format: 'png',
 			result: 'tmpfile',
-			height: this.props.navigation.state.params.height,
+			height: this.props.navigation.state.params.height * 0.7,
 			width: this.props.navigation.state.params.width,
 			quality: 1
 		});
@@ -56,13 +57,30 @@ export default class Published extends Component {
 							this._container = view;
 						}}
 					>
-						<Text style={styles.text}>{text}</Text>
+						{/* <Text style={styles.text}>{text}</Text>
 						<View style={styles.titleAuthorContainer}>
 							<Text style={styles.titleAuthor}>"{title}"</Text>
 							<Text style={styles.titleAuthor}>by {author}</Text>
+						</View> */}
+						<Text style={styles.text}>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+							laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+							voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+							cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</Text>
+						<View style={styles.titleAuthorContainer}>
+							<Text style={styles.titleAuthor}>What?</Text>
+							<Text style={styles.titleAuthor}>by A. Stinker</Text>
 						</View>
 					</View>
-					<PublishedButton saved={this.state.saved} saveToRoll={this._saveToCameraRollAsync} />
+					<TransparentButton
+						pressBtn={this._saveToCameraRollAsync}
+						btnLabel="Save"
+						accessLabel="Save"
+						btnFont="lemon-milk"
+					/>
+					{/* <PublishedButton saved={this.state.saved} saveToRoll={this._saveToCameraRollAsync} /> */}
 				</View>
 			);
 		} else if (this.state.saved) {
@@ -72,15 +90,20 @@ export default class Published extends Component {
 						<Image
 							source={{ uri: this.state.cameraRollUri }}
 							style={[
-								styles.image,
 								{
-									width: this.props.navigation.state.params.width * 0.7,
-									height: this.props.navigation.state.params.height * 0.8
+									width: this.props.navigation.state.params.width * 0.9,
+									height: this.props.navigation.state.params.height * 0.7
 								}
 							]}
 						/>
 					)}
-					<PublishedButton saved={this.state.saved} exitPublished={this.exitPublished} />
+					<TransparentButton
+						pressBtn={this.exitPublished}
+						btnLabel="Exit"
+						accessLabel="Exit"
+						btnFont="lemon-milk"
+					/>
+					{/* <PublishedButton saved={this.state.saved} exitPublished={this.exitPublished} /> */}
 				</View>
 			);
 		}
@@ -90,26 +113,26 @@ export default class Published extends Component {
 const styles = StyleSheet.create({
 	publishedContainer: {
 		flex: 1,
-		justifyContent: 'flex-start',
-		padding: 10,
+		justifyContent: 'center',
+		alignItems: 'center',
+		paddingTop: 50,
 		margin: 0,
-		alignItems: 'stretch',
 		backgroundColor: color.mattPurple
 	},
 	saveContainer: {
-		flex: 1,
 		justifyContent: 'center',
-		padding: 50,
-		margin: 20,
-		alignItems: 'stretch'
-		// backgroundColor: color.gray
+		alignItems: 'center',
+		padding: 40,
+		margin: 0
+		// top: 80
 	},
 	text: {
 		borderStyle: 'solid',
 		borderColor: '#000000',
 		fontSize: 20,
 		color: '#ffffff',
-		paddingBottom: 20
+		paddingBottom: 0,
+		margin: 1
 	},
 	titleAuthorContainer: {
 		alignItems: 'flex-end',
@@ -122,17 +145,15 @@ const styles = StyleSheet.create({
 	},
 	viewImageContainer: {
 		flex: 1,
-		justifyContent: 'space-around',
+		paddingTop: 50,
+		margin: 0,
+		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: color.mattPurple
 	},
 	image: {
-		padding: 0,
+		padding: 20,
 		margin: 0,
-		marginBottom: 40
-	},
-	publishedButton: {
-		height: 20,
-		width: 20
+		borderColor: '#000000'
 	}
 });

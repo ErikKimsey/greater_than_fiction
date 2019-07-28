@@ -170,8 +170,8 @@ const styles = StyleSheet.create({
 		backgroundColor: color.inputGray,
 		color: '#ffffff',
 		// color: color.pastelBlueWhite,
-		borderWidth: 1,
-		borderRadius: 3,
+		borderWidth: 0,
+		borderRadius: 2,
 		padding: 10,
 		paddingTop: 10,
 		margin: 5
@@ -198,9 +198,9 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		fontWeight: 'bold',
 		borderColor: color.gray,
-		borderRadius: 3,
+		borderRadius: 2,
 		backgroundColor: color.inputGray,
-		borderWidth: 1,
+		borderWidth: 0,
 		paddingTop: 5,
 		paddingLeft: 10,
 		color: color.pastelBlueWhite
