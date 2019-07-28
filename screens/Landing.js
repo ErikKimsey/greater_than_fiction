@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import * as Font from 'expo-font';
 
 import color from '../assets/globals/colors';
@@ -16,16 +16,20 @@ export default class Landing extends Component {
 	};
 
 	async componentDidMount() {
-		await Font.loadAsync({
-			'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
-			dayrom: require('../assets/fonts/DAYROM.ttf'),
-			painterz: require('../assets/fonts/Painterz.ttf'),
-			cubesity: require('../assets/fonts/cubesity.ttf'),
-			fatC: require('../assets/fonts/FatC.ttf'),
-			fatCat: require('../assets/fonts/FatCat.ttf'),
-			slukoni: require('../assets/fonts/Slukoni.otf')
+		await Promise.all([
+			console.log(Dimensions.get('screen')),
+			Font.loadAsync({
+				'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
+				dayrom: require('../assets/fonts/DAYROM.ttf'),
+				painterz: require('../assets/fonts/Painterz.ttf'),
+				cubesity: require('../assets/fonts/cubesity.ttf'),
+				fatC: require('../assets/fonts/FatC.ttf'),
+				fatCat: require('../assets/fonts/FatCat.ttf'),
+				slukoni: require('../assets/fonts/Slukoni.otf')
+			})
+		]).then((res) => {
+			this.setState({ fontLoaded: true });
 		});
-		this.setState({ fontLoaded: true });
 	}
 
 	handleGo = () => {

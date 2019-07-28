@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Image, CameraRoll, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Image, CameraRoll, ImageBackground } from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';
@@ -18,6 +18,8 @@ export default class Published extends Component {
 	};
 
 	async componentDidMount() {
+		console.log(Dimensions.get('screen'));
+
 		const { status } = await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
 		this.setState({ hasCameraPermission: status === 'granted' });
 		const { height, width } = this.props.navigation.state.params;
@@ -50,7 +52,6 @@ export default class Published extends Component {
 		const { text, title, author } = this.props.navigation.state.params;
 		if (!this.state.saved) {
 			return (
-				// <View style={styles.publishedContainer}>
 				<ImageBackground
 					source={brainbulb}
 					style={[
@@ -65,21 +66,24 @@ export default class Published extends Component {
 							this._container = view;
 						}}
 					>
-						{/* <Text style={styles.text}>{text}</Text>
-						<View style={styles.titleAuthorContainer}>
-							<Text style={styles.titleAuthor}>"{title}"</Text>
-							<Text style={styles.titleAuthor}>by {author}</Text>
-						</View> */}
+						<Text style={styles.text}>{text}</Text>
 						<Text style={styles.text}>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-							laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-							voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-							cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique sagittis nisl quis
+							suscipit. Donec turpis mauris, venenatis vel elit accumsan, vulputate pharetra leo.
+							Phasellus sollicitudin sagittis erat, eget iaculis ante laoreet tempus. Praesent at mi sit
+							amet odio sollicitudin faucibus. Ut ullamcorper ipsum et tellus dictum, at scelerisque massa
+							porta. Vestibulum a lobortis nibh. Aliquam lacinia cursus pharetra. Suspendisse vel lacinia
+							tellus. Mauris porta tellus nisi, in aliquam dui consectetur aliquet. Duis pulvinar
+							imperdiet nulla nec volutpat. Cras in gravida quam. Donec dapibus leo at suscipit egestas.
+							Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam.
 						</Text>
-						<View style={styles.titleAuthorContainer}>
+						{/* <View style={styles.titleAuthorContainer}>
 							<Text style={styles.titleAuthor}>What?</Text>
 							<Text style={styles.titleAuthor}>by A. Stinker</Text>
+						</View> */}
+						<View style={styles.titleAuthorContainer}>
+							<Text style={[ styles.titleAuthor, styles.title ]}>{title}</Text>
+							<Text style={styles.titleAuthor}>{author}</Text>
 						</View>
 						<Text style={styles.softbodyfooter}>100W33RDS - a SoftBodySocial platform</Text>
 					</View>
@@ -89,13 +93,10 @@ export default class Published extends Component {
 						accessLabel="Save"
 						btnFont="lemon-milk"
 					/>
-					{/* <PublishedButton saved={this.state.saved} saveToRoll={this._saveToCameraRollAsync} /> */}
-					{/* </View> */}
 				</ImageBackground>
 			);
 		} else if (this.state.saved) {
 			return (
-				// <View style={styles.viewImageContainer}>
 				<ImageBackground
 					source={brainbulb}
 					style={[
@@ -106,10 +107,11 @@ export default class Published extends Component {
 					{this.state.cameraRollUri && (
 						<Image
 							source={{ uri: this.state.cameraRollUri }}
+							resizeMode="contain"
 							style={[
 								{
-									width: this.props.navigation.state.params.width * 0.9,
-									height: this.props.navigation.state.params.height * 0.7
+									width: this.props.navigation.state.params.width,
+									height: this.props.navigation.state.params.height
 								}
 							]}
 						/>
@@ -120,8 +122,6 @@ export default class Published extends Component {
 						accessLabel="Exit"
 						btnFont="lemon-milk"
 					/>
-					{/* <PublishedButton saved={this.state.saved} exitPublished={this.exitPublished} /> */}
-					{/* </View> */}
 				</ImageBackground>
 			);
 		}
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
 	text: {
 		borderStyle: 'solid',
 		borderColor: '#000000',
-		fontSize: 20,
+		fontSize: 18,
 		color: '#ffffff',
 		paddingBottom: 0,
 		margin: 1
@@ -160,6 +160,9 @@ const styles = StyleSheet.create({
 		color: color.softRed,
 		fontSize: 18
 	},
+	title: {
+		fontSize: 22
+	},
 	viewImageContainer: {
 		flex: 1,
 		paddingTop: 50,
@@ -169,7 +172,7 @@ const styles = StyleSheet.create({
 		backgroundColor: color.mattPurple
 	},
 	image: {
-		padding: 20,
+		paddingTop: 0,
 		margin: 0,
 		borderColor: '#000000'
 	},
@@ -177,6 +180,7 @@ const styles = StyleSheet.create({
 		color: color.pastelBlueWhite,
 		fontSize: 12,
 		opacity: 0.5,
-		marginTop: 20
+		marginTop: 0,
+		padding: 0
 	}
 });
