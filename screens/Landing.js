@@ -7,6 +7,8 @@ import { fontList } from '../assets/fonts/retrieveFonts';
 
 import { BackgroundStyles } from '../stylesheets/backgroundStyleSheet';
 import { initGyro, getGyroData } from '../utilities/gyroColorMapping';
+
+import TransparentButton from '../components/buttons/transparentButton';
 import brainbulb from '../assets/cartographer.png';
 import werdsLogo from '../assets/100_werds.png';
 
@@ -46,22 +48,28 @@ export default class Landing extends Component {
 				]}
 			>
 				{this.state.fontLoaded ? (
-					<View>
+					<View style={styles.subContainer}>
 						<Image source={werdsLogo} style={[ { width: 400, height: 261, left: 14 } ]} />
 
 						<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
 							Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill creative-block.
 						</Text>
-						<View style={styles.buttonContainer}>
-							<TouchableOpacity
-								style={styles.button}
-								onPress={this.handleGo}
-								activeOpacity={0.8}
-								accessibilityLabel="Landing!"
-							>
-								<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
-							</TouchableOpacity>
-						</View>
+						{/* <View style={styles.buttonContainer}> */}
+						{/* <TouchableOpacity
+							style={styles.button}
+							onPress={this.handleGo}
+							activeOpacity={0.8}
+							accessibilityLabel="Landing!"
+						>
+							<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
+						</TouchableOpacity> */}
+						<TransparentButton
+							pressBtn={this.handleGo}
+							btnLabel="Get set"
+							accessLabel="Get set"
+							btnFont="lemon-milk"
+						/>
+						{/* </View> */}
 					</View>
 				) : null}
 			</ImageBackground>
@@ -74,6 +82,9 @@ const styles = StyleSheet.create({
 		flex: 1,
 		height: 500,
 		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	subContainer: {
 		justifyContent: 'center'
 	},
 	image: {
