@@ -17,7 +17,6 @@ export default class Landing extends Component {
 
 	async componentDidMount() {
 		await Promise.all([
-			console.log(Dimensions.get('screen')),
 			Font.loadAsync({
 				'lemon-milk': require('../assets/fonts/LemonMilk.otf'),
 				dayrom: require('../assets/fonts/DAYROM.ttf'),

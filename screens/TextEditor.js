@@ -9,6 +9,8 @@ import Prompt from '../components/Prompt/Prompt';
 import brainbulb from '../assets/cartographer.png';
 import TransparentButton from '../components/buttons/transparentButton';
 
+import isEmpty from '../utilities/checkEmptyFields';
+
 class TextEditor extends Component {
 	constructor(props) {
 		super(props);
@@ -45,16 +47,23 @@ class TextEditor extends Component {
 	}
 
 	onPressPublish = () => {
-		this.props.navigation.navigate('Published', {
-			text: this.state.text,
-			title: this.state.title,
-			author: this.state.author,
-			height: this.state.height,
-			width: this.state.width
-		});
-		this.closeFinal();
-		this.setState({ isPublished: false });
-	};
+    const {text, title, author} = this.state;
+    if(isEmpty([text, title, author]){
+      this.props.navigation.navigate('Published', {
+        text: this.state.text,
+        title: this.state.title,
+        author: this.state.author,
+        height: this.state.height,
+        width: this.state.width
+      });
+      this.closeFinal();
+      this.setState({ isPublished: false });
+    } else {
+      console.log('Empty fields');
+    }
+  };
+  
+
 
 	handleInputChange = (text) => {
 		this.setState({ text });

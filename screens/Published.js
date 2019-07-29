@@ -68,12 +68,12 @@ export default class Published extends Component {
 							this._container = view;
 						}}
 					>
-          		<View style={styles.titleAuthorContainer}>
+          		{/* <View style={styles.titleAuthorContainer}>
 							<Text style={[styles.titleAuthor, styles.title]}>What?</Text>
 							<Text style={styles.titleAuthor}>by A. Stinker</Text>
-						</View>
-						{/* <Text style={styles.text}>{text}</Text> */}
-						<Text style={styles.text}>
+						</View> */}
+						<Text style={styles.text}>{text}</Text>
+						{/* <Text style={styles.text}>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique sagittis nisl quis
 							suscipit. Donec turpis mauris, venenatis vel elit accumsan, vulputate pharetra leo.
 							Phasellus sollicitudin sagittis erat, eget iaculis ante laoreet tempus. Praesent at mi sit
@@ -82,15 +82,15 @@ export default class Published extends Component {
 							tellus. Mauris porta tellus nisi, in aliquam dui consectetur aliquet. Duis pulvinar
 							imperdiet nulla nec volutpat. Cras in gravida quam. Donec dapibus leo at suscipit egestas.
 							Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam.
-						</Text>
+						</Text> */}
 						{/* <View style={styles.titleAuthorContainer}>
 							<Text style={[styles.titleAuthor, styles.title]}>What?</Text>
 							<Text style={styles.titleAuthor}>by A. Stinker</Text>
 						</View> */}
-						{/* <View style={styles.titleAuthorContainer}>
+						<View style={styles.titleAuthorContainer}>
 							<Text style={[ styles.titleAuthor, styles.title ]}>{title}</Text>
 							<Text style={styles.titleAuthor}>{author}</Text>
-						</View> */}
+						</View>
 						<Text style={styles.softbodyfooter}>100W33RDS - a SoftBodySocial platform</Text>
 					</View>
 					<TransparentButton
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
 		fontSize: 18
 	},
 	title: {
-    fontSize: 22
+    fontSize: 24
   },
   /** */
   /** Page 2 */
