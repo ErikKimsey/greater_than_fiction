@@ -18,8 +18,6 @@ export default class Published extends Component {
 	};
 
 	async componentDidMount() {
-		console.log(Dimensions.get('screen'));
-
 		const { status } = await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
 		this.setState({ hasCameraPermission: status === 'granted' });
 		const { height, width } = this.props.navigation.state.params;
@@ -49,18 +47,17 @@ export default class Published extends Component {
 	};
 
 	render() {
-    const { text, title, author } = this.props.navigation.state.params;
-    const { width, height} = Dimensions.get('screen');
+		const { text, title, author } = this.props.navigation.state.params;
+		const { width, height } = Dimensions.get('screen');
 		if (!this.state.saved) {
 			return (
-				<View
-					style={[
-						styles.publishedContainer
-					]}
-				>
-        <View style={[{top:0, left:0 }]}>
-          <Image style={{ height: height, width: width, position: 'absolute', top:0, left:0 }} source={brainbulb} />
-        </View>
+				<View style={[ styles.publishedContainer ]}>
+					<View style={[ { top: 0, left: 0 } ]}>
+						<Image
+							style={{ height: height, width: width, position: 'absolute', top: 0, left: 0 }}
+							source={brainbulb}
+						/>
+					</View>
 					<View
 						collapsable={false}
 						style={styles.saveContainer}
@@ -68,7 +65,7 @@ export default class Published extends Component {
 							this._container = view;
 						}}
 					>
-          		{/* <View style={styles.titleAuthorContainer}>
+						{/* <View style={styles.titleAuthorContainer}>
 							<Text style={[styles.titleAuthor, styles.title]}>What?</Text>
 							<Text style={styles.titleAuthor}>by A. Stinker</Text>
 						</View> */}
@@ -103,14 +100,14 @@ export default class Published extends Component {
 			);
 		} else if (this.state.saved) {
 			return (
-       <View style={[
-          styles.viewImageContainer,
-          { color:color.mattPurple}
-        ]}
-      >
-      <View style={[styles.imageContainer,{top:0, left:0 }]}>
-        <Image style={{ height: height, width: width, position: 'absolute', top:0, left:0 }} source={brainbulb} resizeMode="cover"/>
-      </View>
+				<View style={[ styles.viewImageContainer, { color: color.mattPurple } ]}>
+					<View style={[ styles.imageContainer, { top: 0, left: 0 } ]}>
+						<Image
+							style={{ height: height, width: width, position: 'absolute', top: 0, left: 0 }}
+							source={brainbulb}
+							resizeMode="cover"
+						/>
+					</View>
 					{this.state.cameraRollUri && (
 						<Image
 							source={{ uri: this.state.cameraRollUri }}
@@ -120,7 +117,7 @@ export default class Published extends Component {
 									width: width,
 									height: height
 								},
-                styles.image
+								styles.image
 							]}
 						/>
 					)}
@@ -132,7 +129,7 @@ export default class Published extends Component {
 							btnFont="lemon-milk"
 						/>
 					</View>
-          </View>
+				</View>
 			);
 		}
 	}
@@ -143,18 +140,18 @@ const styles = StyleSheet.create({
 		flex: 1,
 		// justifyContent: 'center',
 		alignItems: 'stretch',
-		padding:0,
+		padding: 0,
 		margin: 0,
 		backgroundColor: color.mattPurple
 	},
 	saveContainer: {
-    justifyContent: 'center',
+		justifyContent: 'center',
 		alignItems: 'center',
 		padding: 40,
 		marginTop: 40
 	},
 	text: {
-    borderStyle: 'solid',
+		borderStyle: 'solid',
 		borderColor: '#000000',
 		fontSize: 18,
 		color: '#ffffff',
@@ -162,43 +159,43 @@ const styles = StyleSheet.create({
 		margin: 1
 	},
 	titleAuthorContainer: {
-    alignItems: 'flex-end',
+		alignItems: 'flex-end',
 		justifyContent: 'flex-end',
 		paddingTop: 10
 	},
 	titleAuthor: {
-    color: color.softRed,
+		color: color.softRed,
 		fontSize: 18
 	},
 	title: {
-    fontSize: 24
-  },
-  /** */
-  /** Page 2 */
-  /** */
+		fontSize: 24
+	},
+	/** */
+	/** Page 2 */
+	/** */
 	viewImageContainer: {
-    flex:1,
-    paddingTop: 0,
+		flex: 1,
+		paddingTop: 0,
 		margin: 0,
 		top: 0,
 		justifyContent: 'center',
 		alignItems: 'stretch',
-    backgroundColor: color.mattPurple
-  },
-  imageContainer:{
-    padding:0,
-    margin:0,
-    left:0,
-    top:0
-  },
+		backgroundColor: color.mattPurple
+	},
+	imageContainer: {
+		padding: 0,
+		margin: 0,
+		left: 0,
+		top: 0
+	},
 	image: {
-    flex:4,
+		flex: 4
 		// flex: 4,
 		// paddingTop: 0,
 		// margin: 0
 	},
 	transBtn: {
-    flex:1
+		flex: 1
 	},
 	softbodyfooter: {
 		color: color.pastelBlueWhite,

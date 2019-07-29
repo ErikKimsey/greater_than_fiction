@@ -79,8 +79,6 @@ class TextEditor extends Component {
 	};
 
 	handleInputChange = (text) => {
-		console.log(text);
-
 		this.setState({ text });
 		let count = wordCount(this.state.text);
 		this.setState({ wordCount: count });
