@@ -2,7 +2,7 @@ import * as FileSystem from 'expo-file-system';
 
 const URI = 'File"//';
 
-const saveText = async (name, content) => {
+async function saveText(name, content) {
 	const fileURI = FileSystem.documentDirectory + `${name}.txt`;
 
 	FileSystem.writeAsStringAsync(fileURI, content)
@@ -18,7 +18,7 @@ const saveText = async (name, content) => {
 		console.log('>>>>>> READING <<<<<<<<');
 		console.log(res);
 	});
-};
+}
 
 function getFile(name) {
 	const fileURI = FileSystem.documentDirectory + `${name}.txt`;

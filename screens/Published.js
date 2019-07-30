@@ -37,7 +37,7 @@ export default class Published extends Component {
 		let result = await takeSnapshotAsync(this._container, {
 			format: 'png',
 			result: 'tmpfile',
-			height: this.props.navigation.state.params.height,
+			height: this.props.navigation.state.params.height * 0.9,
 			width: this.props.navigation.state.params.width,
 			quality: 1
 		});
@@ -60,17 +60,13 @@ export default class Published extends Component {
 					</View>
 					<View
 						collapsable={false}
-						style={styles.saveContainer}
+						style={[ styles.saveContainer ]}
 						ref={(view) => {
 							this._container = view;
 						}}
 					>
-						{/* <View style={styles.titleAuthorContainer}>
-							<Text style={[styles.titleAuthor, styles.title]}>What?</Text>
-							<Text style={styles.titleAuthor}>by A. Stinker</Text>
-						</View> */}
-						<Text style={styles.text}>{text}</Text>
-						{/* <Text style={styles.text}>
+						{/* <Text style={styles.text}>{text}</Text> */}
+						<Text style={styles.text}>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique sagittis nisl quis
 							suscipit. Donec turpis mauris, venenatis vel elit accumsan, vulputate pharetra leo.
 							Phasellus sollicitudin sagittis erat, eget iaculis ante laoreet tempus. Praesent at mi sit
@@ -79,7 +75,7 @@ export default class Published extends Component {
 							tellus. Mauris porta tellus nisi, in aliquam dui consectetur aliquet. Duis pulvinar
 							imperdiet nulla nec volutpat. Cras in gravida quam. Donec dapibus leo at suscipit egestas.
 							Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam.
-						</Text> */}
+						</Text>
 						{/* <View style={styles.titleAuthorContainer}>
 							<Text style={[ styles.titleAuthor, styles.title ]}>What?</Text>
 							<Text style={styles.titleAuthor}>by A. Stinker</Text>
@@ -88,7 +84,7 @@ export default class Published extends Component {
 							<Text style={[ styles.titleAuthor, styles.title ]}>{title}</Text>
 							<Text style={styles.titleAuthor}>{author}</Text>
 						</View>
-						<Text style={styles.softbodyfooter}>100W33RDS - a SoftBodySocial platform</Text>
+						<Text style={styles.softbodyfooter}>100W3RDS - a SoftBodySocial platform</Text>
 					</View>
 					<TransparentButton
 						pressBtn={this._saveToCameraRollAsync}
@@ -149,8 +145,8 @@ const styles = StyleSheet.create({
 		flex: 2,
 		justifyContent: 'center',
 		alignItems: 'center',
-		paddingRight: 20,
-		paddingLeft: 20
+		paddingRight: '5%',
+		paddingLeft: '5%'
 	},
 	text: {
 		borderStyle: 'solid',
@@ -198,7 +194,7 @@ const styles = StyleSheet.create({
 	transBtn: {},
 	softbodyfooter: {
 		color: color.pastelBlueWhite,
-		fontSize: 12,
+		fontSize: 16,
 		opacity: 0.5,
 		marginTop: 0,
 		padding: 0
