@@ -37,7 +37,7 @@ export default class Published extends Component {
 		let result = await takeSnapshotAsync(this._container, {
 			format: 'png',
 			result: 'tmpfile',
-			height: this.props.navigation.state.params.height * 0.7,
+			height: this.props.navigation.state.params.height,
 			width: this.props.navigation.state.params.width,
 			quality: 1
 		});
@@ -69,8 +69,8 @@ export default class Published extends Component {
 							<Text style={[styles.titleAuthor, styles.title]}>What?</Text>
 							<Text style={styles.titleAuthor}>by A. Stinker</Text>
 						</View> */}
-						<Text style={styles.text}>{text}</Text>
-						{/* <Text style={styles.text}>
+						{/* <Text style={styles.text}>{text}</Text> */}
+						<Text style={styles.text}>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique sagittis nisl quis
 							suscipit. Donec turpis mauris, venenatis vel elit accumsan, vulputate pharetra leo.
 							Phasellus sollicitudin sagittis erat, eget iaculis ante laoreet tempus. Praesent at mi sit
@@ -79,9 +79,9 @@ export default class Published extends Component {
 							tellus. Mauris porta tellus nisi, in aliquam dui consectetur aliquet. Duis pulvinar
 							imperdiet nulla nec volutpat. Cras in gravida quam. Donec dapibus leo at suscipit egestas.
 							Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam.
-						</Text> */}
+						</Text>
 						{/* <View style={styles.titleAuthorContainer}>
-							<Text style={[styles.titleAuthor, styles.title]}>What?</Text>
+							<Text style={[ styles.titleAuthor, styles.title ]}>What?</Text>
 							<Text style={styles.titleAuthor}>by A. Stinker</Text>
 						</View> */}
 						<View style={styles.titleAuthorContainer}>
@@ -138,17 +138,19 @@ export default class Published extends Component {
 const styles = StyleSheet.create({
 	publishedContainer: {
 		flex: 1,
-		// justifyContent: 'center',
 		alignItems: 'stretch',
+		justifyContent: 'center',
 		padding: 0,
 		margin: 0,
 		backgroundColor: color.mattPurple
 	},
 	saveContainer: {
+		width: '100%',
+		flex: 2,
 		justifyContent: 'center',
 		alignItems: 'center',
-		padding: 40,
-		marginTop: 40
+		paddingRight: 20,
+		paddingLeft: 20
 	},
 	text: {
 		borderStyle: 'solid',
@@ -159,9 +161,11 @@ const styles = StyleSheet.create({
 		margin: 1
 	},
 	titleAuthorContainer: {
+		width: '100%',
 		alignItems: 'flex-end',
 		justifyContent: 'flex-end',
-		paddingTop: 10
+		paddingTop: 10,
+		paddingRight: 80
 	},
 	titleAuthor: {
 		color: color.softRed,
@@ -190,13 +194,8 @@ const styles = StyleSheet.create({
 	},
 	image: {
 		flex: 4
-		// flex: 4,
-		// paddingTop: 0,
-		// margin: 0
 	},
-	transBtn: {
-		flex: 1
-	},
+	transBtn: {},
 	softbodyfooter: {
 		color: color.pastelBlueWhite,
 		fontSize: 12,

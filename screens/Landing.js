@@ -55,14 +55,7 @@ export default class Landing extends Component {
 							Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill creative-block.
 						</Text>
 						{/* <View style={styles.buttonContainer}> */}
-						{/* <TouchableOpacity
-							style={styles.button}
-							onPress={this.handleGo}
-							activeOpacity={0.8}
-							accessibilityLabel="Landing!"
-						>
-							<Text style={[ styles.buttonText, { fontFamily: 'lemon-milk' } ]}>Get Set.</Text>
-						</TouchableOpacity> */}
+
 						<TransparentButton
 							pressBtn={this.handleGo}
 							btnLabel="Get set"
@@ -80,12 +73,13 @@ export default class Landing extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		height: 500,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
 	subContainer: {
-		justifyContent: 'center'
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 	image: {
 		opacity: 1
