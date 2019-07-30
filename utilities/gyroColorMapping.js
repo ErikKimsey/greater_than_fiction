@@ -19,23 +19,23 @@ const colors = {
 	color_2: `rgb(${RGBValues.r},${RGBValues.g},${RGBValues.b})`
 };
 
-const initGyro = () => {
+function initGyro() {
 	gyro = new GyroScope();
 	gyro.checkGyroAccess();
-};
+}
 
-const getGyroData = () => {
+function getGyroData() {
 	// console.log(gyro.gyroData);
-};
+}
 
-const setAxisVals = (axisObj) => {};
+function setAxisVals(axisObj) {}
 
-const colorMapping = (data) => {
+function colorMapping(data) {
 	// console.log('Color data >> ');
 	// console.log(data);
-};
+}
 
-const mapAxisToRGBLimit = (axisVal, rgbVal) => {};
+function mapAxisToRGBLimit(axisVal, rgbVal) {}
 
 /**
  *  * Re-maps a number from one range to another.

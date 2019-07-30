@@ -5,7 +5,6 @@ import * as Font from 'expo-font';
 import color from '../assets/globals/colors';
 import { fontList } from '../assets/fonts/retrieveFonts';
 
-import { BackgroundStyles } from '../stylesheets/backgroundStyleSheet';
 import { initGyro, getGyroData } from '../utilities/gyroColorMapping';
 
 import TransparentButton from '../components/buttons/transparentButton';
@@ -54,7 +53,6 @@ export default class Landing extends Component {
 						<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
 							Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill creative-block.
 						</Text>
-						{/* <View style={styles.buttonContainer}> */}
 
 						<TransparentButton
 							pressBtn={this.handleGo}
@@ -62,7 +60,6 @@ export default class Landing extends Component {
 							accessLabel="Get set"
 							btnFont="lemon-milk"
 						/>
-						{/* </View> */}
 					</View>
 				) : null}
 			</ImageBackground>

@@ -27,7 +27,6 @@ export default function TransparentButton(props) {
 
 const styles = StyleSheet.create({
 	buttonContainer: {
-		// flex:1,
 		position: 'relative',
 		alignItems: 'center',
 		justifyContent: 'center',

@@ -1,5 +1,9 @@
 import * as Font from 'expo-font';
 
+/**
+ * WIP
+ * Modularize font fetching functionality
+ */
 let fontList = {};
 
 async function retrieveFonts() {

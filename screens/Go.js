@@ -52,7 +52,6 @@ export default class Go extends Component {
 				source={brainbulb}
 				style={[ { width: '100%', height: '120%', backgroundColor: color.mattPurple }, styles.container ]}
 			>
-				{/* <View style={styles.container}> */}
 				{this.state.fontLoaded ? (
 					<View>
 						<View>
@@ -70,14 +69,12 @@ export default class Go extends Component {
 								</TouchableOpacity>
 							</View>
 							<Image source={promptImg} style={[ { width: 380, height: 60 } ]} />
-							{/* <Text style={[ styles.prompt, { fontFamily: 'slukoni' } ]}>Your prompt:</Text>
-							<Text style={[ styles.prompt_2, { fontFamily: 'slukoni' } ]}>Your prompt:</Text> */}
+
 							<Prompt getPrompts={this.getPrompts} />
 							<Text style={[ styles.prompt, { fontFamily: 'lemon-milk', color: '#ffffff' } ]} />
 						</View>
 					</View>
 				) : null}
-				{/* </View> */}
 			</ImageBackground>
 		);
 	}
