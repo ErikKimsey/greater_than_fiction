@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
 		backgroundColor: color.mattPurple
 	},
 	saveContainer: {
+		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 		padding: 40,
