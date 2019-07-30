@@ -69,8 +69,8 @@ export default class Published extends Component {
 							<Text style={[styles.titleAuthor, styles.title]}>What?</Text>
 							<Text style={styles.titleAuthor}>by A. Stinker</Text>
 						</View> */}
-						<Text style={styles.text}>{text}</Text>
-						{/* <Text style={styles.text}>
+						{/* <Text style={styles.text}>{text}</Text> */}
+						<Text style={styles.text}>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique sagittis nisl quis
 							suscipit. Donec turpis mauris, venenatis vel elit accumsan, vulputate pharetra leo.
 							Phasellus sollicitudin sagittis erat, eget iaculis ante laoreet tempus. Praesent at mi sit
@@ -79,15 +79,15 @@ export default class Published extends Component {
 							tellus. Mauris porta tellus nisi, in aliquam dui consectetur aliquet. Duis pulvinar
 							imperdiet nulla nec volutpat. Cras in gravida quam. Donec dapibus leo at suscipit egestas.
 							Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam.
-						</Text> */}
-						{/* <View style={styles.titleAuthorContainer}>
-							<Text style={[styles.titleAuthor, styles.title]}>What?</Text>
-							<Text style={styles.titleAuthor}>by A. Stinker</Text>
-						</View> */}
+						</Text>
 						<View style={styles.titleAuthorContainer}>
+							<Text style={[ styles.titleAuthor, styles.title ]}>What?</Text>
+							<Text style={styles.titleAuthor}>by A. Stinker</Text>
+						</View>
+						{/* <View style={styles.titleAuthorContainer}>
 							<Text style={[ styles.titleAuthor, styles.title ]}>{title}</Text>
 							<Text style={styles.titleAuthor}>{author}</Text>
-						</View>
+						</View> */}
 						<Text style={styles.softbodyfooter}>100W33RDS - a SoftBodySocial platform</Text>
 					</View>
 					<TransparentButton
@@ -148,7 +148,9 @@ const styles = StyleSheet.create({
 		width: '100%',
 		flex: 2,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		paddingRight: 20,
+		paddingLeft: 20
 	},
 	text: {
 		borderStyle: 'solid',
@@ -159,9 +161,11 @@ const styles = StyleSheet.create({
 		margin: 1
 	},
 	titleAuthorContainer: {
+		width: '100%',
 		alignItems: 'flex-end',
 		justifyContent: 'flex-end',
-		paddingTop: 10
+		paddingTop: 10,
+		paddingRight: 80
 	},
 	titleAuthor: {
 		color: color.softRed,
@@ -186,17 +190,12 @@ const styles = StyleSheet.create({
 		padding: 0,
 		margin: 0,
 		left: 0,
-		top: 0,
-		backgroundColor: 'orange'
+		top: 0
 	},
 	image: {
-		flex: 4,
-		backgroundColor: 'salmon'
+		flex: 4
 	},
-	transBtn: {
-		backgroundColor: 'white',
-		flex: 1
-	},
+	transBtn: {},
 	softbodyfooter: {
 		color: color.pastelBlueWhite,
 		fontSize: 12,
