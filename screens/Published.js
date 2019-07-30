@@ -80,14 +80,14 @@ export default class Published extends Component {
 							imperdiet nulla nec volutpat. Cras in gravida quam. Donec dapibus leo at suscipit egestas.
 							Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam.
 						</Text>
-						<View style={styles.titleAuthorContainer}>
+						{/* <View style={styles.titleAuthorContainer}>
 							<Text style={[ styles.titleAuthor, styles.title ]}>What?</Text>
 							<Text style={styles.titleAuthor}>by A. Stinker</Text>
-						</View>
-						{/* <View style={styles.titleAuthorContainer}>
+						</View> */}
+						<View style={styles.titleAuthorContainer}>
 							<Text style={[ styles.titleAuthor, styles.title ]}>{title}</Text>
 							<Text style={styles.titleAuthor}>{author}</Text>
-						</View> */}
+						</View>
 						<Text style={styles.softbodyfooter}>100W33RDS - a SoftBodySocial platform</Text>
 					</View>
 					<TransparentButton
