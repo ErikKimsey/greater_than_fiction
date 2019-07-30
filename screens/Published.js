@@ -138,18 +138,17 @@ export default class Published extends Component {
 const styles = StyleSheet.create({
 	publishedContainer: {
 		flex: 1,
-		// justifyContent: 'center',
 		alignItems: 'stretch',
+		justifyContent: 'center',
 		padding: 0,
 		margin: 0,
 		backgroundColor: color.mattPurple
 	},
 	saveContainer: {
-		flex: 1,
+		width: '100%',
+		flex: 2,
 		justifyContent: 'center',
-		alignItems: 'center',
-		padding: 40,
-		marginTop: 40
+		alignItems: 'center'
 	},
 	text: {
 		borderStyle: 'solid',
@@ -187,15 +186,18 @@ const styles = StyleSheet.create({
 		padding: 0,
 		margin: 0,
 		left: 0,
-		top: 0
+		top: 0,
+		backgroundColor: 'orange'
 	},
 	image: {
-		flex: 4
+		flex: 4,
 		// flex: 4,
 		// paddingTop: 0,
 		// margin: 0
+		backgroundColor: 'salmon'
 	},
 	transBtn: {
+		backgroundColor: 'white',
 		flex: 1
 	},
 	softbodyfooter: {
@@ -203,6 +205,7 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		opacity: 0.5,
 		marginTop: 0,
-		padding: 0
+		padding: 0,
+		backgroundColor: 'yellow'
 	}
 });
