@@ -1,5 +1,10 @@
 import { Gyroscope } from 'expo-sensors';
 
+/**
+ * WIP
+ * Part of the functionality used to create dynamic background utilitizing the device's gyroscope
+ */
+
 class GyroScope {
 	constructor() {
 		gyroData: null;

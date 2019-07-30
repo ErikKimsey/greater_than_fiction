@@ -1,5 +1,10 @@
 import * as FileSystem from 'expo-file-system';
 
+/**
+ * WIP
+ * functionality used to save user's story as a text file to the device.
+ */
+
 const URI = 'File"//';
 
 async function saveText(name, content) {

@@ -1,5 +1,10 @@
 import GyroScope from '../utilities/dynamicBackground';
 
+/**
+ * WIP
+ * Part of the functionality used to create dynamic background utilitizing the device's gyroscope
+ */
+
 const RGBValues = {
 	r: 111,
 	g: 11,
