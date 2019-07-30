@@ -37,7 +37,7 @@ export default class Published extends Component {
 		let result = await takeSnapshotAsync(this._container, {
 			format: 'png',
 			result: 'tmpfile',
-			height: this.props.navigation.state.params.height * 0.7,
+			height: this.props.navigation.state.params.height,
 			width: this.props.navigation.state.params.width,
 			quality: 1
 		});
@@ -191,9 +191,6 @@ const styles = StyleSheet.create({
 	},
 	image: {
 		flex: 4,
-		// flex: 4,
-		// paddingTop: 0,
-		// margin: 0
 		backgroundColor: 'salmon'
 	},
 	transBtn: {
@@ -205,7 +202,6 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		opacity: 0.5,
 		marginTop: 0,
-		padding: 0,
-		backgroundColor: 'yellow'
+		padding: 0
 	}
 });
