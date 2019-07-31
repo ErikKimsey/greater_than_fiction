@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		color: '#ffffff',
 		paddingBottom: 0,
-		margin: 1
+		margin: 1,
 	},
 	titleAuthorContainer: {
 		width: '100%',
@@ -189,7 +189,8 @@ const styles = StyleSheet.create({
 		top: 0
 	},
 	image: {
-		flex: 4
+		flex: 4,
+		backgroundColor: color.mattPurple
 	},
 	transBtn: {},
 	softbodyfooter: {

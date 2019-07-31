@@ -7,7 +7,8 @@ import {
 	KeyboardAvoidingView,
 	Dimensions,
 	ImageBackground,
-	Alert
+	Alert,
+	Platform
 } from 'react-native';
 import * as Font from 'expo-font';
 import { withNavigationFocus } from 'react-navigation';
@@ -142,6 +143,7 @@ class TextEditor extends Component {
 							editable={true}
 							multiline={true}
 							placeholder="100 words. Go..."
+							placeholderStyle={{ borderColor: color.pastelBlueWhite, color: color.pastelBlueWhite }}
 						/>
 						<TextInput
 							style={styles.titleAuthor}
