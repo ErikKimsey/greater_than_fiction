@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, CameraRoll, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Image, CameraRoll } from 'react-native';
 import { StackActions, NavigationActions } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { captureRef as takeSnapshotAsync } from 'react-native-view-shot';

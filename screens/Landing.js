@@ -55,7 +55,9 @@ export default class Landing extends Component {
 						<Image source={werdsLogo} style={[ { width: 400, height: 261, left: 14 } ]} />
 
 						<Text style={[ styles.subHeader_1, { fontFamily: 'lemon-milk' } ]}>
-							Scientifically proven, by SoftBodySocial Inc. (while on stimulants), to kill creative-block.
+							{
+								'	Scientifically proven, \n by SoftBodySocial Inc. \n (while on stimulants), \nto kill creative-block.'
+							}
 						</Text>
 
 						<TransparentButton
