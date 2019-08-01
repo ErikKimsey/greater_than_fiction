@@ -64,7 +64,7 @@ export default class Clock extends Component {
 		let remainingMin = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 		let remainingSec = Math.floor((difference % (1000 * 60)) / 1000);
 		remainingSec = remainingSec + '';
-		if (remainingSec === '00' && remainingMin === 0) {
+		if (remainingSec === '00' && remainingMin <= 0) {
 			this.isTimedOut();
 		}
 
