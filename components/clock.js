@@ -43,7 +43,7 @@ export default class Clock extends Component {
 				this.calcRemainingTime(_now, deadline);
 				this.getTimesUp();
 			} else {
-				this.getTimesUp();
+				this.setTimesUp();
 				this.stopClock(clock);
 			}
 		}, 1000);
@@ -54,7 +54,8 @@ export default class Clock extends Component {
 		this.setState({ isStarted: !this.state.isStarted });
 	};
 
-	getTimesUp = () => {
+	setTimesUp = () => {
+		this.setState({ timesUp: false });
 		return this.props.remaining(this.state.timesUp);
 	};
 
@@ -63,6 +64,10 @@ export default class Clock extends Component {
 		let remainingMin = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 		let remainingSec = Math.floor((difference % (1000 * 60)) / 1000);
 		remainingSec = remainingSec + '';
+		if (remainingSec === '00' && remainingMin === 0) {
+			this.isTimedOut();
+		}
+
 		this.setState({
 			remainingMin,
 			remainingSec
@@ -76,6 +81,7 @@ export default class Clock extends Component {
 
 	componentWillUnmount() {
 		this.stopClock(this.state.clock);
+		this.setState({ timesUp: true });
 	}
 
 	render() {

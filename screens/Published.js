@@ -23,7 +23,6 @@ export default class Published extends Component {
 		const { status } = await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
 		this.setState({ hasCameraPermission: status === 'granted' });
 		const { height, width } = Dimensions.get('window');
-		// const { height, width } = this.props.navigation.state.params;
 		console.log(`height: ${height}, width: ${width}`);
 
 		this.setState({ height, width });

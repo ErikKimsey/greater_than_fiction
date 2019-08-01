@@ -74,7 +74,7 @@ class TextEditor extends Component {
 				'Hold on...',
 				'You are not done yet. Check all input fields.',
 				[ { text: 'Ok', onPress: () => console.log('Ask me later pressed') } ],
-				{ cancelable: false }
+				{ cancelable: false } 
 			);
 		}
 	};
