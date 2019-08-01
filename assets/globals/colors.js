@@ -16,6 +16,7 @@ export default {
 	gray: '#556271',
 	softRed: '#FF6F73',
 	Yellow: '#FAED26',
+	transYellow: 'rgba(250,237,38,0.5)',
 	Plum: '#3E3145',
 	Gray: '#5A5560',
 	inputGray: '#222222'
