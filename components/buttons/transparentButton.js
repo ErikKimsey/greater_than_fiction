@@ -11,7 +11,7 @@ export default function TransparentButton(props) {
 	return (
 		<View style={styles.buttonContainer}>
 			<TouchableHighlight
-				underlayColor={color.softRed}
+				underlayColor={color.Yellow}
 				style={styles.button}
 				onPress={() => {
 					pressButton();
