@@ -8,6 +8,8 @@ import PublishedButton from '../components/buttons/publishedButtons';
 import TransparentButton from '../components/buttons/transparentButton';
 import brainbulb from '../assets/cartographer.png';
 
+console.log(Dimensions.get('window'));
+
 export default class Published extends Component {
 	state = {
 		cameraRollUri: null,
@@ -20,7 +22,10 @@ export default class Published extends Component {
 	async componentDidMount() {
 		const { status } = await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL);
 		this.setState({ hasCameraPermission: status === 'granted' });
-		const { height, width } = this.props.navigation.state.params;
+		const { height, width } = Dimensions.get('window');
+		// const { height, width } = this.props.navigation.state.params;
+		console.log(`height: ${height}, width: ${width}`);
+
 		this.setState({ height, width });
 	}
 
@@ -189,7 +194,9 @@ const styles = StyleSheet.create({
 		top: 0
 	},
 	image: {
-		flex: 4
+		flex: 4,
+		backgroundColor: 'transparent'
+		// backgroundColor: color.mattPurple
 	},
 	transBtn: {},
 	softbodyfooter: {

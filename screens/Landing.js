@@ -8,6 +8,7 @@ import { fontList } from '../assets/fonts/retrieveFonts';
 import { initGyro, getGyroData } from '../utilities/gyroColorMapping';
 
 import TransparentButton from '../components/buttons/transparentButton';
+import PercentageDimensions from '../styles/PercentageDimensions';
 import brainbulb from '../assets/cartographer.png';
 import werdsLogo from '../assets/100_werds.png';
 
@@ -28,8 +29,11 @@ export default class Landing extends Component {
 				slukoni: require('../assets/fonts/Slukoni.otf')
 			})
 		]).then((res) => {
+			let dims = new PercentageDimensions(0.99, 0.95);
+			dims.calcPaddedDimensions();
 			this.setState({ fontLoaded: true });
 		});
+		// const { height, width } = this.props.navigation.state.params;
 	}
 
 	handleGo = () => {
