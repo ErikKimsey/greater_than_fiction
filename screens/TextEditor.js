@@ -80,7 +80,7 @@ class TextEditor extends Component {
 	};
 
 	navToPublished = () => {
-    const { text, title, author } = this.state;
+		const { text, title, author } = this.state;
 		let empty = isEmpty([ text, title, author ]);
 		if (empty === false) {
 			this.props.navigation.navigate('Published', {
@@ -100,7 +100,7 @@ class TextEditor extends Component {
 				{ cancelable: false }
 			);
 		}
-  };
+	};
 
 	onTimedOut = () => {
 		const { text, title, author } = this.state;
@@ -159,8 +159,11 @@ class TextEditor extends Component {
 		return this.state.isPublished;
 	};
 
-	handleTimedOut = () => {
-		this.setState({ isTimedOut: true });
+	handleTimedOut = (to) => {
+		console.log('to');
+		console.log(to);
+		this.setState({ isTimedOut: to });
+		this.onTimedOut();
 	};
 
 	componentWillUnmount() {
