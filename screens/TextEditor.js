@@ -119,9 +119,7 @@ class TextEditor extends Component {
 	}
 
 	render() {
-		let clock = this.state.isPublished ? null : (
-			<Clock remaining={this.getRemainingTime} reset={this.state.clockReset} />
-		);
+		let clock = this.state.isPublished ? null : <Clock isPublished={this.state.isPublished} />;
 		return (
 			<ImageBackground
 				source={brainbulb}

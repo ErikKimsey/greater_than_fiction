@@ -7,7 +7,7 @@ export default class Clock extends Component {
 		total: 5,
 		remainingSec: '59',
 		remainingMin: '4',
-		timesUp: false,
+		isTimedOut: false,
 		clock: null,
 		isStarted: false
 	};
@@ -41,9 +41,7 @@ export default class Clock extends Component {
 			if (_now < deadline) {
 				_now = new Date().getTime();
 				this.calcRemainingTime(_now, deadline);
-				this.getTimesUp();
 			} else {
-				this.getTimesUp();
 				this.stopClock(clock);
 			}
 		}, 1000);
@@ -54,8 +52,14 @@ export default class Clock extends Component {
 		this.setState({ isStarted: !this.state.isStarted });
 	};
 
-	getTimesUp = () => {
-		return this.props.remaining(this.state.timesUp);
+	getTimedOut = () => {
+		return this.state.isTimedOut;
+	};
+
+	isPublished = () => {
+		if (this.props.isPublished === true || this.getTimedOut() === true) {
+			this.stopClock();
+		}
 	};
 
 	calcRemainingTime = (now, deadline) => {
@@ -71,7 +75,7 @@ export default class Clock extends Component {
 
 	stopClock = () => {
 		clearInterval(this.state.clock);
-		this.setState({ timesUp: true });
+		this.setState({ isTimedOut: true });
 	};
 
 	componentWillUnmount() {
@@ -79,7 +83,7 @@ export default class Clock extends Component {
 	}
 
 	render() {
-		if (this.state.timesUp) {
+		if (this.state.isTimedOut) {
 			return (
 				<View>
 					<Text>Stop</Text>
