@@ -79,6 +79,52 @@ class TextEditor extends Component {
 		}
 	};
 
+	navToPublished = () => {
+    const { text, title, author } = this.state;
+		let empty = isEmpty([ text, title, author ]);
+		if (empty === false) {
+			this.props.navigation.navigate('Published', {
+				text: this.state.text,
+				title: this.state.title,
+				author: this.state.author,
+				height: this.state.height,
+				width: this.state.width
+			});
+			this.closeFinal();
+			this.setState({ isPublished: false });
+		} else {
+			Alert.alert(
+				'Hold on...',
+				'You are not done yet. Check all input fields.',
+				[ { text: 'Ok', onPress: () => console.log('Ask me later pressed') } ],
+				{ cancelable: false }
+			);
+		}
+  };
+
+	onTimedOut = () => {
+		const { text, title, author } = this.state;
+		let empty = isEmpty([ text, title, author ]);
+		if (empty === false) {
+			this.props.navigation.navigate('Published', {
+				text: this.state.text,
+				title: this.state.title,
+				author: this.state.author,
+				height: this.state.height,
+				width: this.state.width
+			});
+			this.closeFinal();
+			this.setState({ isPublished: false });
+		} else {
+			Alert.alert(
+				'Hold on...',
+				'You are not done yet. Check all input fields.',
+				[ { text: 'Ok', onPress: () => console.log('Ask me later pressed') } ],
+				{ cancelable: false }
+			);
+		}
+	};
+
 	handleInputChange = (text) => {
 		this.setState({ text });
 		let count = wordCount(this.state.text);
@@ -113,13 +159,19 @@ class TextEditor extends Component {
 		return this.state.isPublished;
 	};
 
+	handleTimedOut = () => {
+		this.setState({ isTimedOut: true });
+	};
+
 	componentWillUnmount() {
 		this.resetClock();
 		this.handleClearInput();
 	}
 
 	render() {
-		let clock = this.state.isPublished ? null : <Clock isPublished={this.state.isPublished} />;
+		let clock = this.state.isPublished ? null : (
+			<Clock isPublished={this.state.isPublished} getIsTimedOut={this.handleTimedOut} />
+		);
 		return (
 			<ImageBackground
 				source={brainbulb}

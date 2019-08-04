@@ -87,6 +87,7 @@ export default class Clock extends Component {
 		let remainingSec = Math.floor((difference % (1000 * 60)) / 1000);
 		if (this.getTimedOut()) {
 			// tell TextEditor timed out
+			this.stopClock();
 		} else {
 			remainingSec = remainingSec + '';
 			this.setState({
@@ -99,6 +100,7 @@ export default class Clock extends Component {
 	stopClock = () => {
 		clearInterval(this.state.clock);
 		this.setState({ isTimedOut: true });
+		this.resetClock();
 	};
 
 	componentWillUnmount() {
