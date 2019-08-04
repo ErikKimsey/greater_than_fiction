@@ -52,6 +52,25 @@ export default class Clock extends Component {
 		this.setState({ isStarted: !this.state.isStarted });
 	};
 
+	setTimedOut = (min, sec) => {
+		if (min <= 0 && sec <= 0) {
+			this.setState({ isTimedOut: true });
+		} else {
+			return;
+		}
+	};
+
+	/**
+   * if(published)
+   * -- stopclokc
+   * if(timedout)
+   * -- stopclock
+   * else {
+   * -- keep running
+   * }
+   * -- tell TextEditor if timedOut
+   */
+
 	getTimedOut = () => {
 		return this.state.isTimedOut;
 	};
@@ -66,11 +85,15 @@ export default class Clock extends Component {
 		let difference = deadline - now;
 		let remainingMin = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 		let remainingSec = Math.floor((difference % (1000 * 60)) / 1000);
-		remainingSec = remainingSec + '';
-		this.setState({
-			remainingMin,
-			remainingSec
-		});
+		if (this.getTimedOut()) {
+			// tell TextEditor timed out
+		} else {
+			remainingSec = remainingSec + '';
+			this.setState({
+				remainingMin,
+				remainingSec
+			});
+		}
 	};
 
 	stopClock = () => {
