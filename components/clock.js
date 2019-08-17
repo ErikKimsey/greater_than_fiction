@@ -34,8 +34,8 @@ export default class Clock extends Component {
 	setClock = () => {
 		var now = new Date().getTime();
 		let fiveMin = 60 * 5 * 1000;
-		let deadline = now + 10000;
-		// let deadline = now + fiveMin;
+		// let deadline = now + 9100;
+		let deadline = now + fiveMin;
 		this.clockRunning(deadline, now);
 	};
 
@@ -43,7 +43,7 @@ export default class Clock extends Component {
 		let _now = now;
 		let clock;
 		clock = setInterval(() => {
-			if (_now < deadline) {
+			if (_now < deadline - 1000) {
 				_now = new Date().getTime();
 				this.calcRemainingTime(_now, deadline);
 			} else {
@@ -59,29 +59,11 @@ export default class Clock extends Component {
 	};
 
 	setTimedOut = (min, sec) => {
-    
-		if (min <= 0 && sec <= 0) {
-			this.setState({ isTimedOut: true });
-			console.log('is timedout');
-
-			console.log(this.getTimedOut());
-
-			return this.props.getIsTimedOut(this.getTimedOut());
-		} else {
-			return;
-		}
+		this.setState({ isTimedOut: true });
+		console.log('is timedout');
+		console.log(this.getTimedOut());
+		return this.props.getIsTimedOut(this.getTimedOut());
 	};
-
-	/**
-   * if(published)
-   * -- stopclokc
-   * if(timedout)
-   * -- stopclock
-   * else {
-   * -- keep running
-   * }
-   * -- tell TextEditor if timedOut
-   */
 
 	getTimedOut = () => {
 		return this.state.isTimedOut;
@@ -97,8 +79,7 @@ export default class Clock extends Component {
 		let difference = deadline - now;
 		let remainingMin = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 		let remainingSec = Math.floor((difference % (1000 * 60)) / 1000);
-		if (this.getTimedOut()) {
-			// tell TextEditor timed out
+		if (remainingSec < 1) {
 			this.setTimedOut();
 			this.stopClock();
 		} else {
@@ -117,7 +98,7 @@ export default class Clock extends Component {
 	};
 
 	componentWillUnmount() {
-		this.stopClock(this.state.clock);
+		this.stopClock();
 	}
 
 	render() {

@@ -12,17 +12,12 @@ export default class PercentageDimensions {
 
 	getDimensions() {
 		const { width, height } = Dimensions.get('window');
-		console.log(`height: ${height}, width: ${width}`);
 		return { width, height };
 	}
 
 	calcPaddedDimensions() {
 		const { width, height } = this.getDimensions();
-		console.log(`height: ${height}, width: ${width}`);
-
 		this.calcHeight = height * this.heightPerc;
-		console.log(this.calcHeight);
-
 		// return StyleSheet.create({});
 	}
 }

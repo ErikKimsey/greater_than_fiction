@@ -81,6 +81,7 @@ class TextEditor extends Component {
 
 	navToPublished = () => {
 		const { text, title, author } = this.state;
+		this.setState({ isPublished: false });
 		let empty = isEmpty([ text, title, author ]);
 		if (empty === false) {
 			this.props.navigation.navigate('Published', {
@@ -91,7 +92,6 @@ class TextEditor extends Component {
 				width: this.state.width
 			});
 			this.closeFinal();
-			this.setState({ isPublished: false });
 		} else {
 			Alert.alert(
 				'Hold on...',
@@ -114,14 +114,6 @@ class TextEditor extends Component {
 				width: this.state.width
 			});
 			this.closeFinal();
-			this.setState({ isPublished: false });
-		} else {
-			Alert.alert(
-				'Hold on...',
-				'You are not done yet. Check all input fields.',
-				[ { text: 'Ok', onPress: () => console.log('Ask me later pressed') } ],
-				{ cancelable: false }
-			);
 		}
 	};
 
