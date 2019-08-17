@@ -8,8 +8,6 @@ import PublishedButton from '../components/buttons/publishedButtons';
 import TransparentButton from '../components/buttons/transparentButton';
 import brainbulb from '../assets/cartographer.png';
 
-console.log(Dimensions.get('window'));
-
 export default class Published extends Component {
 	state = {
 		cameraRollUri: null,
@@ -24,8 +22,6 @@ export default class Published extends Component {
 		this.setState({ hasCameraPermission: status === 'granted' });
 		const { height, width } = Dimensions.get('window');
 		// const { height, width } = this.props.navigation.state.params;
-		console.log(`height: ${height}, width: ${width}`);
-
 		this.setState({ height, width });
 	}
 

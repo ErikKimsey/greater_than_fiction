@@ -7,13 +7,15 @@ export default class Clock extends Component {
 		total: 5,
 		remainingSec: '59',
 		remainingMin: '4',
-		timesUp: false,
+		isTimedOut: false,
 		clock: null,
 		isStarted: false
 	};
 
 	componentDidMount() {
 		this.setClock();
+		console.log('props');
+		console.log(this.props);
 	}
 
 	resetClock = () => {
@@ -30,6 +32,7 @@ export default class Clock extends Component {
 	setClock = () => {
 		var now = new Date().getTime();
 		let fiveMin = 60 * 5 * 1000;
+		// let deadline = now + 9100;
 		let deadline = now + fiveMin;
 		this.clockRunning(deadline, now);
 	};
@@ -38,12 +41,11 @@ export default class Clock extends Component {
 		let _now = now;
 		let clock;
 		clock = setInterval(() => {
-			if (_now < deadline) {
+			if (_now < deadline - 1000) {
 				_now = new Date().getTime();
 				this.calcRemainingTime(_now, deadline);
-				this.getTimesUp();
 			} else {
-				this.getTimesUp();
+				this.setTimedOut();
 				this.stopClock(clock);
 			}
 		}, 1000);
@@ -54,32 +56,51 @@ export default class Clock extends Component {
 		this.setState({ isStarted: !this.state.isStarted });
 	};
 
-	getTimesUp = () => {
-		return this.props.remaining(this.state.timesUp);
+	setTimedOut = (min, sec) => {
+		this.setState({ isTimedOut: true });
+		console.log('is timedout');
+		console.log(this.getTimedOut());
+		return this.props.getIsTimedOut(this.getTimedOut());
+	};
+
+	getTimedOut = () => {
+		return this.state.isTimedOut;
+	};
+
+	isPublished = () => {
+		if (this.props.isPublished === true || this.getTimedOut() === true) {
+			this.stopClock();
+		}
 	};
 
 	calcRemainingTime = (now, deadline) => {
 		let difference = deadline - now;
 		let remainingMin = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 		let remainingSec = Math.floor((difference % (1000 * 60)) / 1000);
-		remainingSec = remainingSec + '';
-		this.setState({
-			remainingMin,
-			remainingSec
-		});
+		if (remainingSec < 1) {
+			this.setTimedOut();
+			this.stopClock();
+		} else {
+			remainingSec = remainingSec + '';
+			this.setState({
+				remainingMin,
+				remainingSec
+			});
+		}
 	};
 
 	stopClock = () => {
 		clearInterval(this.state.clock);
-		this.setState({ timesUp: true });
+		this.setState({ isTimedOut: true });
+		this.resetClock();
 	};
 
 	componentWillUnmount() {
-		this.stopClock(this.state.clock);
+		this.stopClock();
 	}
 
 	render() {
-		if (this.state.timesUp) {
+		if (this.state.isTimedOut) {
 			return (
 				<View>
 					<Text>Stop</Text>

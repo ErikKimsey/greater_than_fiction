@@ -79,6 +79,44 @@ class TextEditor extends Component {
 		}
 	};
 
+	navToPublished = () => {
+		const { text, title, author } = this.state;
+		this.setState({ isPublished: false });
+		let empty = isEmpty([ text, title, author ]);
+		if (empty === false) {
+			this.props.navigation.navigate('Published', {
+				text: this.state.text,
+				title: this.state.title,
+				author: this.state.author,
+				height: this.state.height,
+				width: this.state.width
+			});
+			this.closeFinal();
+		} else {
+			Alert.alert(
+				'Hold on...',
+				'You are not done yet. Check all input fields.',
+				[ { text: 'Ok', onPress: () => console.log('Ask me later pressed') } ],
+				{ cancelable: false }
+			);
+		}
+	};
+
+	onTimedOut = () => {
+		const { text, title, author } = this.state;
+		let empty = isEmpty([ text, title, author ]);
+		if (empty === false) {
+			this.props.navigation.navigate('Published', {
+				text: this.state.text,
+				title: this.state.title,
+				author: this.state.author,
+				height: this.state.height,
+				width: this.state.width
+			});
+			this.closeFinal();
+		}
+	};
+
 	handleInputChange = (text) => {
 		this.setState({ text });
 		let count = wordCount(this.state.text);
@@ -113,6 +151,13 @@ class TextEditor extends Component {
 		return this.state.isPublished;
 	};
 
+	handleTimedOut = (to) => {
+		console.log('to');
+		console.log(to);
+		this.setState({ isTimedOut: to });
+		this.onTimedOut();
+	};
+
 	componentWillUnmount() {
 		this.resetClock();
 		this.handleClearInput();
@@ -120,7 +165,7 @@ class TextEditor extends Component {
 
 	render() {
 		let clock = this.state.isPublished ? null : (
-			<Clock remaining={this.getRemainingTime} reset={this.state.clockReset} />
+			<Clock isPublished={this.state.isPublished} getIsTimedOut={this.handleTimedOut} />
 		);
 		return (
 			<ImageBackground
