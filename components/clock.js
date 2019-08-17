@@ -5,10 +5,8 @@ import color from '../assets/globals/colors';
 export default class Clock extends Component {
 	state = {
 		total: 5,
-		remainingSec: '09',
-		remainingMin: '0',
-		// remainingSec: '59',
-		// remainingMin: '4',
+		remainingSec: '59',
+		remainingMin: '4',
 		isTimedOut: false,
 		clock: null,
 		isStarted: false
