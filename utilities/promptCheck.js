@@ -17,7 +17,9 @@
 /**
    * MAYBE:
    * - return array of matched prompts,
-   * - then use that array to change the style of the prompts displayed in the TextEditor, to indicate that those prompts have been used.
+   * - --- a.) then use that array to change the style of the prompts displayed in the TextEditor, to indicate that those prompts have been used.
+   * - ---- OR: b.) highlight the matches in the live text user is working on.
+   * - --- OR: c.) BOTH "a." and "b."!?
    */
 
 const promptCheck = (prompt, story) => {
