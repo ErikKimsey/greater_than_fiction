@@ -14,4 +14,20 @@
   * - 5. if any prompt is missing, return "false"
   */
 
-const promptCheck = () => {};
+/**
+   * MAYBE:
+   * - return array of matched prompts,
+   * - then use that array to change the style of the prompts displayed in the TextEditor, to indicate that those prompts have been used.
+   */
+
+const promptCheck = (prompt, story) => {
+	let newCheck = story.split(' ').pop;
+	let promptArr = prompt.split(' ');
+	let resultOfCheck = promptArr.indexOf(newCheck);
+	if (resultOfCheck != -1) {
+		return resultOfCheck;
+	} else {
+	}
+};
+
+export default promptCheck;

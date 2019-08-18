@@ -20,6 +20,7 @@ import brainbulb from '../assets/cartographer.png';
 import TransparentButton from '../components/buttons/transparentButton';
 
 import isEmpty from '../utilities/checkEmptyFields';
+import promptCheck from '../utilities/promptCheck';
 
 class TextEditor extends Component {
 	constructor(props) {
@@ -54,6 +55,8 @@ class TextEditor extends Component {
 		this.setState({ isPublished: false });
 		const { height, width } = Dimensions.get('window');
 		this.setState({ height: height, width: width });
+		console.log('prompt >>> ');
+		console.log(typeof this.state.prompt);
 	}
 
 	onPressPublish = () => {
@@ -117,6 +120,10 @@ class TextEditor extends Component {
 		}
 	};
 
+  /**
+   * Regarding promptCheck:
+   * --- 
+   */
 	handleInputChange = (text) => {
 		this.setState({ text });
 		let count = wordCount(this.state.text);

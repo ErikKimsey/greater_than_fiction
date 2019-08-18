@@ -1,10 +1,17 @@
+import promptCheck from './promptCheck';
+
 /**
  * Provides word-count functionality.
  */
 
 function wordCount(input) {
-	let count = input.split(' ').length;
-	return wordsRemaining(count);
+	let inputArr = input.split(' ');
+	return wordsRemaining(inputArr.length);
+}
+
+function callPromptCheck(inputArr){
+  
+  promptCheck(inputArr.pop);
 }
 
 function wordsRemaining(count) {
