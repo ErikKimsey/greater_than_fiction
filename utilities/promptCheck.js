@@ -22,13 +22,13 @@
    * - --- OR: c.) BOTH "a." and "b."!?
    */
 
-const promptCheck = (prompt, story) => {
-	let newCheck = story.split(' ').pop;
+const promptCheck = (prompt, word) => {
 	let promptArr = prompt.split(' ');
-	let resultOfCheck = promptArr.indexOf(newCheck);
+	let resultOfCheck = promptArr.indexOf(word);
 	if (resultOfCheck != -1) {
-		return resultOfCheck;
+		return true;
 	} else {
+		return false;
 	}
 };
 
