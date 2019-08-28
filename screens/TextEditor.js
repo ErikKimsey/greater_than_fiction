@@ -130,19 +130,18 @@ class TextEditor extends Component {
 		this.setState({ text });
 		let { remaining, last } = wordCount(this.state.text);
 		let checkResults = promptCheck(this.state.prompt, last);
-		// console.log('checkResults');
-		// console.log(checkResults);
 
-		if (checkResults.bool === true) this.setPromptCheckArr(checkResults);
+		this.setPromptCheckArr(checkResults);
 		this.setState({ wordCount: remaining });
+		console.log('not all used >>>>>>>>>>>>>>>. ');
+
+		console.log(this.checkIfAllPromptsUsed());
 	};
 
 	setPromptCheckArr = (data) => {
 		let { index, bool } = data;
-
 		let arrCopy = [ ...this.state.promptCheckArr ];
 		arrCopy[index] = bool;
-
 		this.setState({ promptCheckArr: arrCopy });
 	};
 
@@ -161,14 +160,13 @@ class TextEditor extends Component {
 		this.setIsPublished();
 	};
 
+	// Not correcting promptCheckArr when backspacing
 	checkIfAllPromptsUsed = () => {
-		this.state.promptCheckArr.forEach((e) => {
-			if (e === false) {
-				return false;
-			} else {
-				return true;
-			}
-		});
+		if (this.state.promptCheckArr.indexOf(false) != -1) {
+			return false;
+		} else {
+			return true;
+		}
 	};
 
 	setIsPublished = () => {

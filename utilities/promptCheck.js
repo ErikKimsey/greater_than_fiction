@@ -39,7 +39,7 @@ const promptCheck = (prompt, last) => {
 	if (resultOfCheck != -1) {
 		return { index: resultOfCheck, bool: true };
 	} else {
-		return { bool: false };
+		return { index: resultOfCheck, bool: false };
 	}
 };
 
