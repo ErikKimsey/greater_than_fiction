@@ -38,7 +38,8 @@ class TextEditor extends Component {
 			height: null,
 			prompt: this.props.navigation.state.params.prompt,
 			fontLoaded: false,
-			promptCheckArr: [ false, false, false ]
+			promptCheckArr: [ false, false, false ],
+			promptUsed: false
 		};
 	}
 
@@ -160,6 +161,16 @@ class TextEditor extends Component {
 		this.setIsPublished();
 	};
 
+	checkIfAllPromptsUsed = () => {
+		this.state.promptCheckArr.forEach((e) => {
+			if (e === false) {
+				return false;
+			} else {
+				return true;
+			}
+		});
+	};
+
 	setIsPublished = () => {
 		this.setState({ isPublished: !this.state.isPublished });
 	};
@@ -174,8 +185,6 @@ class TextEditor extends Component {
 	};
 
 	handleTimedOut = (to) => {
-		console.log('to');
-		console.log(to);
 		this.setState({ isTimedOut: to });
 		this.onTimedOut();
 	};

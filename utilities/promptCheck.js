@@ -35,9 +35,6 @@ const promptCheck = (prompt, last) => {
 	});
 
 	let resultOfCheck = cleanedPromptArr.indexOf(cleanedLast);
-	/**
-   * return array of bools, where each index correlates with promptArr
-   */
 
 	if (resultOfCheck != -1) {
 		return { index: resultOfCheck, bool: true };
