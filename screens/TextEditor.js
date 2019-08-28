@@ -120,14 +120,18 @@ class TextEditor extends Component {
 		}
 	};
 
-  /**
+	/**
    * Regarding promptCheck:
    * --- 
    */
 	handleInputChange = (text) => {
 		this.setState({ text });
-		let count = wordCount(this.state.text);
-		this.setState({ wordCount: count });
+		let { remaining, last } = wordCount(this.state.text);
+		console.log('last');
+		console.log(last);
+
+		promptCheck(this.state.prompt, last);
+		this.setState({ wordCount: remaining });
 	};
 
 	handleClearInput = () => {

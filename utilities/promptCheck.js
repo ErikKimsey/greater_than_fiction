@@ -22,9 +22,11 @@
    * - --- OR: c.) BOTH "a." and "b."!?
    */
 
-const promptCheck = (prompt, word) => {
+// Account for punctuation preceding or following prompt word
+const promptCheck = (prompt, last) => {
 	let promptArr = prompt.split(' ');
-	let resultOfCheck = promptArr.indexOf(word);
+
+	let resultOfCheck = promptArr.indexOf(last);
 	if (resultOfCheck != -1) {
 		return true;
 	} else {
