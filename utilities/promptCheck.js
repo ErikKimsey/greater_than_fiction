@@ -43,4 +43,14 @@ const promptCheck = (prompt, last) => {
 	}
 };
 
-export default promptCheck;
+const promptCheckOnBackspace = (prompt, text) => {
+	let story = text.split(', ');
+	console.log(story);
+	/**
+     * split prompt and text,
+     * check text arr against prompt arr,
+     * return index and bool if false
+ */
+};
+
+export { promptCheck, promptCheckOnBackspace };

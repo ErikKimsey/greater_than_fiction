@@ -20,7 +20,7 @@ import brainbulb from '../assets/cartographer.png';
 import TransparentButton from '../components/buttons/transparentButton';
 
 import isEmpty from '../utilities/checkEmptyFields';
-import promptCheck from '../utilities/promptCheck';
+import { promptCheck, promptCheckOnBackspace } from '../utilities/promptCheck';
 
 class TextEditor extends Component {
 	constructor(props) {
@@ -128,14 +128,19 @@ class TextEditor extends Component {
    */
 	handleInputChange = (text) => {
 		this.setState({ text });
+		if (text.length < this.state.text.length) this.handleBackspace();
 		let { remaining, last } = wordCount(this.state.text);
 		let checkResults = promptCheck(this.state.prompt, last);
 
 		this.setPromptCheckArr(checkResults);
 		this.setState({ wordCount: remaining });
-		console.log('not all used >>>>>>>>>>>>>>>. ');
 
-		console.log(this.checkIfAllPromptsUsed());
+		// console.log('not all used >>>>>>>>>>>>>>>. ');
+		// console.log(this.checkIfAllPromptsUsed());
+	};
+
+	handleBackspace = () => {
+		promptCheckOnBackspace(this.state.prompt, this.state.text);
 	};
 
 	setPromptCheckArr = (data) => {
