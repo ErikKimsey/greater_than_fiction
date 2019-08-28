@@ -26,24 +26,23 @@
 const promptCheck = (prompt, last) => {
 	let promptArr = prompt.split(', ');
 	let _last = last[0].toLowerCase();
+
 	let cleanedLast = _last.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
-	console.log('cleanedLast');
-	console.log(cleanedLast);
 
 	let cleanedPromptArr = promptArr.map((e, i) => {
 		let _e = e.replace(/#,.'";:^\s*$/g, '');
 		return _e.toLowerCase();
 	});
-	console.log(cleanedPromptArr);
 
 	let resultOfCheck = cleanedPromptArr.indexOf(cleanedLast);
-	console.log('result of check >>>> ');
-	console.log(resultOfCheck);
+	/**
+   * return array of bools, where each index correlates with promptArr
+   */
 
 	if (resultOfCheck != -1) {
-		return true;
+		return { index: resultOfCheck, bool: true };
 	} else {
-		return false;
+		return { bool: false };
 	}
 };
 

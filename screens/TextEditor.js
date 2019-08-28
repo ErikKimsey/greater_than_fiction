@@ -37,7 +37,8 @@ class TextEditor extends Component {
 			width: null,
 			height: null,
 			prompt: this.props.navigation.state.params.prompt,
-			fontLoaded: false
+			fontLoaded: false,
+			promptCheckArr: [ false, false, false ]
 		};
 	}
 
@@ -127,8 +128,21 @@ class TextEditor extends Component {
 	handleInputChange = (text) => {
 		this.setState({ text });
 		let { remaining, last } = wordCount(this.state.text);
-		promptCheck(this.state.prompt, last);
+		let checkResults = promptCheck(this.state.prompt, last);
+		// console.log('checkResults');
+		// console.log(checkResults);
+
+		if (checkResults.bool === true) this.setPromptCheckArr(checkResults);
 		this.setState({ wordCount: remaining });
+	};
+
+	setPromptCheckArr = (data) => {
+		let { index, bool } = data;
+
+		let arrCopy = [ ...this.state.promptCheckArr ];
+		arrCopy[index] = bool;
+
+		this.setState({ promptCheckArr: arrCopy });
 	};
 
 	handleClearInput = () => {
