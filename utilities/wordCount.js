@@ -9,7 +9,6 @@ function wordCount(input) {
 	let count = inputArr.length;
 	let remaining = wordsRemaining(count);
 	let last = inputArr.slice('-1');
-	// return wordsRemaining(count);
 	return { remaining, last };
 }
 

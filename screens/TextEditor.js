@@ -127,9 +127,6 @@ class TextEditor extends Component {
 	handleInputChange = (text) => {
 		this.setState({ text });
 		let { remaining, last } = wordCount(this.state.text);
-		console.log('last');
-		console.log(last);
-
 		promptCheck(this.state.prompt, last);
 		this.setState({ wordCount: remaining });
 	};
