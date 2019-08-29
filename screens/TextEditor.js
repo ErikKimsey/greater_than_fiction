@@ -174,6 +174,14 @@ class TextEditor extends Component {
 		}
 	};
 
+	/**
+   * check promptArr against checkPromptArr,
+   * if elem is true, change color of corresponding promptArr elem color
+   */
+	handlePromptColorChange = () => {
+		this;
+	};
+
 	setIsPublished = () => {
 		this.setState({ isPublished: !this.state.isPublished });
 	};
@@ -201,6 +209,7 @@ class TextEditor extends Component {
 		let clock = this.state.isPublished ? null : (
 			<Clock isPublished={this.state.isPublished} getIsTimedOut={this.handleTimedOut} />
 		);
+
 		return (
 			<ImageBackground
 				source={brainbulb}
