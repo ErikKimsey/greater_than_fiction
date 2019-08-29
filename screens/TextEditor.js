@@ -57,8 +57,6 @@ class TextEditor extends Component {
 		this.setState({ isPublished: false });
 		const { height, width } = Dimensions.get('window');
 		this.setState({ height: height, width: width });
-		console.log('prompt >>> ');
-		console.log(Array.isArray(this.state.prompt));
 	}
 
 	onPressPublish = () => {
@@ -178,8 +176,22 @@ class TextEditor extends Component {
    * check promptArr against checkPromptArr,
    * if elem is true, change color of corresponding promptArr elem color
    */
-	handlePromptColorChange = () => {
-		this;
+	handlePromptColorChange = (prompt, checkArr) => {
+		console.log('checkArr');
+		console.log(checkArr);
+
+		const coloredArr = checkArr.map((e, i) => {
+			if (e === true) {
+				return (
+					<Text style={[ { fontFamily: 'lemon-milk', color: colors.darkGrayPurple }, styles.prompt ]}>
+						{prompt[i]}
+					</Text>
+				);
+			} else {
+				<Text style={[ { fontFamily: 'lemon-milk' }, styles.prompt ]}>{prompt[i]}</Text>;
+			}
+		});
+		return coloredArr;
 	};
 
 	setIsPublished = () => {
@@ -222,7 +234,27 @@ class TextEditor extends Component {
 								Words remaining: {this.state.wordCount}
 							</Text>
 							{clock}
-							<Text style={[ { fontFamily: 'lemon-milk' }, styles.prompt ]}>{this.state.prompt}</Text>
+							<View>
+								{this.state.promptCheckArr[0] != undefined ? (
+									this.state.promptCheckArr.map((e, i) => {
+										if (e === true) {
+											return (
+												<Text
+													style={[
+														{ fontFamily: 'lemon-milk', color: colors.darkGrayPurple }
+													]}
+												>
+													{this.state.prompt[i]}
+												</Text>
+											);
+										} else {
+											<Text style={[ { fontFamily: 'lemon-milk' } ]}>
+												{this.state.prompt[i]}
+											</Text>;
+										}
+									})
+								) : null}
+							</View>
 						</View>
 						<TextInput
 							style={styles.paragraph}
