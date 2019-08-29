@@ -24,28 +24,27 @@
 
 const REPLACE_REGEX = /[.,\/#!$%\^&\*;:{}=\-_`~()^\s*$/]/g;
 
-// Account for punctuation preceding or following prompt word
-const promptCheck = (prompt, last) => {
-	let _last = last[0].toLowerCase();
-	let cleanedLast = _last.replace(REPLACE_REGEX, '');
-
-	let cleanedPromptArr = prompt.map((e, i) => {
-		let _e = e.replace(REPLACE_REGEX, '');
-		return _e.toLowerCase();
-	});
-
-	let resultOfCheck = cleanedPromptArr.indexOf(cleanedLast);
-
-	if (resultOfCheck != -1) {
-		return { index: resultOfCheck, bool: true };
-	} else {
-		return { index: resultOfCheck, bool: false };
-	}
+const cleanAndLowerCase = (text) => {
+	return text.replace(REPLACE_REGEX, '').toLowerCase();
 };
 
-const cleanArray = (regex, arr) => {
-  
-}
+const promptCheck = (story, promptArr) => {
+	/**
+   * index to return with bool,
+   * forEach thru promptArr,
+   * - using .includes(promptArr[index]), check if includes.
+   * - return index and bool
+   */
+	let _story = cleanAndLowerCase(story);
+
+	let checkedArr = promptArr.map((e, i) => {
+		let cE = cleanAndLowerCase(e);
+		return { index: i, bool: _story.includes(cE) };
+	});
+	return checkedArr;
+};
+
+const cleanArray = (regex, arr) => {};
 
 /**
  * 

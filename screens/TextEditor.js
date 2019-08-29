@@ -39,6 +39,7 @@ class TextEditor extends Component {
 			prompt: this.props.navigation.state.params.prompt,
 			fontLoaded: false,
 			promptCheckArr: [ false, false, false ],
+			truez: 0,
 			promptUsed: false
 		};
 	}
@@ -126,26 +127,22 @@ class TextEditor extends Component {
    */
 	handleInputChange = (text) => {
 		this.setState({ text });
-		if (text.length < this.state.text.length) this.handleBackspace();
-		let { remaining, last } = wordCount(this.state.text);
-		let checkResults = promptCheck(this.state.prompt, last);
+		let { remaining } = wordCount(this.state.text);
+		let checkResults = promptCheck(text, this.state.prompt);
 
 		this.setPromptCheckArr(checkResults);
 		this.setState({ wordCount: remaining });
-
-		// console.log('not all used >>>>>>>>>>>>>>>. ');
-		// console.log(this.checkIfAllPromptsUsed());
-	};
-
-	handleBackspace = () => {
-		promptCheckOnBackspace(this.state.prompt, this.state.text);
+		this.checkIfAllPromptsUsed();
 	};
 
 	setPromptCheckArr = (data) => {
-		let { index, bool } = data;
-		let arrCopy = [ ...this.state.promptCheckArr ];
-		arrCopy[index] = bool;
-		this.setState({ promptCheckArr: arrCopy });
+		const currCopy = [ ...this.state.promptCheckArr ];
+		const nuCopy = data.map((e, i) => {
+			let { index, bool } = e;
+			return (currCopy[index] = bool);
+		});
+
+		this.setState({ promptCheckArr: nuCopy });
 	};
 
 	handleClearInput = () => {
@@ -163,13 +160,19 @@ class TextEditor extends Component {
 		this.setIsPublished();
 	};
 
-	// Not correcting promptCheckArr when backspacing
 	checkIfAllPromptsUsed = () => {
-		if (this.state.promptCheckArr.indexOf(false) != -1) {
-			return false;
-		} else {
-			return true;
-		}
+		console.log(this.state.promptCheckArr);
+		let _truez = 0;
+		this.state.promptCheckArr.forEach((e, i) => {
+			if (e === true) {
+				_truez++;
+			} else if (e === false && _truez > 0) {
+				_truez--;
+			}
+			console.log('truez');
+			console.log(_truez);
+			this.setState({ truez: _truez });
+		});
 	};
 
 	/**
@@ -177,9 +180,6 @@ class TextEditor extends Component {
    * if elem is true, change color of corresponding promptArr elem color
    */
 	handlePromptColorChange = (prompt, checkArr) => {
-		console.log('checkArr');
-		console.log(checkArr);
-
 		const coloredArr = checkArr.map((e, i) => {
 			if (e === true) {
 				return (
@@ -223,7 +223,6 @@ class TextEditor extends Component {
 		let clock = this.state.isPublished ? null : (
 			<Clock isPublished={this.state.isPublished} getIsTimedOut={this.handleTimedOut} />
 		);
-
 		return (
 			<ImageBackground
 				source={brainbulb}
