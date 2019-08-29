@@ -183,12 +183,14 @@ class TextEditor extends Component {
 		const coloredArr = checkArr.map((e, i) => {
 			if (e === true) {
 				return (
-					<Text style={[ { fontFamily: 'lemon-milk', color: colors.darkGrayPurple }, styles.prompt ]}>
+					<Text style={[ { fontFamily: 'lemon-milk', color: color.darkGrayPurple }, styles.prompt ]}>
 						{prompt[i]}
 					</Text>
 				);
 			} else {
-				<Text style={[ { fontFamily: 'lemon-milk' }, styles.prompt ]}>{prompt[i]}</Text>;
+				<Text style={[ { fontFamily: 'lemon-milk', color: color.darkGrayPurple }, styles.prompt ]}>
+					{prompt[i]}
+				</Text>;
 			}
 		});
 		return coloredArr;
@@ -234,26 +236,28 @@ class TextEditor extends Component {
 								Words remaining: {this.state.wordCount}
 							</Text>
 							{clock}
-							<View>
-								{this.state.promptCheckArr[0] != undefined ? (
-									this.state.promptCheckArr.map((e, i) => {
-										if (e === true) {
-											return (
-												<Text
-													style={[
-														{ fontFamily: 'lemon-milk', color: colors.darkGrayPurple }
-													]}
-												>
-													{this.state.prompt[i]}
-												</Text>
-											);
-										} else {
-											<Text style={[ { fontFamily: 'lemon-milk' } ]}>
+							<View style={[ styles.prompt, { backgroundColor: '#000', height: 100 } ]}>
+								{this.state.promptCheckArr.map((e, i) => {
+									if (e === true) {
+										return (
+											<Text
+												style={{ fontFamily: 'lemon-milk', color: color.darkGrayPurple }}
+												key={this.state.prompt[i]}
+											>
 												{this.state.prompt[i]}
-											</Text>;
-										}
-									})
-								) : null}
+											</Text>
+										);
+									} else {
+										return (
+											<Text
+												style={{ fontFamily: 'lemon-milk', color: color.softRed }}
+												key={this.state.prompt[i]}
+											>
+												{this.state.prompt[i]}
+											</Text>
+										);
+									}
+								})}
 							</View>
 						</View>
 						<TextInput
