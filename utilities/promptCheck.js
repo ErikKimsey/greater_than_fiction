@@ -43,6 +43,19 @@ const promptCheck = (prompt, last) => {
 	}
 };
 
+const cleanArray = (regex, arr) => {
+  
+}
+
+/**
+ * 
+ * CHECK PROMPT INCLUSION 
+ * - get prompt array
+ * - split story string,
+ * - clean new story array,
+ * - check story array against prompt array
+ */
+
 const promptCheckOnBackspace = (prompt, text) => {
 	let story = text.split(', ');
 	console.log(story);

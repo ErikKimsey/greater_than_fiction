@@ -236,12 +236,15 @@ class TextEditor extends Component {
 								Words remaining: {this.state.wordCount}
 							</Text>
 							{clock}
-							<View style={[ styles.prompt, { backgroundColor: '#000', height: 100 } ]}>
+							<View style={[ styles.prompt, {} ]}>
 								{this.state.promptCheckArr.map((e, i) => {
 									if (e === true) {
 										return (
 											<Text
-												style={{ fontFamily: 'lemon-milk', color: color.darkGrayPurple }}
+												style={[
+													styles.promptText,
+													{ fontFamily: 'lemon-milk', color: color.darkGrayPurple }
+												]}
 												key={this.state.prompt[i]}
 											>
 												{this.state.prompt[i]}
@@ -250,7 +253,10 @@ class TextEditor extends Component {
 									} else {
 										return (
 											<Text
-												style={{ fontFamily: 'lemon-milk', color: color.softRed }}
+												style={[
+													styles.promptText,
+													{ fontFamily: 'lemon-milk', color: color.softRed }
+												]}
 												key={this.state.prompt[i]}
 											>
 												{this.state.prompt[i]}
@@ -354,7 +360,14 @@ const styles = StyleSheet.create({
 		color: color.pastelBlueWhite
 	},
 	prompt: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-around',
 		color: color.softRed
+	},
+	promptText: {
+		fontSize: 16,
+		padding: 0
 	}
 });
 
