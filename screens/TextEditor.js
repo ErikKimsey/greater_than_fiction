@@ -20,7 +20,7 @@ import brainbulb from '../assets/cartographer.png';
 import TransparentButton from '../components/buttons/transparentButton';
 
 import isEmpty from '../utilities/checkEmptyFields';
-import { promptCheck, promptCheckOnBackspace } from '../utilities/promptCheck';
+import promptCheck from '../utilities/promptCheck';
 
 class TextEditor extends Component {
 	constructor(props) {
@@ -39,7 +39,6 @@ class TextEditor extends Component {
 			prompt: this.props.navigation.state.params.prompt,
 			fontLoaded: false,
 			promptCheckArr: [ false, false, false ],
-			truez: 0,
 			promptUsed: false
 		};
 	}
@@ -121,10 +120,6 @@ class TextEditor extends Component {
 		}
 	};
 
-	/**
-   * Regarding promptCheck:
-   * --- 
-   */
 	handleInputChange = (text) => {
 		this.setState({ text });
 		let { remaining } = wordCount(this.state.text);
@@ -158,21 +153,6 @@ class TextEditor extends Component {
 		this.handleClearInput();
 		this.handleResetWordCount();
 		this.setIsPublished();
-	};
-
-	checkIfAllPromptsUsed = () => {
-		console.log(this.state.promptCheckArr);
-		let _truez = 0;
-		this.state.promptCheckArr.forEach((e, i) => {
-			if (e === true) {
-				_truez++;
-			} else if (e === false && _truez > 0) {
-				_truez--;
-			}
-			console.log('truez');
-			console.log(_truez);
-			this.setState({ truez: _truez });
-		});
 	};
 
 	/**
@@ -223,6 +203,7 @@ class TextEditor extends Component {
 		let clock = this.state.isPublished ? null : (
 			<Clock isPublished={this.state.isPublished} getIsTimedOut={this.handleTimedOut} />
 		);
+
 		return (
 			<ImageBackground
 				source={brainbulb}
