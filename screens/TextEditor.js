@@ -58,7 +58,7 @@ class TextEditor extends Component {
 		const { height, width } = Dimensions.get('window');
 		this.setState({ height: height, width: width });
 		console.log('prompt >>> ');
-		console.log(typeof this.state.prompt);
+		console.log(Array.isArray(this.state.prompt));
 	}
 
 	onPressPublish = () => {

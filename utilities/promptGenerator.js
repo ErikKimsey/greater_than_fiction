@@ -12,10 +12,10 @@ function generatePrompt(werds) {
 		} else if (findDuplicates(werds, index) === true) {
 			return generatePrompt(werds);
 		} else {
-			promptArr.push(werds[index]);
+			promptArr.push(werds[index] + '. ');
 		}
 	}
-	return createPromptString(promptArr);
+	return promptArr;
 }
 
 function createPromptString(arr) {

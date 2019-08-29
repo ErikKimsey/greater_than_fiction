@@ -22,15 +22,15 @@
    * - --- OR: c.) BOTH "a." and "b."!?
    */
 
+const REPLACE_REGEX = /[.,\/#!$%\^&\*;:{}=\-_`~()^\s*$/]/g;
+
 // Account for punctuation preceding or following prompt word
 const promptCheck = (prompt, last) => {
-	let promptArr = prompt.split(', ');
 	let _last = last[0].toLowerCase();
+	let cleanedLast = _last.replace(REPLACE_REGEX, '');
 
-	let cleanedLast = _last.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
-
-	let cleanedPromptArr = promptArr.map((e, i) => {
-		let _e = e.replace(/#,.'";:^\s*$/g, '');
+	let cleanedPromptArr = prompt.map((e, i) => {
+		let _e = e.replace(REPLACE_REGEX, '');
 		return _e.toLowerCase();
 	});
 
