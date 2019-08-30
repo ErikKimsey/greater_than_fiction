@@ -32,8 +32,6 @@ export default class Prompt extends Component {
 	}
 
 	getPrompts = () => {
-		// console.log(this.state);
-
 		return this.props.getPrompts(this.state.prompt);
 	};
 

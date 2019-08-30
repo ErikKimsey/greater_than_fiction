@@ -152,8 +152,6 @@ class TextEditor extends Component {
 	};
 
 	handleTimedOut = (to) => {
-		console.log('to');
-		console.log(to);
 		this.setState({ isTimedOut: to });
 		this.onTimedOut();
 	};

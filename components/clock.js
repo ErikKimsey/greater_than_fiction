@@ -14,8 +14,6 @@ export default class Clock extends Component {
 
 	componentDidMount() {
 		this.setClock();
-		console.log('props');
-		console.log(this.props);
 	}
 
 	resetClock = () => {
@@ -58,8 +56,6 @@ export default class Clock extends Component {
 
 	setTimedOut = (min, sec) => {
 		this.setState({ isTimedOut: true });
-		console.log('is timedout');
-		console.log(this.getTimedOut());
 		return this.props.getIsTimedOut(this.getTimedOut());
 	};
 
