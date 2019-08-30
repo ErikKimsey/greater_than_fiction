@@ -20,6 +20,7 @@ import brainbulb from '../assets/cartographer.png';
 import TransparentButton from '../components/buttons/transparentButton';
 
 import isEmpty from '../utilities/checkEmptyFields';
+import promptCheck from '../utilities/promptCheck';
 
 class TextEditor extends Component {
 	constructor(props) {
@@ -36,7 +37,9 @@ class TextEditor extends Component {
 			width: null,
 			height: null,
 			prompt: this.props.navigation.state.params.prompt,
-			fontLoaded: false
+			fontLoaded: false,
+			promptCheckArr: [ false, false, false ],
+			promptUsed: false
 		};
 	}
 
@@ -119,8 +122,21 @@ class TextEditor extends Component {
 
 	handleInputChange = (text) => {
 		this.setState({ text });
-		let count = wordCount(this.state.text);
-		this.setState({ wordCount: count });
+		let { remaining } = wordCount(this.state.text);
+		let checkResults = promptCheck(text, this.state.prompt);
+
+		this.setPromptCheckArr(checkResults);
+		this.setState({ wordCount: remaining });
+	};
+
+	setPromptCheckArr = (data) => {
+		const currCopy = [ ...this.state.promptCheckArr ];
+		const nuCopy = data.map((e, i) => {
+			let { index, bool } = e;
+			return (currCopy[index] = bool);
+		});
+
+		this.setState({ promptCheckArr: nuCopy });
 	};
 
 	handleClearInput = () => {
@@ -136,6 +152,27 @@ class TextEditor extends Component {
 		this.handleClearInput();
 		this.handleResetWordCount();
 		this.setIsPublished();
+	};
+
+	/**
+   * check promptArr against checkPromptArr,
+   * if elem is true, change color of corresponding promptArr elem color
+   */
+	handlePromptColorChange = (prompt, checkArr) => {
+		const coloredArr = checkArr.map((e, i) => {
+			if (e === true) {
+				return (
+					<Text style={[ { fontFamily: 'lemon-milk', color: color.darkGrayPurple }, styles.prompt ]}>
+						{prompt[i]}
+					</Text>
+				);
+			} else {
+				<Text style={[ { fontFamily: 'lemon-milk', color: color.darkGrayPurple }, styles.prompt ]}>
+					{prompt[i]}
+				</Text>;
+			}
+		});
+		return coloredArr;
 	};
 
 	setIsPublished = () => {
@@ -165,6 +202,7 @@ class TextEditor extends Component {
 		let clock = this.state.isPublished ? null : (
 			<Clock isPublished={this.state.isPublished} getIsTimedOut={this.handleTimedOut} />
 		);
+
 		return (
 			<ImageBackground
 				source={brainbulb}
@@ -177,7 +215,35 @@ class TextEditor extends Component {
 								Words remaining: {this.state.wordCount}
 							</Text>
 							{clock}
-							<Text style={[ { fontFamily: 'lemon-milk' }, styles.prompt ]}>{this.state.prompt}</Text>
+							<View style={[ styles.prompt, {} ]}>
+								{this.state.promptCheckArr.map((e, i) => {
+									if (e === true) {
+										return (
+											<Text
+												style={[
+													styles.promptText,
+													{ fontFamily: 'lemon-milk', color: color.darkGrayPurple }
+												]}
+												key={this.state.prompt[i]}
+											>
+												{this.state.prompt[i]}
+											</Text>
+										);
+									} else {
+										return (
+											<Text
+												style={[
+													styles.promptText,
+													{ fontFamily: 'lemon-milk', color: color.softRed }
+												]}
+												key={this.state.prompt[i]}
+											>
+												{this.state.prompt[i]}
+											</Text>
+										);
+									}
+								})}
+							</View>
 						</View>
 						<TextInput
 							style={styles.paragraph}
@@ -186,6 +252,7 @@ class TextEditor extends Component {
 							editable={true}
 							multiline={true}
 							placeholder="100 words. Go..."
+							placeholderTextColor="#ccc"
 							placeholderStyle={{ borderColor: color.pastelBlueWhite, color: color.pastelBlueWhite }}
 						/>
 						<TextInput
@@ -196,6 +263,7 @@ class TextEditor extends Component {
 							value={this.state.title}
 							editable={true}
 							placeholder="Title..."
+							placeholderTextColor="#ccc"
 						/>
 						<TextInput
 							style={styles.titleAuthor}
@@ -205,6 +273,7 @@ class TextEditor extends Component {
 							value={this.state.author}
 							editable={true}
 							placeholder="Author name..."
+							placeholderTextColor="#ccc"
 						/>
 						<TransparentButton
 							pressBtn={this.onPressPublish}
@@ -273,7 +342,14 @@ const styles = StyleSheet.create({
 		color: color.pastelBlueWhite
 	},
 	prompt: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-around',
 		color: color.softRed
+	},
+	promptText: {
+		fontSize: 16,
+		padding: 0
 	}
 });
 
