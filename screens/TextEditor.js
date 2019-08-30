@@ -127,7 +127,6 @@ class TextEditor extends Component {
 
 		this.setPromptCheckArr(checkResults);
 		this.setState({ wordCount: remaining });
-		this.checkIfAllPromptsUsed();
 	};
 
 	setPromptCheckArr = (data) => {

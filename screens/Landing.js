@@ -13,9 +13,12 @@ import brainbulb from '../assets/cartographer.png';
 import werdsLogo from '../assets/100_werds.png';
 
 export default class Landing extends Component {
-	state = {
-		fontLoaded: false
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			fontLoaded: false
+		};
+	}
 
 	async componentDidMount() {
 		await Promise.all([
