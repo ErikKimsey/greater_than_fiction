@@ -252,6 +252,7 @@ class TextEditor extends Component {
 							editable={true}
 							multiline={true}
 							placeholder="100 words. Go..."
+							placeholderTextColor="#ccc"
 							placeholderStyle={{ borderColor: color.pastelBlueWhite, color: color.pastelBlueWhite }}
 						/>
 						<TextInput
@@ -262,6 +263,7 @@ class TextEditor extends Component {
 							value={this.state.title}
 							editable={true}
 							placeholder="Title..."
+							placeholderTextColor="#ccc"
 						/>
 						<TextInput
 							style={styles.titleAuthor}
@@ -271,6 +273,7 @@ class TextEditor extends Component {
 							value={this.state.author}
 							editable={true}
 							placeholder="Author name..."
+							placeholderTextColor="#ccc"
 						/>
 						<TransparentButton
 							pressBtn={this.onPressPublish}
