@@ -9,12 +9,12 @@ import * as Font from 'expo-font';
  */
 
 export default class fontAsyncLoad extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      fontLoaded: false,
-    }
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			fontLoaded: false
+		};
+	}
 
 	async componentDidMount() {
 		await Promise.all([
@@ -28,20 +28,11 @@ export default class fontAsyncLoad extends Component {
 				slukoni: require('../assets/fonts/Slukoni.otf')
 			})
 		]).then((res) => {
-			let dims = new PercentageDimensions(0.99, 0.95);
-			dims.calcPaddedDimensions();
 			this.setState({ fontLoaded: true });
 		});
-		// const { height, width } = this.props.navigation.state.params;
-  }
-  
-  
+	}
 
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
+	render() {
+		return <div />;
+	}
 }
