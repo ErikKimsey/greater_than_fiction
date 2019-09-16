@@ -124,6 +124,6 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     fontSize: 28,
     paddingLeft: 10,
-    paddingBottom: 10
+    paddingBottom: 4
   }
 });
