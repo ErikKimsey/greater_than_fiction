@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import * as Font from 'expo-font';
 import color from '../assets/globals/colors';
 
 export default class Clock extends Component {
@@ -54,7 +53,7 @@ export default class Clock extends Component {
 		this.setState({ isStarted: !this.state.isStarted });
 	};
 
-	setTimedOut = (min, sec) => {
+	setTimedOut = () => {
 		this.setState({ isTimedOut: true });
 		return this.props.getIsTimedOut(this.getTimedOut());
 	};

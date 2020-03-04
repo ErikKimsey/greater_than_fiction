@@ -1,5 +1,6 @@
 /**
- * isTimedOut
+ * --- WIP! ---
+ * "isTimedOut"
  * checks if timer has timed out.
  * If timed out:
  *  - check if input fields are empty,

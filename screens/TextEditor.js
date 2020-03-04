@@ -15,7 +15,6 @@ import { withNavigationFocus } from 'react-navigation';
 import color from '../assets/globals/colors';
 import { wordCount } from '../utilities/wordCount';
 import Clock from '../components/clock';
-import Prompt from '../components/Prompt/Prompt';
 import brainbulb from '../assets/cartographer.png';
 import TransparentButton from '../components/buttons/transparentButton';
 
@@ -162,14 +161,10 @@ class TextEditor extends Component {
 		const coloredArr = checkArr.map((e, i) => {
 			if (e === true) {
 				return (
-					<Text style={[ { fontFamily: 'lemon-milk', color: color.darkGrayPurple }, styles.prompt ]}>
-						{prompt[i]}
-					</Text>
+					<Text style={[ { fontFamily: 'lemon-milk', color: color.darkGrayPurple }, styles.prompt ]}>{prompt[i]}</Text>
 				);
 			} else {
-				<Text style={[ { fontFamily: 'lemon-milk', color: color.darkGrayPurple }, styles.prompt ]}>
-					{prompt[i]}
-				</Text>;
+				<Text style={[ { fontFamily: 'lemon-milk', color: color.darkGrayPurple }, styles.prompt ]}>{prompt[i]}</Text>;
 			}
 		});
 		return coloredArr;
@@ -220,10 +215,7 @@ class TextEditor extends Component {
 									if (e === true) {
 										return (
 											<Text
-												style={[
-													styles.promptText,
-													{ fontFamily: 'lemon-milk', color: color.darkGrayPurple }
-												]}
+												style={[ styles.promptText, { fontFamily: 'lemon-milk', color: color.darkGrayPurple } ]}
 												key={this.state.prompt[i]}
 											>
 												{this.state.prompt[i]}
@@ -232,10 +224,7 @@ class TextEditor extends Component {
 									} else {
 										return (
 											<Text
-												style={[
-													styles.promptText,
-													{ fontFamily: 'lemon-milk', color: color.softRed }
-												]}
+												style={[ styles.promptText, { fontFamily: 'lemon-milk', color: color.softRed } ]}
 												key={this.state.prompt[i]}
 											>
 												{this.state.prompt[i]}
@@ -305,7 +294,6 @@ const styles = StyleSheet.create({
 		borderColor: 'gray',
 		backgroundColor: color.inputGray,
 		color: '#ffffff',
-		// color: color.pastelBlueWhite,
 		borderWidth: 0,
 		borderRadius: 2,
 		padding: 10,

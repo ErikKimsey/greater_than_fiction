@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Dimensions, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
 import * as Font from 'expo-font';
-
 import color from '../assets/globals/colors';
 import { fontList } from '../assets/fonts/retrieveFonts';
-
-import { initGyro, getGyroData } from '../utilities/gyroColorMapping';
-
 import TransparentButton from '../components/buttons/transparentButton';
 import PercentageDimensions from '../styles/PercentageDimensions';
 import brainbulb from '../assets/cartographer.png';
@@ -47,11 +43,7 @@ export default class Landing extends Component {
 		return (
 			<ImageBackground
 				source={brainbulb}
-				style={[
-					styles.image,
-					{ width: '100%', height: '120%', backgroundColor: color.mattPurple },
-					styles.container
-				]}
+				style={[ styles.image, { width: '100%', height: '120%', backgroundColor: color.mattPurple }, styles.container ]}
 			>
 				{this.state.fontLoaded ? (
 					<View style={styles.subContainer}>
@@ -61,12 +53,7 @@ export default class Landing extends Component {
 							{'	Pseudo-Scientifically proven, \n by SoftBodySocial Inc. \nto kill creative-block.'}
 						</Text>
 
-						<TransparentButton
-							pressBtn={this.handleGo}
-							btnLabel="Get set"
-							accessLabel="Get set"
-							btnFont="lemon-milk"
-						/>
+						<TransparentButton pressBtn={this.handleGo} btnLabel="Get set" accessLabel="Get set" btnFont="lemon-milk" />
 					</View>
 				) : null}
 			</ImageBackground>

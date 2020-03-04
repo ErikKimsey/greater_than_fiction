@@ -51,12 +51,8 @@ export default class Prompt extends Component {
 
 const styles = StyleSheet.create({
 	promptContainer: {
-		// flexDirection: 'column',
-		// // justifyContent: 'center',
 		alignItems: 'center',
 		marginBottom: 10
-		// padding: 10
-		// margin: 12
 	},
 	textContainer: {
 		width: 380,
