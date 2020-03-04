@@ -72,8 +72,6 @@ export default class Clock extends Component {
 		let difference = deadline - now;
 		let remainingMin = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 		let remainingSec = Math.floor((difference % (1000 * 60)) / 1000);
-		console.log(remainingMin);
-		console.log(remainingSec);
 		if (remainingSec < 1 && remainingMin < 1) {
 			this.setTimedOut();
 			this.stopClock();
