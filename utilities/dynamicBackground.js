@@ -1,7 +1,8 @@
 import { Gyroscope } from 'expo-sensors';
 
 /**
- * WIP
+ * --- WIP ---
+ * (Gyroscope functionality is likely not to be used.)
  * Part of the functionality used to create dynamic background utilitizing the device's gyroscope
  */
 

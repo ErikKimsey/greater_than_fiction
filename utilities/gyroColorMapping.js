@@ -30,16 +30,11 @@ function initGyro() {
 	gyro.checkGyroAccess();
 }
 
-function getGyroData() {
-	// console.log(gyro.gyroData);
-}
+function getGyroData() {}
 
 function setAxisVals(axisObj) {}
 
-function colorMapping(data) {
-	// console.log('Color data >> ');
-	// console.log(data);
-}
+function colorMapping(data) {}
 
 function mapAxisToRGBLimit(axisVal, rgbVal) {}
 
