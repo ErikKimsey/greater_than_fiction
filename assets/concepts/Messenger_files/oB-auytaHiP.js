@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["ZCGhC"]); }
+
+__d("MessengerReactionsUtil.re",["bs_curry","MessengerReactionsUtil.bs"],(function(a,b,c,d,e,f){a=b("MessengerReactionsUtil.bs").reactionsSortOrder.map(function(a){return{name:a[0],emojis:a[1]}});f.reactionsSortOrder=a;c=function(a,c){a=b("bs_curry")._2(b("MessengerReactionsUtil.bs").sortFunction,a,c);return a};f.sortFunction=c;d=b("MessengerReactionsUtil.bs").defaultReactions;f.defaultReactions=d}),null);

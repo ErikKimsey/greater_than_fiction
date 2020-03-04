@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["kSQ4i"]); }
+
+__d("EmojiFormat.re",["EmojiFormat.bs"],(function(a,b,c,d,e,f){a=b("EmojiFormat.bs").codeStringToCodeArray;f.codeStringToCodeArray=a;c=b("EmojiFormat.bs").codeArrayToCodeString;f.codeArrayToCodeString=c;d=b("EmojiFormat.bs").codeArrayToUnicode;f.codeArrayToUnicode=d;e=b("EmojiFormat.bs").codeStringToUnicode;f.codeStringToUnicode=e}),null);

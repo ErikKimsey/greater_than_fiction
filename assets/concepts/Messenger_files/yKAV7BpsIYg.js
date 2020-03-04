@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["SiT+J"]); }
+
+__d("CometList_DEPRECATED.react",["BaseList.react","React","TetraText.react","stylex"],(function(a,b,c,d,e,f){"use strict";function a(a){var c=a.heading;a=babelHelpers.objectWithoutPropertiesLoose(a,["heading"]);return b("React").createElement(b("BaseList.react"),babelHelpers["extends"]({},a,{heading:c!==void 0?b("React").createElement("div",{className:"gwgkouwx px9k8yfb"},b("React").createElement(b("TetraText.react"),{isSemanticHeading:!0,type:"headlineEmphasized1"},c)):null}))}e.exports=a}),null);

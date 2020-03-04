@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["wpYuV"]); }
+
+__d("MessengerReactionStaticEmoji.react",["requireCond","MessengerTextWithEmoticons.react","React","cr:1117307","gkx"],(function(a,b,c,d,e,f){"use strict";function a(a){var c=a.reaction;a=a.isDefaultReaction;return b("gkx")("895574")&&b("cr:1117307")!=null?b("React").createElement(b("cr:1117307"),{reaction:c}):b("React").createElement(b("MessengerTextWithEmoticons.react"),{customSize:!0,forceMessengerEmoji:a,renderEmoticons:!0,renderEmoji:!0,text:c})}e.exports=a}),null);
