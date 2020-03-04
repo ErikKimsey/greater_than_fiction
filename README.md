@@ -5,7 +5,7 @@
 # 100W3rds
 #### (For iOS and Android, via React-Native)
 
-### 100W3rds was built to be a "creative aid".  A knocking-down of writer's block.
+### "Pseudo-scientifically proven, by SoftBodySocial, to kill creative-block"
 
 
 ###### The Activity:
