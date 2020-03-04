@@ -24,5 +24,10 @@ Upon completion, the user has ripped through their creative block!  And has the 
 9. From there, simply follow the prompts!
 
 
-
-
+###### More screenshots of 100W3rds:
+<img alt="100W3rds Landing" src="https://i.imgur.com/97T307F.png" width="250">
+<img alt="Prompt screen" src="https://i.imgur.com/2AJNT1r.png" width="250">
+<img alt="Text editor" src="https://i.imgur.com/cgPYGFg.png" width="250">
+<img alt="Publish screen" src="https://i.imgur.com/gEoVzxo.png" width="250">
+<img alt="After publishing" src="https://i.imgur.com/LtIpA9G.png" width="250">
+<img alt="Screenshot of story saved to device." src="https://i.imgur.com/tVPZ9DA.png" width="250">
