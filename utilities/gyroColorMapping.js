@@ -1,7 +1,8 @@
 import GyroScope from '../utilities/dynamicBackground';
 
 /**
- * WIP
+ * --- WIP ----
+ * (Gyroscope utilities may not even be implemented. But...)
  * Part of the functionality used to create dynamic background utilitizing the device's gyroscope
  */
 
@@ -67,8 +68,7 @@ function mapAxisToRGBLimit(axisVal, rgbVal) {}
 const checkBounds = () => {};
 
 const map = function(incoming, lowerCurent, upperCurrent, lowerTarget, upperTarget, withinBoundsBool) {
-	const newval =
-		(incoming - lowerCurent) / (upperCurrent - lowerCurent) * (upperTarget - upperCurrent) + upperCurrent;
+	const newval = (incoming - lowerCurent) / (upperCurrent - lowerCurent) * (upperTarget - upperCurrent) + upperCurrent;
 	if (!withinBounds) {
 		return newval;
 	}
