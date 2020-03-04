@@ -1,4 +1,4 @@
-<img alt="100W3rds Landing" src="https://imgur.com/97T307F" width="250">
+<img alt="100W3rds Landing" src="https://i.imgur.com/97T307F.png" width="250">
 
 ## (Work in Progress)
 
